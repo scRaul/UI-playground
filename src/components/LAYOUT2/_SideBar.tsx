@@ -2,16 +2,20 @@
 import {
   AlignJustify,
   Component,
+  ContainerIcon,
   ExternalLink,
   GalleryHorizontalEnd,
   Grip,
   Layout,
+  LayoutDashboard,
   MousePointerSquare,
   Navigation,
   PanelBottomClose,
   PanelLeft,
   PanelTop,
   Pointer,
+  RectangleHorizontal,
+  RectangleVertical,
   Scan,
   Shapes,
   Terminal,
@@ -22,6 +26,7 @@ import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
 import Collapsible from "../BUTTONS/Collapsible";
 import Link from "next/link";
+import { Container } from "postcss";
 
 function _SideBar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -52,6 +57,9 @@ function _SideBar() {
         </Link>
       </div>
       <div id="mid" className={`${isOpen ? "" : "hidden"}`}>
+        <Collapsible label={"Containers"} icon={<LayoutDashboard />}>
+          <NavMenu navItems={contiainerNavs} />
+        </Collapsible>
         <Collapsible label={"Layouts"} icon={<Layout />}>
           <NavMenu navItems={layoutNavs} />
         </Collapsible>
@@ -70,7 +78,18 @@ function _SideBar() {
   );
 }
 export default _SideBar;
-
+const contiainerNavs: NavItem[] = [
+  {
+    href: "/container/horizontal-bar",
+    label: "HorizontalBar",
+    icon: <RectangleHorizontal />,
+  },
+  {
+    href: "/container/vertical-bar",
+    label: "VerticalBar",
+    icon: <RectangleVertical />,
+  },
+];
 const layoutNavs: NavItem[] = [
   {
     href: "/layout/topbar",
@@ -99,19 +118,19 @@ const navNavs: NavItem[] = [
 
 const inputNavs: NavItem[] = [
   {
-    href: "/buttons/hover",
+    href: "/button/hover",
     label: "HoverBttn",
     icon: <MousePointerSquare />,
   },
   {
-    href: "/buttons/collapsible",
+    href: "/button/collapsible",
     label: "Collapsible",
     icon: <PanelBottomClose />,
   },
 ];
 const cardNavs: NavItem[] = [
   {
-    href: "/cards/code-preview",
+    href: "/card/code-preview",
     label: "CodePreview",
     icon: <Terminal />,
   },

@@ -1,5 +1,5 @@
 import CodePreview from "@/components/CARDS/CodePreview";
-import SideBar from "@/components/LAYOUT/SideBar";
+import SideBar from "@/components/LAYOUT2/SideBar";
 
 function SideBarPage() {
   const code = `//SideBar.tsx

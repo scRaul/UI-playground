@@ -1,5 +1,5 @@
 import CodePreview from "@/components/CARDS/CodePreview";
-import TopBar from "@/components/LAYOUT/TopBar";
+import TopBar from "@/components/LAYOUT2/TopBar";
 
 function TopBarPage() {
   const code: string = `//TopBar.tsx

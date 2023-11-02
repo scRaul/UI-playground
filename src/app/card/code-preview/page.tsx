@@ -1,3 +1,7 @@
+import CodePreview from "@/components/CARDS/CodePreview";
+
+function CodePreviewPage() {
+  const code: string = `
 "use client";
 import React, { useState } from "react";
 import copy from "clipboard-copy";
@@ -39,7 +43,7 @@ function CodePreview(props: CodePreviewProps) {
   };
 
   return (
-    <div className="border rounded p-4 shadow-xl w-full  h-96 overflow-scroll mb-4 md:w-[700px]">
+    <div className="border rounded p-4 shadow-xl w-96  h-96 overflow-scroll mb-4 md:w-[700px]">
       <div className="mb-2 flex flex-col justify-between items-center md:flex-row">
         <h2 className="text-lg font-semibold">{props.title}</h2>
         <div className="flex items-center">
@@ -84,3 +88,14 @@ function CodePreview(props: CodePreviewProps) {
 }
 
 export default CodePreview;
+
+  `;
+  return (
+    <>
+      <CodePreview title="CodePreview" code={code}>
+        <h1> //This Element itself </h1>
+      </CodePreview>
+    </>
+  );
+}
+export default CodePreviewPage;

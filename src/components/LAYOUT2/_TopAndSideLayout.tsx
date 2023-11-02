@@ -7,8 +7,8 @@ interface _TopAndSideLayout {
 
 function _TopAndSideLayout(props: _TopAndSideLayout) {
   return (
-    <div className="w-screen h-screen">
-      <_TopBar />
+    <div className="w-screen h-screen pl-2 pr-2">
+      {/* <_TopBar /> */}
       <div className="flex">
         <_SideBar />
         <div className={`mt-14 m-auto flex-1 flex flex-col items-center p-24"`}>
