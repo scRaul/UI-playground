@@ -130,7 +130,7 @@ const cardNavs: NavItem[] = [
   
   `;
   return (
-    <CodePreview code={code}>
+    <CodePreview title="SideBar.tsx" code={code}>
       <div className="w-full h-full">
         <SideBar />
       </div>

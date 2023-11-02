@@ -58,7 +58,7 @@ export default TopBar;
 
 `;
   return (
-    <CodePreview code={code}>
+    <CodePreview title="TopBar.tsx" code={code}>
       <div className="w-full h-14 border-2">
         <TopBar />
       </div>
