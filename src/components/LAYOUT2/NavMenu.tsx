@@ -6,13 +6,18 @@ export interface NavItem {
   icon?: React.ReactElement;
 }
 interface NavMenuProps {
+  className?: string;
+  itemClassName?: string;
   navItems: NavItem[];
 }
 export default function NavMenu(props: NavMenuProps) {
   return (
-    <nav>
+    <nav className={`h-fit ${props.className}`}>
       {props.navItems.map((link, index) => (
-        <div key={index} className="nav-item hover:bg-gray-500 rounded-md p-3">
+        <div
+          key={index}
+          className={`rounded-md p-3 cursor-pointer ${props.itemClassName}`}
+        >
           <Link href={link.href} className="flex items-center ">
             {link.icon ? link.icon : null}
             {link.label}

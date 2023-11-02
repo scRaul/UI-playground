@@ -20,7 +20,7 @@ import NavMenu from "./NavMenu";
 import { NavItem } from "./NavMenu";
 import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
-import Collapsible from "../BUTTONS/Collapsible";
+import Collapsible from "../CONTAINERS/Collapsible";
 import Link from "next/link";
 
 function SideBar() {

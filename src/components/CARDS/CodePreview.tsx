@@ -12,6 +12,7 @@ interface CodePreviewProps {
   children: React.ReactNode;
   code: string;
   disableNumbers?: boolean;
+  isClientComponent?: boolean;
 }
 
 function CodePreview(props: CodePreviewProps) {
@@ -42,6 +43,7 @@ function CodePreview(props: CodePreviewProps) {
     <div className="border rounded p-4 shadow-xl w-full  h-96 overflow-scroll mb-4 md:w-[700px]">
       <div className="mb-2 flex flex-col justify-between items-center md:flex-row">
         <h2 className="text-lg font-semibold">{props.title}</h2>
+        {props.isClientComponent ? <p>Client Component </p> : null}
         <div className="flex items-center">
           <button
             className="px-2 py-1 rounded bg-blue-500 text-white"

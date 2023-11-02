@@ -24,7 +24,7 @@ import NavMenu from "./NavMenu";
 import { NavItem } from "./NavMenu";
 import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
-import Collapsible from "../BUTTONS/Collapsible";
+import Collapsible from "../CONTAINERS/Collapsible";
 import Link from "next/link";
 import { Container } from "postcss";
 
@@ -60,15 +60,15 @@ function _SideBar() {
         <Collapsible label={"Containers"} icon={<LayoutDashboard />}>
           <NavMenu navItems={contiainerNavs} />
         </Collapsible>
-        <Collapsible label={"Layouts"} icon={<Layout />}>
-          <NavMenu navItems={layoutNavs} />
-        </Collapsible>
         <Collapsible label={"Navigation"} icon={<Navigation />}>
           <NavMenu navItems={navNavs} />
         </Collapsible>
+        {/* <Collapsible label={"Layouts"} icon={<Layout />}>
+          <NavMenu navItems={layoutNavs} />
+        </Collapsible>
         <Collapsible label={"Input"} icon={<Pointer />}>
           <NavMenu navItems={inputNavs} />
-        </Collapsible>
+        </Collapsible> */}
         <Collapsible label={"Cards"} icon={<GalleryHorizontalEnd />}>
           <NavMenu navItems={cardNavs} />
         </Collapsible>
@@ -88,6 +88,11 @@ const contiainerNavs: NavItem[] = [
     href: "/container/vertical-bar",
     label: "VerticalBar",
     icon: <RectangleVertical />,
+  },
+  {
+    href: "/container/collapsible",
+    label: "Collapsible",
+    icon: <PanelBottomClose />,
   },
 ];
 const layoutNavs: NavItem[] = [
