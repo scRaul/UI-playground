@@ -23,7 +23,7 @@ import { useState } from "react";
 import Collapsible from "../BUTTONS/Collapsible";
 import Link from "next/link";
 
-function SideBar() {
+function _SideBar() {
   const [isOpen, setIsOpen] = useState(true);
 
   function toggleBar() {
@@ -31,9 +31,8 @@ function SideBar() {
   }
 
   return (
-    //add 'fixed' to the className if you need to line up with top Bar
     <div
-      className={`top-0 left-0 m-0 w-fit ${
+      className={`fixed top-0 left-0 m-0 w-fit ${
         isOpen ? "h-full  bg-gray-100 shadow-2xl" : "h-fit bg-transparent"
       } 
        p-2 flex flex-col transition-transform duration-300 `}
@@ -70,7 +69,7 @@ function SideBar() {
     </div>
   );
 }
-export default SideBar;
+export default _SideBar;
 
 const layoutNavs: NavItem[] = [
   {

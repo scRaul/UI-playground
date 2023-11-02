@@ -1,3 +1,8 @@
+import CodePreview from "@/components/CARDS/CodePreview";
+import TopBar from "@/components/LAYOUT/TopBar";
+
+function TopBarPage() {
+  const code: string = `//TopBar.tsx
 /*
 Use as a singleton instance ( edit this file to make changes )
 bar is split into three sections 
@@ -26,13 +31,13 @@ function TopBar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const topBarClasses = `${
+  const topBarClasses = \` \${
     scrolling ? "bg-gray-500 fixed" : "bg-transparent"
-  } transition-all duration-300 ease-in-out`;
+  } transition-all duration-300 ease-in-out\`;
 
   return (
     <div
-      className={`flex gap-1 justify-between items-center left-0 top-0 w-full p-3 pl-14 pr-10  h-14 ${topBarClasses} `}
+      className={\`flex gap-1 justify-between items-center left-0 top-0 w-full p-3 pl-14 pr-10  h-14 \${topBarClasses} \`}
     >
       <div id="left-section" className="flex w-full justify-start items-center">
         <Link href="" className="cursor-pointer  flex ">
@@ -49,4 +54,15 @@ function TopBar() {
     </div>
   );
 }
-export default TopBar;
+export default TopBar; 
+
+`;
+  return (
+    <CodePreview code={code}>
+      <div className="w-full h-14 border-2">
+        <TopBar />
+      </div>
+    </CodePreview>
+  );
+}
+export default TopBarPage;

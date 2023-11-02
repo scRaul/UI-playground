@@ -1,4 +1,14 @@
-"use client";
+import CodePreview from "@/components/CARDS/CodePreview";
+import SideBar from "@/components/LAYOUT/SideBar";
+
+function SideBarPage() {
+  const code = `//SideBar.tsx
+/*  NOTE Line 40
+Use as a singleton instance ( edit this file to make changes )
+bar is split into three sections 
+left, mid , and right
+*/
+ "use client";
 import {
   AlignJustify,
   Component,
@@ -33,10 +43,10 @@ function SideBar() {
   return (
     //add 'fixed' to the className if you need to line up with top Bar
     <div
-      className={`top-0 left-0 m-0 w-fit ${
+      className={\`top-0 left-0 m-0 w-fit \${
         isOpen ? "h-full  bg-gray-100 shadow-2xl" : "h-fit bg-transparent"
       } 
-       p-2 flex flex-col transition-transform duration-300 `}
+       p-2 flex flex-col transition-transform duration-300 \`}
     >
       <div id="top" className="flex justify-center items-center">
         <HoverBttn onClick={toggleBar}>
@@ -44,7 +54,7 @@ function SideBar() {
         </HoverBttn>
         <Link
           href="/"
-          className={` cursor-pointer flex-grow flex ${isOpen ? "" : "hidden"}`}
+          className={\` cursor-pointer flex-grow flex \${isOpen ? "" : "hidden"}\`}
         >
           <div id="logo">
             <Shapes />
@@ -52,7 +62,7 @@ function SideBar() {
           UI Library
         </Link>
       </div>
-      <div id="mid" className={`${isOpen ? "" : "hidden"}`}>
+      <div id="mid" className={\`\${isOpen ? "" : "hidden"}\`}>
         <Collapsible label={"Layouts"} icon={<Layout />}>
           <NavMenu navItems={layoutNavs} />
         </Collapsible>
@@ -66,7 +76,7 @@ function SideBar() {
           <NavMenu navItems={cardNavs} />
         </Collapsible>
       </div>
-      <div id="bottom" className={`${isOpen ? "" : "hidden"}`}></div>
+      <div id="bottom" className={\`\${isOpen ? "" : "hidden"}\`}></div>
     </div>
   );
 }
@@ -117,3 +127,15 @@ const cardNavs: NavItem[] = [
     icon: <Terminal />,
   },
 ];
+  
+  `;
+  return (
+    <CodePreview code={code}>
+      <div className="w-full h-full">
+        <SideBar />
+      </div>
+    </CodePreview>
+  );
+}
+
+export default SideBarPage;

@@ -8,7 +8,7 @@ import { Shapes } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-function TopBar() {
+function _TopBar() {
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
@@ -35,18 +35,19 @@ function TopBar() {
       className={`flex gap-1 justify-between items-center left-0 top-0 w-full p-3 pl-14 pr-10  h-14 ${topBarClasses} `}
     >
       <div id="left-section" className="flex w-full justify-start items-center">
-        <Link href="" className="cursor-pointer  flex ">
+        <Link href="/" className="cursor-pointer  flex ">
           <Shapes />
           UI Library
         </Link>
       </div>
-      <div id="mid-section" className="flex w-full justify-center items-center">
-        <p>topBar</p>
-      </div>
+      <div
+        id="mid-section"
+        className="flex w-full justify-center items-center"
+      ></div>
       <div id="right-section" className="flex w-full justify-end items-center">
         <a className="text-blue-700 cursor-pointer">call-to-action</a>
       </div>
     </div>
   );
 }
-export default TopBar;
+export default _TopBar;
