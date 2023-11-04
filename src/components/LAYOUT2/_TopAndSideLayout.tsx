@@ -15,6 +15,7 @@ function _TopAndSideLayout(props: _TopAndSideLayout) {
           {props.children}
         </div>
       </div>
+      <div className="h-32 w-ful"></div>
     </div>
   );
 }

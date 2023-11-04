@@ -26,7 +26,9 @@ function Collapsible(props: CollapsibleProps) {
         <div className="font-semibold">{props.label}</div>
         {isCollapsed ? <ChevronRight /> : <ChevronDown />}
       </div>
-      {isCollapsed ? null : <div className="mt-2">{props.children}</div>}
+      {isCollapsed ? null : (
+        <div className="mt-2 ml-auto mr-auto">{props.children}</div>
+      )}
     </div>
   );
 }

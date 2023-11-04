@@ -1,11 +1,11 @@
 "use client";
 import {
   AlignJustify,
+  Code,
   Component,
   ContainerIcon,
   ExternalLink,
   GalleryHorizontalEnd,
-  Grip,
   Layout,
   LayoutDashboard,
   MousePointerSquare,
@@ -13,12 +13,13 @@ import {
   PanelBottomClose,
   PanelLeft,
   PanelTop,
-  Pointer,
   RectangleHorizontal,
   RectangleVertical,
-  Scan,
   Shapes,
+  Tags,
   Terminal,
+  Type,
+  Workflow,
 } from "lucide-react";
 import NavMenu from "./NavMenu";
 import { NavItem } from "./NavMenu";
@@ -26,7 +27,6 @@ import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
 import Collapsible from "../CONTAINERS/Collapsible";
 import Link from "next/link";
-import { Container } from "postcss";
 
 function _SideBar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -57,6 +57,9 @@ function _SideBar() {
         </Link>
       </div>
       <div id="mid" className={`${isOpen ? "" : "hidden"}`}>
+        <Collapsible label={"HTML Ref"} icon={<Code />}>
+          <NavMenu navItems={htmlNavs} />
+        </Collapsible>
         <Collapsible label={"Containers"} icon={<LayoutDashboard />}>
           <NavMenu navItems={contiainerNavs} />
         </Collapsible>
@@ -78,6 +81,23 @@ function _SideBar() {
   );
 }
 export default _SideBar;
+const htmlNavs: NavItem[] = [
+  {
+    href: "/html/text",
+    label: "Text",
+    icon: <Type />,
+  },
+  {
+    href: "/html/elements",
+    label: "Elements",
+    icon: <Tags />,
+  },
+  {
+    href: "/html/events",
+    label: "Events",
+    icon: <Workflow />,
+  },
+];
 const contiainerNavs: NavItem[] = [
   {
     href: "/container/horizontal-bar",

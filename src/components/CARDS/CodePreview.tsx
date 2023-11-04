@@ -40,8 +40,8 @@ function CodePreview(props: CodePreviewProps) {
   };
 
   return (
-    <div className="border rounded p-4 shadow-xl w-full  h-96 overflow-scroll mb-4 md:w-[700px]">
-      <div className="mb-2 flex flex-col justify-between items-center md:flex-row">
+    <div className="border rounded p-4 shadow-xl w-full max-h-96 overflow-hidden mb-4 md:w-[700px]">
+      <div className="mb-2 flex flex-col justify-between items-center  md:flex-row">
         <h2 className="text-lg font-semibold">{props.title}</h2>
         {props.isClientComponent ? <p>Client Component </p> : null}
         <div className="flex items-center">
@@ -70,17 +70,19 @@ function CodePreview(props: CodePreviewProps) {
         </div>
       </div>
       <hr className="mb-2" />
-      {showPreview ? (
-        <div className="flex h-full w-full">{props.children}</div>
-      ) : (
-        <SyntaxHighlighter
-          showLineNumbers={enableNumbers}
-          language="javascript"
-          style={prism}
-        >
-          {props.code}
-        </SyntaxHighlighter>
-      )}
+      <div className="max-h-80 w-full p-4 overflow-y-scroll">
+        {showPreview ? (
+          <div className="flex flex-col  h-full w-full">{props.children}</div>
+        ) : (
+          <SyntaxHighlighter
+            showLineNumbers={enableNumbers}
+            language="javascript"
+            style={prism}
+          >
+            {props.code}
+          </SyntaxHighlighter>
+        )}
+      </div>
     </div>
   );
 }
