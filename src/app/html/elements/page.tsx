@@ -202,7 +202,7 @@ export default function ElementPage() {
         </ol>
       </CodePreview>
       <CodePreview title="<table>" code={ele[6]}>
-        <table className="table-auto border-collapse border border-gray-300">
+        <table className="table-auto w-fit border-collapse border border-gray-300">
           <caption>Table</caption>
           <thead>
             <tr>
@@ -238,7 +238,7 @@ export default function ElementPage() {
         </table>
       </CodePreview>
       <CodePreview title="<iframe>" code={ele[7]}>
-        <iframe src="https://www.example.com" width="500" height="300"></iframe>
+        <iframe src="https://www.example.com" width="fit" height="300"></iframe>
       </CodePreview>
       <CodePreview title="<audio>" code={ele[8]}>
         <audio controls>
@@ -263,7 +263,13 @@ export default function ElementPage() {
         </progress>
       </CodePreview>
       <CodePreview title="range" code={ele[12]}>
-        <input type="range" id="range" min="0" max="100"></input>
+        <input
+          type="range"
+          id="range"
+          min="0"
+          max="100"
+          className="w-6/12"
+        ></input>
         <output htmlFor="range">0</output>
       </CodePreview>
     </>

@@ -29,6 +29,11 @@ export default function textPage() {
     `<p> ln<sub>2</sub>4 = 2 </p>`,
     `<p> let <var>VariableName</var> equal to some text </p>`,
     `<address>contact@example.com</address>`,
+    `  
+<p>
+  This is some <del>semi</del> random text
+</p>
+`,
   ];
   return (
     <>
@@ -105,6 +110,11 @@ export default function textPage() {
         </CodePreview>
         <CodePreview title="" code={p[11]}>
           <address>contact@example.com</address>
+        </CodePreview>
+        <CodePreview title="" code={p[12]}>
+          <p>
+            This is some <del>semi</del> random text
+          </p>
         </CodePreview>
       </Collapsible>
     </>

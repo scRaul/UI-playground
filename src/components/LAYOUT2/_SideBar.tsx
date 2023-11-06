@@ -29,7 +29,7 @@ import Collapsible from "../CONTAINERS/Collapsible";
 import Link from "next/link";
 
 function _SideBar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function toggleBar() {
     setIsOpen(!isOpen);
