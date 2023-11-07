@@ -128,37 +128,45 @@ export default function AttributesPage() {
           </div>
         </CodePreview>
         <CodePreview title="inputmode (mobile keyboard)" code={code[8]}>
-          <div inputMode="decimal" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="decimal">decimal</label>
-            <input id="decimal" className="border-2 w-fit" />
+            <input
+              id="decimal"
+              inputMode="decimal"
+              className="border-2 w-fit"
+            />
           </div>
-          <div inputMode="email" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="email">email</label>
-            <input id="email" className="border-2 w-fit" />
+            <input id="email" inputMode="email" className="border-2 w-fit" />
           </div>
-          <div inputMode="none" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="none">none</label>
-            <input id="none" className="border-2 w-fit" />
+            <input id="none" inputMode="none" className="border-2 w-fit" />
           </div>
-          <div inputMode="numeric" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="numeric">numeric</label>
-            <input id="numeric" className="border-2 w-fit" />
+            <input
+              id="numeric"
+              inputMode="numeric"
+              className="border-2 w-fit"
+            />
           </div>
-          <div inputMode="search" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="search">search</label>
-            <input id="search" className="border-2 w-fit" />
+            <input id="search" inputMode="search" className="border-2 w-fit" />
           </div>
-          <div inputMode="tel" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="tel">tel</label>
-            <input id="tel" className="border-2 w-fit" />
+            <input id="tel" inputMode="tel" className="border-2 w-fit" />
           </div>
-          <div inputMode="text" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="text">text</label>
-            <input id="text" className="border-2 w-fit" />
+            <input id="text" inputMode="text" className="border-2 w-fit" />
           </div>
-          <div inputMode="url" className="flex p-4 justify-between">
+          <div className="flex p-4 justify-between">
             <label htmlFor="url">url</label>
-            <input id="url" className="border-2 w-fit" />
+            <input id="url" inputMode="url" className="border-2 w-fit" />
           </div>
         </CodePreview>
         <CodePreview title="lang" code={code[0]}>
