@@ -1,6 +1,7 @@
 "use client";
 import {
   AlignJustify,
+  Blocks,
   Code,
   Component,
   ContainerIcon,
@@ -91,6 +92,11 @@ const htmlNavs: NavItem[] = [
     href: "/html/elements",
     label: "Elements",
     icon: <Tags />,
+  },
+  {
+    href: "/html/attributes",
+    label: "Attributes",
+    icon: <Blocks />,
   },
   {
     href: "/html/events",
