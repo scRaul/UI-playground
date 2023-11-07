@@ -89,7 +89,7 @@ export default function AttributesPage() {
             cant drag me
           </div>
         </CodePreview>
-        <CodePreview title="enterkeyhint (mobile) " code={code[5]}>
+        <CodePreview title="enterkeyhint (mobile keyboard) " code={code[5]}>
           search:
           <input enterKeyHint="search" type="text" className="border-2 w-fit" />
           go:
@@ -115,14 +115,51 @@ export default function AttributesPage() {
           </button>
           <div className="w-40  h-40 bg-red-600" hidden={hide}></div>
         </CodePreview>
-        <CodePreview title="id" code={code[0]}>
-          <div id="parent"></div>
+        <CodePreview title="id" code={code[7]}>
+          <p> Click on the field name to focus on the input box</p>
+
+          <div className="flex justify-between mt-3 p-4">
+            <label htmlFor="name">Enter your name</label>
+            <input id="name" className="w-fit border-2" />
+          </div>
+          <div className="flex justify-between  p-4">
+            <label htmlFor="phone">Enter your work phone number</label>
+            <input id="phone" className="w-fit border-2" />
+          </div>
         </CodePreview>
-        <CodePreview title="enert" code={code[0]}>
-          <div></div>
-        </CodePreview>
-        <CodePreview title="inputmode" code={code[0]}>
-          <div></div>
+        <CodePreview title="inputmode (mobile keyboard)" code={code[8]}>
+          <div inputMode="decimal" className="flex p-4 justify-between">
+            <label htmlFor="decimal">decimal</label>
+            <input id="decimal" className="border-2 w-fit" />
+          </div>
+          <div inputMode="email" className="flex p-4 justify-between">
+            <label htmlFor="email">email</label>
+            <input id="email" className="border-2 w-fit" />
+          </div>
+          <div inputMode="none" className="flex p-4 justify-between">
+            <label htmlFor="none">none</label>
+            <input id="none" className="border-2 w-fit" />
+          </div>
+          <div inputMode="numeric" className="flex p-4 justify-between">
+            <label htmlFor="numeric">numeric</label>
+            <input id="numeric" className="border-2 w-fit" />
+          </div>
+          <div inputMode="search" className="flex p-4 justify-between">
+            <label htmlFor="search">search</label>
+            <input id="search" className="border-2 w-fit" />
+          </div>
+          <div inputMode="tel" className="flex p-4 justify-between">
+            <label htmlFor="tel">tel</label>
+            <input id="tel" className="border-2 w-fit" />
+          </div>
+          <div inputMode="text" className="flex p-4 justify-between">
+            <label htmlFor="text">text</label>
+            <input id="text" className="border-2 w-fit" />
+          </div>
+          <div inputMode="url" className="flex p-4 justify-between">
+            <label htmlFor="url">url</label>
+            <input id="url" className="border-2 w-fit" />
+          </div>
         </CodePreview>
         <CodePreview title="lang" code={code[0]}>
           <div></div>
@@ -261,6 +298,52 @@ className="border-2 w-fit"
   Show/Hide
 </button>
 <div className="w-40  h-40 bg-red-600" hidden={hide}></div>
+`,
+  `
+<p> Click on the field name to focus on the input box</p>
+
+<div className="flex justify-between mt-3 p-4">
+  <label htmlFor="name">Enter your name</label>
+  <input id="name" className="w-fit border-2" />
+</div>
+<div className="flex justify-between  p-4">
+  <label htmlFor="phone">Enter your work phone number</label>
+  <input id="phone" className="w-fit border-2" />
+</div>
+`,
+  `
+<div inputMode="decimal" className="flex p-4 justify-between">
+<label htmlFor="decimal">decimal</label>
+<input id="decimal" className="border-2 w-fit" />
+</div>
+<div inputMode="email" className="flex p-4 justify-between">
+<label htmlFor="email">email</label>
+<input id="email" className="border-2 w-fit" />
+</div>
+<div inputMode="none" className="flex p-4 justify-between">
+<label htmlFor="none">none</label>
+<input id="none" className="border-2 w-fit" />
+</div>
+<div inputMode="numeric" className="flex p-4 justify-between">
+<label htmlFor="numeric">numeric</label>
+<input id="numeric" className="border-2 w-fit" />
+</div>
+<div inputMode="search" className="flex p-4 justify-between">
+<label htmlFor="search">search</label>
+<input id="search" className="border-2 w-fit" />
+</div>
+<div inputMode="tel" className="flex p-4 justify-between">
+<label htmlFor="tel">tel</label>
+<input id="tel" className="border-2 w-fit" />
+</div>
+<div inputMode="text" className="flex p-4 justify-between">
+<label htmlFor="text">text</label>
+<input id="text" className="border-2 w-fit" />
+</div>
+<div inputMode="url" className="flex p-4 justify-between">
+<label htmlFor="url">url</label>
+<input id="url" className="border-2 w-fit" />
+</div>
 `,
 ];
 /*
