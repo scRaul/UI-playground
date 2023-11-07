@@ -1,23 +1,7 @@
-"use client";
 import CodePreview from "@/components/CARDS/CodePreview";
 import Collapsible from "@/components/CONTAINERS/Collapsible";
-import { useState } from "react";
-
+import { HideComp, DataComp } from "@/components/Page/attributes";
 export default function AttributesPage() {
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const [hide, setHide] = useState(true);
-
-  const items = [
-    { id: 1, name: "Item 1", description: "some random information" },
-    { id: 2, name: "Item 2", description: "not so random information" },
-    { id: 3, name: "Item 3", description: "this is definitely not random " },
-  ];
-
-  const handleItemClick = (itemId: number) => {
-    // Set the selected item ID in state
-    setSelectedItem(itemId.toString());
-  };
-
   return (
     <>
       <Collapsible className="w-full md:w-[750px]" label="Global">
@@ -36,42 +20,7 @@ export default function AttributesPage() {
           </p>
         </CodePreview>
         <CodePreview title="data-key=" code={code[2]}>
-          <div className="flex justify-between">
-            <div>
-              <h1 className="font-semibold">Items: </h1>
-              <ul className="w-fit border-2 cursor-pointer  bg-slate-100 shadow-xl">
-                {items.map((item) => (
-                  <li
-                    className="hover:bg-blue-500 w-full p-1"
-                    key={item.id}
-                    data-item-id={item.id}
-                    onClick={() => handleItemClick(item.id)}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {selectedItem && (
-              <div className="flex-1 p-5">
-                <h2>Selected Item Details</h2>
-                <p>
-                  Name:
-                  {
-                    items.find((item) => item.id.toString() === selectedItem)
-                      ?.name
-                  }
-                </p>
-                <p>
-                  Description:
-                  {
-                    items.find((item) => item.id.toString() === selectedItem)
-                      ?.description
-                  }
-                </p>
-              </div>
-            )}
-          </div>
+          <DataComp />
         </CodePreview>
         <CodePreview title="dir" code={code[3]}>
           <p dir="rtl">this text is right to left</p>
@@ -110,19 +59,16 @@ export default function AttributesPage() {
           />
         </CodePreview>
         <CodePreview title="hidden" code={code[6]}>
-          <button className="bg-gray-200  w-fit" onClick={() => setHide(!hide)}>
-            Show/Hide
-          </button>
-          <div className="w-40  h-40 bg-red-600" hidden={hide}></div>
+          <HideComp />
         </CodePreview>
         <CodePreview title="id" code={code[7]}>
           <p> Click on the field name to focus on the input box</p>
 
-          <div className="flex justify-between mt-3 p-4">
+          <div className="flex flex-col md:flex-row justify-between mt-3 p-4">
             <label htmlFor="name">Enter your name</label>
             <input id="name" className="w-fit border-2" />
           </div>
-          <div className="flex justify-between  p-4">
+          <div className="flex flex-col md:flex-row justify-between  p-4">
             <label htmlFor="phone">Enter your work phone number</label>
             <input id="phone" className="w-fit border-2" />
           </div>
@@ -169,23 +115,46 @@ export default function AttributesPage() {
             <input id="url" inputMode="url" className="border-2 w-fit" />
           </div>
         </CodePreview>
-        <CodePreview title="lang" code={code[0]}>
-          <div></div>
+        <CodePreview title="lang" code={code[9]}>
+          <p lang="es">Este mensaje esta en espanol</p>
+          <a
+            href="https://www.w3schools.com/tags/ref_language_codes.asp"
+            target="_blank"
+            className="underline text-blue-600"
+          >
+            List of language codes
+          </a>
         </CodePreview>
-        <CodePreview title="popover" code={code[0]}>
-          <div></div>
+        <CodePreview title="spellchceck" code={code[10]}>
+          <h3
+            className="text-3xl md:text-6xl"
+            contentEditable={true}
+            spellCheck={true}
+          >
+            Fix the word spellchjk
+          </h3>
         </CodePreview>
-        <CodePreview title="spellchceck" code={code[0]}>
-          <div></div>
+        <CodePreview title="tabindex" code={code[11]}>
+          <div>click on here then </div>
+          <div tabIndex={1}>Hti Tab</div>
+          <div tabIndex={2}> To navigate</div>
+          <div tabIndex={3}> focus between each div</div>
+          <div tabIndex={4}> div </div>
         </CodePreview>
-        <CodePreview title="tabindex" code={code[0]}>
-          <div></div>
-        </CodePreview>
-        <CodePreview title="title" code={code[0]}>
-          <div></div>
-        </CodePreview>
-        <CodePreview title="translate" code={code[0]}>
-          <div></div>
+        <CodePreview title="title" code={code[12]}>
+          <p> Place mouse over the top of each line for more info</p>
+          <a
+            href="https://google.com"
+            target="_blank"
+            title="visit google.com"
+            className="underline text-blue-600"
+          >
+            Google
+          </a>
+          <span title="Hover over me to see the tooltip">
+            Hover me for info
+          </span>
+          <abbr title="TypeScript eXtension">TSX</abbr>
         </CodePreview>
       </Collapsible>
     </>
@@ -320,38 +289,79 @@ className="border-2 w-fit"
 </div>
 `,
   `
-<div inputMode="decimal" className="flex p-4 justify-between">
 <label htmlFor="decimal">decimal</label>
-<input id="decimal" className="border-2 w-fit" />
+<input
+  id="decimal"
+  inputMode="decimal"
+  className="border-2 w-fit"
+/>
 </div>
-<div inputMode="email" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="email">email</label>
-<input id="email" className="border-2 w-fit" />
+<input id="email" inputMode="email" className="border-2 w-fit" />
 </div>
-<div inputMode="none" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="none">none</label>
-<input id="none" className="border-2 w-fit" />
+<input id="none" inputMode="none" className="border-2 w-fit" />
 </div>
-<div inputMode="numeric" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="numeric">numeric</label>
-<input id="numeric" className="border-2 w-fit" />
+<input
+  id="numeric"
+  inputMode="numeric"
+  className="border-2 w-fit"
+/>
 </div>
-<div inputMode="search" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="search">search</label>
-<input id="search" className="border-2 w-fit" />
+<input id="search" inputMode="search" className="border-2 w-fit" />
 </div>
-<div inputMode="tel" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="tel">tel</label>
-<input id="tel" className="border-2 w-fit" />
+<input id="tel" inputMode="tel" className="border-2 w-fit" />
 </div>
-<div inputMode="text" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="text">text</label>
-<input id="text" className="border-2 w-fit" />
+<input id="text" inputMode="text" className="border-2 w-fit" />
 </div>
-<div inputMode="url" className="flex p-4 justify-between">
+<div className="flex p-4 justify-between">
 <label htmlFor="url">url</label>
-<input id="url" className="border-2 w-fit" />
+<input id="url" inputMode="url" className="border-2 w-fit" />
 </div>
+`,
+  `
+<p lang="es">Este mensaje esta en espanol</p>
+`,
+  `
+<h3
+  className="text-3xl md:text-6xl"
+  contentEditable={true}
+  spellCheck={true}
+>
+  Fix the word spellchjk
+</h3>
+`,
+  `
+<div>click on here then </div>
+<div tabIndex={1}>Hti Tab</div>
+<div tabIndex={2}> To navigate</div>
+<div tabIndex={3}> focus between each div</div>
+<div tabIndex={4}> div </div>
+`,
+  `
+<p> Place mouse over the top of each line for more info</p>
+<a
+  href="https://google.com"
+  target="_blank"
+  title="visit google.com"
+  className="underline text-blue-600"
+>
+  Google
+</a>
+<span title="Hover over me to see the tooltip">
+  Hover me for info
+</span>
+<abbr title="TypeScript eXtension">TSX</abbr>
 `,
 ];
 /*
