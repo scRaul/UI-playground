@@ -43,64 +43,129 @@ export default function textPage() {
           </article>
         </CodePreview>
       </Collapsible>
-      <Collapsible className="w-full md:w-[750px]" label="Text">
-        <CodePreview title="" code={p[0]}>
-          <p>This is some random text</p>
-        </CodePreview>
 
-        <CodePreview title="" code={p[1]}>
+      <Collapsible className="w-full md:w-[750px]" label="Other">
+        <CodePreview
+          title="<abbr>"
+          code={` <abbr title="World Wide Web">W.W.W</abbr>`}
+        >
+          <abbr title="World Wide Web">W.W.W</abbr>
+        </CodePreview>
+        <CodePreview
+          title="<address>"
+          code={`<address>example@gmail.com</address>`}
+        >
+          <address>example@gmail.com</address>
+        </CodePreview>
+        <CodePreview title="<b>" code={`<b>bold</b>`}>
+          <b>bold</b>
+        </CodePreview>
+        <CodePreview
+          title="<bdi>"
+          code={`<p>This is an example of <bdi>مرحبا بك في موقعنا</bdi>, which is Arabic text.</p>`}
+        >
           <p>
-            This is some <em> semi </em> random text
+            This is an example of <bdi>مرحبا بك في موقعنا</bdi>, which is Arabic
+            text.
           </p>
         </CodePreview>
-        <CodePreview title="" code={p[12]}>
+        <CodePreview
+          title="<bdo>"
+          code={`<bdo dir="rtl">Hello, welcome to our website</bdo>`}
+        >
+          <bdo dir="rtl">Hello, welcome to our website</bdo>
+        </CodePreview>
+        <CodePreview title="<cite>" code={`<cite>The Bee Movie</cite> `}>
+          <cite>The Bee Movie</cite>
+        </CodePreview>
+        <CodePreview
+          title="<code>"
+          code={`<code>let j = 5; let k = 6; console.log(j+k);</code> `}
+        >
+          <code>let j = 5; let k = 6; console.log(j+k);</code>
+        </CodePreview>
+        <CodePreview title="<del>" code={`<del>run 3 miles</del> `}>
+          <del>run 3 miles</del>
+        </CodePreview>
+        <CodePreview title="<dfn>" code={`<dfn>HTML</dfn>`}>
+          <dfn>WWW</dfn>
+        </CodePreview>
+        <CodePreview title="<dialog>" code={dialog_ex}>
           <p>
-            This is some <del>semi</del> random text
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
+            nesciunt, excepturi consequatur fuga perspiciatis quibusdam
+            provident nihil molestiae, commodi eos voluptatibus. Consequatur
+            iusto repellendus ipsum quasi numquam! Qui, assumenda cupiditate?
           </p>
+          <dialog open className="border-slate-400 border-4 p-4">
+            <p>Hello, how may I help you?</p>
+            <input type="text" className="border-2" />
+          </dialog>
         </CodePreview>
-        <CodePreview title="" code={p[2]}>
-          <p>
-            This is some <strong>semi </strong> random text
-          </p>
+        <CodePreview title="<em>" code={`<em>WWW</em> `}>
+          <em>WWW</em>
         </CodePreview>
-        <CodePreview title="" code={p[3]}>
-          <p>
-            This is some <mark>semi </mark> random text
-          </p>
+        <CodePreview title="<i>" code={`<i>WWW</i>`}>
+          <i>WWW</i>
         </CodePreview>
-        <CodePreview title="" code={p[4]}>
-          <time dateTime="2023-11-03">November 3, 2023</time>
+        <CodePreview title="<ins>" code={`<ins>Hello World</ins>`}>
+          <ins>Hello World</ins>
         </CodePreview>
-        <CodePreview title="" code={p[5]}>
-          <samp>This is some semi random text</samp>
+        <CodePreview title="<kbd>" code={`<kbd>QWERTY</kbd>`}>
+          <kbd>QWERTY</kbd>
         </CodePreview>
-        <CodePreview title="" code={p[6]}>
-          <code lang="javascript">
-            console.log("this is some semi random text")
+        <CodePreview title="<p>" code={`<p>Hello World</p>`}>
+          <p>Hello World</p>
+        </CodePreview>
+        <CodePreview
+          title="<pre>"
+          code={`<pre>{\`Hello 
+                Wolrd\`}</pre> `}
+        >
+          <pre>{`Hello 
+                Wolrd!  `}</pre>
+        </CodePreview>
+        <CodePreview
+          title="<q>"
+          code={`<q>Everyone has a plan, until they get punched in the face.</q>`}
+        >
+          <q>Everyone has a plan, until they get punched in the face.</q>
+        </CodePreview>
+        <CodePreview title="<s>" code={`<s>run 3 miles</s>`}>
+          <s>run 3 miles</s>
+        </CodePreview>
+        <CodePreview title="<samp>" code={`<samp> let x = 5;</samp>`}>
+          <samp> let x = 5;</samp>
+        </CodePreview>
+        <CodePreview title="<small>" code={`<small>Hello World </small>`}>
+          <small>Hello World </small>
+        </CodePreview>
+        <CodePreview title="<strong>" code={`<strong>WWW</strong>`}>
+          <strong>WWW</strong>
+        </CodePreview>
+        <CodePreview title="<sub>" code={`<samp> 2<sub>n</sub> + n </samp>`}>
+          <samp>
+            {" "}
+            2<sub>n</sub> + n{" "}
+          </samp>
+        </CodePreview>
+        <CodePreview title="<sup>" code={`<samp> 2<sup>n</sup></samp>`}>
+          <samp>
+            {" "}
+            2<sup>n</sup>
+          </samp>
+        </CodePreview>
+        <CodePreview title="<time>" code={`<time>10:00 pm </time>`}>
+          <time>10:00 pm </time>
+        </CodePreview>
+        <CodePreview title="<u>" code={`<u>WWW</u>`}>
+          <u>WWW</u>
+        </CodePreview>
+        <CodePreview title="<var>" code={`<code> let <var>x</var> = 5 </code>`}>
+          <code>
+            {" "}
+            let <var>x</var> = 5{" "}
           </code>
-        </CodePreview>
-        <CodePreview title="" code={p[7]}>
-          <pre>{`this is some     random text
-             semi
-        `}</pre>
-        </CodePreview>
-        <CodePreview title="" code={p[8]}>
-          <p>
-            2<sup>3</sup> =8
-          </p>
-        </CodePreview>
-        <CodePreview title="" code={p[9]}>
-          <p>
-            ln<sub>2</sub>4 = 2
-          </p>
-        </CodePreview>
-        <CodePreview title="" code={p[10]}>
-          <p>
-            let <var>VariableName</var> equal to some text
-          </p>
-        </CodePreview>
-        <CodePreview title="" code={p[11]}>
-          <address>contact@example.com</address>
         </CodePreview>
       </Collapsible>
     </>
@@ -193,28 +258,15 @@ export function Comp(){
     );
 }
 `;
-const p = [
-  `<p>This is some random text</p>`,
-  `<p> This is some <em> semi </em> random text </p>`,
-  `<p> This is some <strong>semi </strong> random text </p>`,
-  `<p> This is some <mark>semi </mark> random text </p>`,
-  `<time dateTime="2023-11-03">November 3, 2023</time>`,
-  `<samp>This is some semi random text</samp>`,
-  `<code lang="javascript">
-    console.log("this is some semi random text")
-</code>`,
-  `
-<pre>{\`this is some     random text
-        semi
-\`}</pre>
-`,
-  `<p> 2<sup>3</sup> =8 </p>`,
-  `<p> ln<sub>2</sub>4 = 2 </p>`,
-  `<p> let <var>VariableName</var> equal to some text </p>`,
-  `<address>contact@example.com</address>`,
-  `  
+const dialog_ex = `
 <p>
-  This is some <del>semi</del> random text
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
+  nesciunt, excepturi consequatur fuga perspiciatis quibusdam
+  provident nihil molestiae, commodi eos voluptatibus. Consequatur
+  iusto repellendus ipsum quasi numquam! Qui, assumenda cupiditate?
 </p>
-`,
-];
+<dialog open className="border-slate-400 border-4 p-4">
+  <p>Hello, how may I help you?</p>
+  <input type="text" className="border-2" />
+</dialog>
+`;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import copy from "clipboard-copy";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
@@ -24,7 +24,7 @@ function CodePreview(props: CodePreviewProps) {
     setShowPreview(!showPreview);
   };
   const copyCodeToClipboard = async () => {
-    if (isCopying) return; // Don't do anything if copying is already in progress
+    if (isCopying) return;
 
     setIsCopying(true);
 
@@ -72,7 +72,7 @@ function CodePreview(props: CodePreviewProps) {
       <hr className="mb-2" />
       <div className="max-h-80 w-full p-4 overflow-y-scroll">
         {showPreview ? (
-          <div className="flex flex-col  h-full w-full">{props.children}</div>
+          <div className="flex flex-col h-full w-full">{props.children}</div>
         ) : (
           <SyntaxHighlighter
             showLineNumbers={enableNumbers}

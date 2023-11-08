@@ -1,12 +1,13 @@
 import CodePreview from "@/components/CARDS/CodePreview";
 
-("<a>");
-("<abbr>");
-("<address>");
-
 export default function ElementPage() {
   return (
     <>
+      <CodePreview title="<a>" code={ele[0]}>
+        <a href="https://google.com" target="_blank" className="underline">
+          Google
+        </a>
+      </CodePreview>
       <CodePreview title="<details>" code={ele[0]}>
         <details>
           <summary>Click to view details</summary>
@@ -133,7 +134,7 @@ export default function ElementPage() {
           50%
         </progress>
       </CodePreview>
-      <CodePreview title="range" code={ele[12]}>
+      <CodePreview title="<range>" code={ele[12]}>
         <input
           type="range"
           id="range"
