@@ -12,10 +12,26 @@ export default function MediaPage() {
       <CodePreview title="<embed>" code={""}>
         <div></div>
       </CodePreview>
+
+      <CodePreview title="<figure>" code={""}>
+        <div></div>
+      </CodePreview>
+
+      <CodePreview title="<figcaption>" code={""}>
+        <div></div>
+      </CodePreview>
       <CodePreview title="<iframe>" code={""}>
         <div></div>
       </CodePreview>
       <CodePreview title="<img>" code={""}>
+        <div></div>
+      </CodePreview>
+
+      <CodePreview title="<object>" code={""}>
+        <div></div>
+      </CodePreview>
+
+      <CodePreview title="<param>" code={""}>
         <div></div>
       </CodePreview>
       <CodePreview title="<picture>" code={""}>
