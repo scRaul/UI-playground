@@ -1,6 +1,9 @@
-import CodePreview from "@/components/CARDS/CodePreview";
-import HorizontalBar from "@/components/CONTAINERS/HorizontalBar";
+import { H1 } from "@/components/TEXT/Headings";
 
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <H1>Next JS + Tailwinds UI Stuff </H1>
+    </>
+  );
 }

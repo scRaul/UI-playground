@@ -102,7 +102,10 @@ export default function EventsPage() {
   }
   return (
     <>
-      <Collapsible className="w-full md:w-[750px]" label="Form/Input Events">
+      <Collapsible
+        className="w-full md:w-[750px] mb-3"
+        label="Form/Input Events"
+      >
         <CodePreview title="onBlur" code={code[0]}>
           Enter your name
           <input className="border-2 w-fit" type="text" onBlur={handleBlur} />
@@ -205,7 +208,7 @@ export default function EventsPage() {
         </CodePreview>
       </Collapsible>
 
-      <Collapsible className="w-full md:w-[750px]" label="KeyBoard Events">
+      <Collapsible className="w-full md:w-[750px] mb-3" label="KeyBoard Events">
         <CodePreview title="OnKeyDown" code={code[9]}>
           <div>
             <div className={`w-6 h-6 bg-red-500 float-${blockFloat}`}></div>
@@ -238,7 +241,7 @@ export default function EventsPage() {
         </CodePreview>
       </Collapsible>
 
-      <Collapsible className="w-full md:w-[750px]" label="Mouse Events">
+      <Collapsible className="w-full md:w-[750px] mb-3" label="Mouse Events">
         <CodePreview title="onClick" code={code[11]}>
           <div
             className="text-center p-3 bg-slate-100 &*>"
@@ -289,7 +292,7 @@ export default function EventsPage() {
         </CodePreview>
       </Collapsible>
 
-      <Collapsible className="w-full md:w-[750px]" label="Drag Events">
+      <Collapsible className="w-full md:w-[750px] mb-3" label="Drag Events">
         <CodePreview title="OnDrag/onDragEnd" code={code[16]}>
           <p> Try dragging red block,(notice cursor change)</p>
           <div

@@ -4,13 +4,10 @@ import {
   Blocks,
   BookImage,
   Code,
-  Component,
-  ContainerIcon,
   ExternalLink,
   GalleryHorizontalEnd,
   Layout,
   LayoutDashboard,
-  List,
   MapPin,
   MousePointer,
   MousePointerSquare,
@@ -136,16 +133,6 @@ const htmlNavs: NavItem[] = [
   },
 ];
 const contiainerNavs: NavItem[] = [
-  {
-    href: "/container/horizontal-bar",
-    label: "HorizontalBar",
-    icon: <RectangleHorizontal />,
-  },
-  {
-    href: "/container/vertical-bar",
-    label: "VerticalBar",
-    icon: <RectangleVertical />,
-  },
   {
     href: "/container/collapsible",
     label: "Collapsible",

@@ -5,7 +5,7 @@ import { H1, H2, H3, H4, H5, H6 } from "@/components/TEXT/Headings";
 export default function textPage() {
   return (
     <>
-      <Collapsible className="w-full md:w-[750px]" label="Headings">
+      <Collapsible className="w-full md:w-[750px] mb-3" label="Headings">
         <CodePreview title="Heading.tsx" code={heading_tsx}>
           <H1>Heading</H1>
           <H2>Heading</H2>
