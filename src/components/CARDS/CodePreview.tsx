@@ -11,6 +11,7 @@ interface CodePreviewProps {
   title: string;
   children: React.ReactNode;
   code: string;
+  className?: string;
   disableNumbers?: boolean;
   isClientComponent?: boolean;
 }
@@ -40,7 +41,9 @@ function CodePreview(props: CodePreviewProps) {
   };
 
   return (
-    <div className="border rounded p-4 shadow-xl w-full max-h-96 overflow-hidden mb-4 md:w-[700px]">
+    <div
+      className={`border rounded p-4 shadow-xl w-full max-h-96 overflow-hidden mb-4 md:w-[700px] ${props.className}`}
+    >
       <div className="mb-2 flex flex-col justify-between items-center  md:flex-row">
         <h2 className="text-lg font-semibold">{props.title}</h2>
         {props.isClientComponent ? <p>Client Component </p> : null}

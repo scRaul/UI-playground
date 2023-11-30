@@ -1,8 +1,27 @@
 import CodePreview from "@/components/CARDS/CodePreview";
-import TopBar from "@/components/LAYOUT2/TopBar";
+import SearchBar from "@/components/LAYOUT/SearchBar";
+import TopBar from "@/components/LAYOUT/TopBar";
+import { Code } from "lucide-react";
 
 function TopBarPage() {
-  const code: string = `//TopBar.tsx
+  return (
+    <>
+      <CodePreview title="TopBar.tsx" code={code}>
+        <div className="h-96 w-full relative">
+          <TopBar className="bg-inherit shadow-2xl" />
+        </div>
+      </CodePreview>
+      <CodePreview title="SearchBar.tsx" code={``}>
+        <div className="h-96 w-full relative">
+          <SearchBar className="bg-inherit shadow-2xl" />
+        </div>
+      </CodePreview>
+    </>
+  );
+}
+export default TopBarPage;
+
+const code: string = `//TopBar.tsx
 /*
 Use as a singleton instance ( edit this file to make changes )
 bar is split into three sections 
@@ -57,12 +76,3 @@ function TopBar() {
 export default TopBar; 
 
 `;
-  return (
-    <CodePreview title="TopBar.tsx" code={code}>
-      <div className="w-full h-14 border-2">
-        <TopBar />
-      </div>
-    </CodePreview>
-  );
-}
-export default TopBarPage;

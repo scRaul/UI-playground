@@ -228,7 +228,6 @@ export default function EventsPage() {
             <input
               onKeyUp={handleOnKeyUp}
               onKeyDown={handleKeyDown2}
-              autoFocus
               className="w-fit border-2"
             />
             <p>

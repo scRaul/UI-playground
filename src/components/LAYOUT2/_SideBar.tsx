@@ -64,16 +64,16 @@ function _SideBar() {
         <Collapsible label={"HTML Ref"} icon={<Code />}>
           <NavMenu navItems={htmlNavs} />
         </Collapsible>
+        <Collapsible label={"Layouts"} icon={<Layout />}>
+          <NavMenu navItems={layoutNavs} />
+        </Collapsible>
         <Collapsible label={"Containers"} icon={<LayoutDashboard />}>
           <NavMenu navItems={contiainerNavs} />
         </Collapsible>
         <Collapsible label={"Navigation"} icon={<Navigation />}>
           <NavMenu navItems={navNavs} />
         </Collapsible>
-        {/* <Collapsible label={"Layouts"} icon={<Layout />}>
-          <NavMenu navItems={layoutNavs} />
-        </Collapsible>
-        <Collapsible label={"Input"} icon={<Pointer />}>
+        {/* <Collapsible label={"Input"} icon={<Pointer />}>
           <NavMenu navItems={inputNavs} />
         </Collapsible> */}
         <Collapsible label={"Cards"} icon={<GalleryHorizontalEnd />}>
