@@ -4,7 +4,7 @@ import Logo from "@/components/Nav/Logo";
 export default function LogoPage() {
   return (
     <CodePreview title="Logo.tsx" code={logo}>
-      <Logo />
+      <Logo href="/" />
     </CodePreview>
   );
 }
