@@ -85,19 +85,19 @@ export default function StructPage() {
           </p>
         </div>
         <div className="flex h-5">
-          <div className="w-full bg-red-100 "></div>
-          <div className="w-full bg-blue-100 "></div>
+          <div className="w-full bg-green-500 "></div>
+          <div className="w-full bg-blue-500 "></div>
         </div>
       </CodePreview>
 
       <CodePreview title="<footer>" code={footer_ex}>
-        <div className=" bg-slate-300">
+        <div className="border border-slate-100">
           <p className="p-5">
             Footer elements are meant to exists at the end of a section of
             content. For example we a site wide footer as well as multiple
             footers within a page such as within each article tag.
           </p>
-          <footer className="bg-black text-white">copyright 2023</footer>
+          <footer className="border-t border-white">copyright 2023</footer>
         </div>
       </CodePreview>
 
@@ -111,8 +111,8 @@ export default function StructPage() {
       </CodePreview>
 
       <CodePreview title="<header>" code={header_ex}>
-        <div className=" bg-slate-300">
-          <header className="bg-slate-100 flex justify-between px-4">
+        <div className="border border-slate-200">
+          <header className="border-b  border-white flex justify-between px-4">
             <Shapes />
             <a href="#" className="text-blue-500">
               log in
@@ -146,12 +146,12 @@ export default function StructPage() {
             Use Cases
           </a>
         </nav>
-        <section id="why" className="h-30 bg-blue-200 mb-5 p-5">
+        <section id="why" className="h-30 bg-blue-500 mb-5 p-5">
           Like the div tag, except the section tag is meant to help break a page
           down into thematic section. Unlike div, the section tag helps with
           SEO.
         </section>
-        <section id="uses" className="p-5  bg-red-200">
+        <section id="uses" className="p-5  bg-green-500">
           <b>Use Cases:</b>
           <ul>
             <li>Semantic Structure</li>
@@ -163,8 +163,9 @@ export default function StructPage() {
 
       <CodePreview title="<span>" code={span_ex}>
         <p>
-          The <span className="bg-blue-100 font-medium">span</span> tag is a
-          generic inline block, often used to stylize some text within a block.
+          The <span className="bg-green-500 font-medium text-xl p-1">span</span>{" "}
+          tag is a generic inline block, often used to stylize some text within
+          a block.
         </p>
       </CodePreview>
 

@@ -12,13 +12,13 @@ interface NavMenuProps {
 }
 export default function NavMenu(props: NavMenuProps) {
   return (
-    <nav className={`h-fit ${props.className}`}>
+    <nav className={`h-fit ml-3 ${props.className}`}>
       {props.navItems.map((link, index) => (
         <div
           key={index}
-          className={`rounded-md p-3 cursor-pointer ${props.itemClassName}`}
+          className={` p-1 cursor-pointer ${props.itemClassName}`}
         >
-          <Link href={link.href} className="flex items-center ">
+          <Link href={link.href} className="px-2 flex items-center gap-1">
             {link.icon ? link.icon : null}
             {link.label}
           </Link>

@@ -6,7 +6,7 @@ export default function MiscPage() {
       <CodePreview title="<br>" code={br_ex}>
         Input:
         <br />
-        <input type="text" className="w-fit border-2" />
+        <input type="text" className="input" />
       </CodePreview>
       <CodePreview title="<hr>" code={`Title <hr/>`}>
         Title <hr />

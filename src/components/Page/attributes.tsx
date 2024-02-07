@@ -4,8 +4,11 @@ export function HideComp() {
   const [hide, setHide] = useState(true);
   return (
     <>
-      <button className="bg-gray-200  w-fit" onClick={() => setHide(!hide)}>
-        Show/Hide
+      <button
+        className="bg-green-500 p-2 m-2 w-fit active:bg-green-300"
+        onClick={() => setHide(!hide)}
+      >
+        {hide ? "Show" : "Hide"}
       </button>
       <div className="w-40  h-40 bg-red-600" hidden={hide}></div>
     </>
@@ -30,7 +33,7 @@ export function DataComp() {
       <div className="flex justify-between">
         <div>
           <h1 className="font-semibold">Items: </h1>
-          <ul className="w-fit border-2 cursor-pointer  bg-slate-100 shadow-xl">
+          <ul className="w-fit border-2 cursor-pointer p-1 shadow-xl">
             {items.map((item) => (
               <li
                 className="hover:bg-blue-500 w-full p-1"

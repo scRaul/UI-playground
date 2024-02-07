@@ -1,5 +1,5 @@
 import CodePreview from "@/components/CARDS/CodePreview";
-import NavMenu, { NavItem } from "@/components/LAYOUT2/NavMenu";
+import NavMenu, { NavItem } from "@/components/Nav/NavMenu";
 import { Briefcase, Home, Phone, UserSquare } from "lucide-react";
 
 export default function NavMenuPage() {

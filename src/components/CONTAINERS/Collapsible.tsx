@@ -7,23 +7,27 @@ interface CollapsibleProps {
   icon?: React.ReactElement;
   label: string;
   children: React.ReactNode;
+  startClosed?: boolean;
 }
 
 function Collapsible(props: CollapsibleProps) {
-  const [isCollapsed, setCollapsed] = useState(true);
+  const [isCollapsed, setCollapsed] = useState(
+    props.startClosed ? props.startClosed : false
+  );
 
   const toggleCollapse = () => {
     setCollapsed(!isCollapsed);
   };
 
   return (
-    <div className={`border rounded p-2 h-fit ${props.className}`}>
+    <div className="p-2 h-fit flex flex-col justify-center">
       <div
-        className="flex items-center justify-between cursor-pointer"
+        className={`flex items-center cursor-pointer ${props.className}`}
         onClick={toggleCollapse}
       >
         {props.icon && <div className="mr-2">{props.icon}</div>}
         <div className="font-semibold">{props.label}</div>
+        <div className="flex-grow"></div>
         {isCollapsed ? <ChevronRight /> : <ChevronDown />}
       </div>
       {isCollapsed ? null : (

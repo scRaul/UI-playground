@@ -16,8 +16,8 @@ import {
   Shapes,
   Terminal,
 } from "lucide-react";
-import NavMenu from "./NavMenu";
-import { NavItem } from "./NavMenu";
+import NavMenu from "../Nav/NavMenu";
+import { NavItem } from "../Nav/NavMenu";
 import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
 import Collapsible from "../CONTAINERS/Collapsible";

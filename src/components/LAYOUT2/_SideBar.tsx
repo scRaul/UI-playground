@@ -25,8 +25,8 @@ import {
   Type,
   Workflow,
 } from "lucide-react";
-import NavMenu from "./NavMenu";
-import { NavItem } from "./NavMenu";
+import NavMenu from "../Nav/NavMenu";
+import { NavItem } from "../Nav/NavMenu";
 import HoverBttn from "../BUTTONS/HoverBttn";
 import { useState } from "react";
 import Collapsible from "../CONTAINERS/Collapsible";
@@ -42,7 +42,7 @@ function _SideBar() {
   return (
     <div
       className={`fixed top-0 left-0 m-0 w-fit ${
-        isOpen ? "h-full  bg-gray-100 shadow-2xl" : "h-fit bg-transparent"
+        isOpen ? "h-full shadow-2xl bg-green-800" : "h-fit bg-transparent"
       } 
        p-2 flex flex-col transition-transform duration-300 `}
     >
@@ -145,16 +145,16 @@ const layoutNavs: NavItem[] = [
     label: "TopBar",
     icon: <PanelTop />,
   },
-  {
-    href: "/layout/sidebar",
-    label: "SideBar",
-    icon: <PanelLeft />,
-  },
-  {
-    href: "/layout/top-side-bar",
-    label: "Top&SideBar",
-    icon: <Layout />,
-  },
+  // {
+  //   href: "/layout/sidebar",
+  //   label: "SideBar",
+  //   icon: <PanelLeft />,
+  // },
+  // {
+  //   href: "/layout/top-side-bar",
+  //   label: "Top&SideBar",
+  //   icon: <Layout />,
+  // },
 ];
 
 const navNavs: NavItem[] = [

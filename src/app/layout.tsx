@@ -1,7 +1,32 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import _TopAndSideLayout from "@/components/LAYOUT2/_TopAndSideLayout";
+import InnerSideBarControl from "@/components/Nav/InnerSideBarControl";
+import NavMenu from "@/components/Nav/NavMenu";
+import { NavItem } from "@/components/Nav/NavMenu";
+import {
+  Blocks,
+  BookImage,
+  Chrome,
+  Code,
+  ExternalLink,
+  GalleryHorizontalEnd,
+  Layout,
+  LayoutDashboard,
+  MapPin,
+  MousePointer,
+  MousePointerSquare,
+  Navigation,
+  PanelBottomClose,
+  PanelLeft,
+  PanelTop,
+  SquareStack,
+  Table,
+  Terminal,
+  Type,
+  Workflow,
+} from "lucide-react";
+import Collapsible from "@/components/CONTAINERS/Collapsible";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,8 +42,168 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <_TopAndSideLayout>{children}</_TopAndSideLayout>
+        <InnerSideBarControl>
+          <div className="w-full h-10"></div>
+          <Collapsible
+            className="text-gray-600 hover:text-white"
+            label={"HTML Ref"}
+            icon={<Code />}
+            startClosed={true}
+          >
+            <NavMenu
+              className="text-slate-600 border-l border-gray-100"
+              itemClassName="hover:text-blue-500"
+              navItems={htmlNavs}
+            />
+          </Collapsible>
+          <Collapsible
+            className="text-gray-600 hover:text-white"
+            label={"Containers"}
+            icon={<LayoutDashboard />}
+            startClosed={true}
+          >
+            <NavMenu
+              className="text-slate-600 border-l border-gray-100"
+              itemClassName="hover:text-blue-500"
+              navItems={contiainerNavs}
+            />
+          </Collapsible>
+          <Collapsible
+            className="text-gray-600 hover:text-white"
+            label={"Cards"}
+            icon={<GalleryHorizontalEnd />}
+            startClosed={true}
+          >
+            <NavMenu
+              className="text-slate-600 border-l border-gray-100"
+              itemClassName="hover:text-blue-500"
+              navItems={cardNavs}
+            />
+          </Collapsible>
+          <Collapsible
+            className="text-gray-600 hover:text-white"
+            label={"Navigation"}
+            icon={<Navigation />}
+            startClosed={true}
+          >
+            <NavMenu
+              className="text-slate-600 border-l border-gray-100"
+              itemClassName="hover:text-blue-500"
+              navItems={navNavs}
+            />
+          </Collapsible>
+          <Collapsible
+            className="text-gray-600 hover:text-white"
+            label={"Layouts"}
+            icon={<Layout />}
+            startClosed={true}
+          >
+            <NavMenu
+              className="text-slate-600 border-l border-gray-100"
+              itemClassName="hover:text-blue-500"
+              navItems={layoutNavs}
+            />
+          </Collapsible>
+        </InnerSideBarControl>
+        <main className="min-h-screen flex flex-col items-center pt-20 px-1">
+          {children}
+        </main>
       </body>
     </html>
   );
 }
+
+const htmlNavs: NavItem[] = [
+  {
+    href: "/html/attributes",
+    label: "Attributes",
+    icon: <Blocks />,
+  },
+  {
+    href: "/html/events",
+    label: "Events",
+    icon: <Workflow />,
+  },
+  {
+    href: "/html/input",
+    label: "Input",
+    icon: <MousePointer />,
+  },
+  {
+    href: "/html/list",
+    label: "List",
+    icon: <Table />,
+  },
+  {
+    href: "/html/navigation",
+    label: "Navigation",
+    icon: <MapPin />,
+  },
+  {
+    href: "/html/media",
+    label: "Media",
+    icon: <BookImage />,
+  },
+  {
+    href: "/html/structure",
+    label: "structure",
+    icon: <Layout />,
+  },
+  {
+    href: "/html/text",
+    label: "Text",
+    icon: <Type />,
+  },
+
+  {
+    href: "/html/misc",
+    label: "Misc.",
+    icon: <SquareStack />,
+  },
+];
+const contiainerNavs: NavItem[] = [
+  {
+    href: "/container/collapsible",
+    label: "Collapsible",
+    icon: <PanelBottomClose />,
+  },
+];
+const layoutNavs: NavItem[] = [
+  {
+    href: "/layout/sidebar",
+    label: "SideBar",
+    icon: <PanelLeft />,
+  },
+  {
+    href: "/layout/topbar",
+    label: "TopBar",
+    icon: <PanelTop />,
+  },
+
+  // {
+  //   href: "/layout/top-side-bar",
+  //   label: "Top&SideBar",
+  //   icon: <Layout />,
+  // },
+];
+
+const navNavs: NavItem[] = [
+  {
+    href: "/navigation/nav-menu",
+    label: "NavMenu",
+    icon: <ExternalLink />,
+  },
+  {
+    href: "/navigation/logo",
+    label: "Logo",
+    icon: <Chrome />,
+  },
+];
+
+const cardNavs: NavItem[] = [
+  {
+    href: "/card/code-preview",
+    label: "CodePreview",
+    icon: <Terminal />,
+  },
+];
