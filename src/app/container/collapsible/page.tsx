@@ -50,7 +50,7 @@ export default Collapsible;
 `;
   return (
     <>
-      <CodePreview title="Collapsible.tsx" code={code} isClientComponent={true}>
+      <CodePreview title="Collapsible.tsx" code={code}>
         <Collapsible label="click me" icon={<MousePointerClick />}>
           <h1> Hello There</h1>
         </Collapsible>
