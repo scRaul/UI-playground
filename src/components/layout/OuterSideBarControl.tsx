@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import SideBar from "../Nav/SideBar";
-import Header from "../Nav/Header";
+import SideBar from "./SideBar";
+import Header from "./Header";
 
 export function OuterSideBarControl() {
   const [leftClosed, setLeftClosed] = useState(false);

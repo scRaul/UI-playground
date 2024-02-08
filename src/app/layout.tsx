@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SideLayout from "@/components/Nav/HeaderSideLayout";
-import HeaderSideLayout from "@/components/Nav/HeaderSideLayout";
+import HeaderSideLayout from "@/components/layout/HeaderSideLayout";
+import Logo from "@/components/navigation/Logo";
+import { ExternalLink } from "lucide-react";
+import Footer from "@/components/navigation/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <HeaderSideLayout />
-        <main className="min-h-screen flex flex-col items-center pt-20 px-1">
-          {children}
-        </main>
+        <div className="flex flex-col min-h-screen mt-16">
+          <main className="flex flex-col items-center px-1">{children}</main>
+          <div className="flex-grow"></div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

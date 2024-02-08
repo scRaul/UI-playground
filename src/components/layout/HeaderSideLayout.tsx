@@ -1,6 +1,6 @@
 "use client";
-import NavMenu from "@/components/Nav/NavMenu";
-import { NavItem } from "@/components/Nav/NavMenu";
+import NavMenu from "@/components/navigation/NavMenu";
+import { NavItem } from "@/components/navigation/NavMenu";
 import {
   AlignJustify,
   Blocks,
@@ -24,12 +24,13 @@ import {
   Type,
   Workflow,
 } from "lucide-react";
-import Collapsible from "@/components/CONTAINERS/Collapsible";
+import Collapsible from "@/components/containers/Collapsible";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import Logo from "./Logo";
+import Logo from "../navigation/Logo";
 import SideBar from "./SideBar";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function HeaderSideLayout() {
   const [closeSideBar, setCloseSideBar] = useState(true);
@@ -52,7 +53,7 @@ export default function HeaderSideLayout() {
         className="bg-inherit shadow-2xl h-screen min-w-[200px]"
         isClosed={closeSideBar}
       >
-        <header className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
+        <header className="flex gap-2 items-center justify-around w-fit min-w-[200px] mb-4">
           <div
             className="rounded-full hover:bg-slate-200 p-2"
             onClick={() => setCloseSideBar(true)}
@@ -61,6 +62,12 @@ export default function HeaderSideLayout() {
           </div>
           <Logo href="/" />
         </header>
+        <NavMenu
+          className="text-blue-600"
+          itemClassName="hover:text-white"
+          navItems={miscNavs}
+        />
+
         <Collapsible
           className="text-gray-600 hover:text-white"
           label={"HTML Ref"}
@@ -125,7 +132,12 @@ export default function HeaderSideLayout() {
     </Header>
   );
 }
-
+const miscNavs: NavItem[] = [
+  {
+    href: "/intro",
+    label: "Getting Started",
+  },
+];
 const htmlNavs: NavItem[] = [
   {
     href: "/html/attributes",

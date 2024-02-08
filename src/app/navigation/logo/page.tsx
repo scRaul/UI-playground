@@ -1,5 +1,5 @@
-import CodePreview from "@/components/CARDS/CodePreview";
-import Logo from "@/components/Nav/Logo";
+import CodePreview from "@/components/cards/CodePreview";
+import Logo from "@/components/navigation/Logo";
 
 export default function LogoPage() {
   return (

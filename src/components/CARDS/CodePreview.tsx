@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import copy from "clipboard-copy";
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
-import prism from "react-syntax-highlighter/dist/esm/styles/prism/prism";
+import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Clipboard, ClipboardCheck } from "lucide-react";
 
 SyntaxHighlighter.registerLanguage("jsx", jsx);
@@ -13,7 +13,6 @@ interface CodePreviewProps {
   code: string;
   className?: string;
   disableNumbers?: boolean;
-  isClientComponent?: boolean;
 }
 
 function CodePreview(props: CodePreviewProps) {
@@ -41,51 +40,33 @@ function CodePreview(props: CodePreviewProps) {
   };
 
   return (
-    <div
-      className={`border rounded p-4 shadow-xl w-full max-h-96 overflow-hidden mb-4 md:w-[700px] ${props.className}`}
-    >
-      <div className="mb-2 flex flex-col justify-between items-center  md:flex-row">
-        <h2 className="text-lg font-semibold">{props.title}</h2>
-        {props.isClientComponent ? <p>Client Component </p> : null}
-        <div className="flex items-center">
-          <button
-            className="px-2 py-1 rounded bg-blue-500 text-white"
-            onClick={toggleView}
-          >
-            {showPreview ? "Show Code" : "Show Preview"}
-          </button>
-          <div
-            className="flex items-center cursor-pointer"
-            onClick={copyCodeToClipboard}
-          >
-            {isCopying ? (
-              <>
-                <ClipboardCheck />
-                copied
-              </>
-            ) : (
-              <>
-                <Clipboard />
-                copy to code
-              </>
-            )}
-          </div>
+    <div className={`border rounded w-full max-w-3xl my-2 ${props.className}`}>
+      <header className="flex justify-start items-center border-b p-2 gap-1">
+        <h2 className="text-lg font-semibold flex-grow">{props.title}</h2>
+        <button
+          className="px-2 py-1 rounded bg-blue-500 text-white"
+          onClick={toggleView}
+        >
+          {showPreview ? "Show Code" : "Show Preview"}
+        </button>
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={copyCodeToClipboard}
+        >
+          {isCopying ? <ClipboardCheck /> : <Clipboard />}
         </div>
-      </div>
-      <hr className="mb-2" />
-      <div className="max-h-80 w-full p-4 overflow-y-scroll">
-        {showPreview ? (
-          <div className="flex flex-col h-full w-full">{props.children}</div>
-        ) : (
-          <SyntaxHighlighter
-            showLineNumbers={enableNumbers}
-            language="javascript"
-            style={prism}
-          >
-            {props.code}
-          </SyntaxHighlighter>
-        )}
-      </div>
+      </header>
+      {showPreview ? (
+        <div className="flex flex-col w-fit mx-auto p-4">{props.children}</div>
+      ) : (
+        <SyntaxHighlighter
+          showLineNumbers={enableNumbers}
+          language={"jsx"}
+          style={coldarkDark}
+        >
+          {props.code}
+        </SyntaxHighlighter>
+      )}
     </div>
   );
 }

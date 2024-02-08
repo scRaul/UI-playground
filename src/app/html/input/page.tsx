@@ -1,137 +1,140 @@
-import CodePreview from "@/components/CARDS/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
+import { Code } from "lucide-react";
 
 export default function InputPage() {
   return (
     <>
-      <CodePreview title="buttons" code={buttons}>
-        <div className="flex justify-around">
-          <button
-            className="bg-green-500 w-fit p-3 rounded hover:bg-green-400 active:bg-green-700"
-            type="button"
-          >
-            Button
-          </button>
-          <button
-            className="bg-red-500 w-fit p-3 rounded hover:bg-red-400 active:bg-red-700"
-            type="reset"
-          >
-            Reset
-          </button>
-          <button
-            className="bg-blue-500 w-fit p-3 rounded hover:bg-blue-400 active:bg-blue-700"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
+      <CodePreview
+        title="button"
+        code={`  <input type="button" value="Add to Cart" className="input" />`}
+      >
+        <input type="button" value="Add to Cart" className="input" />
       </CodePreview>
-
-      <CodePreview title="inputs" code={inputs}>
-        <div className="flex flex-col gap-1 justify-center items-center">
-          <label className="mt-4 border-b border-white" htmlFor="button">
-            Button input
-          </label>
-          <div className="bg-yellow-700 w-fit rounded">
-            <input
-              id="button"
-              type="button"
-              value="Add to Cart"
-              className="input"
-            />
-          </div>
-          <label className="mt-4 border-b border-white" htmlFor="chbx">
-            Check box input
-          </label>
-          <input id="chbx" type="checkbox" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="color">
-            Color input
-          </label>
-          <input
-            id="color"
-            type="color"
-            value="#ff0000"
-            className="input h-10"
-          />
-          <label className="mt-4 border-b border-white" htmlFor="date">
-            Date Input
-          </label>
-          <input id="date" type="date" className="input" />
-          <label
-            className="mt-4 border-b border-white"
-            htmlFor="datetime-local"
-          >
-            Datetime-local Input
-          </label>
-          <input id="datetime-local" type="datetime-local" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="email">
-            Email Input
-          </label>
-          <input id="email" type="email" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="file">
-            File Input
-          </label>
-          <input id="file" type="file" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="hid">
-            Hidden Input
-          </label>
-          <input id="hid" type="hidden" className="input" value={9} />
-          <label className="mt-4 border-b border-white" htmlFor="image">
-            Image Input
-          </label>
-          <input id="image" type="image" src="/imgBttn.png" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="month">
-            Month Input
-          </label>
-          <input id="month" type="month" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="number">
-            Number Input
-          </label>
-          <input id="number" type="number" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="password">
-            Password Input
-          </label>
-          <input id="password" type="password" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="radio">
-            Radio Input
-          </label>
-          <input id="radio" type="radio" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="range">
-            Range Input
-          </label>
-          <input id="range" type="range" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="reset">
-            Reset Input
-          </label>
-          <input id="reset" type="reset" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="search">
-            Search Input
-          </label>
-          <input id="search" type="search" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="submit">
-            Submit Input
-          </label>
-          <input id="submit" type="submit" className="input " />
-          <label className="mt-4 border-b border-white" htmlFor="tel">
-            Tel Input
-          </label>
-          <input id="tel" type="tel" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="text">
-            Text Input
-          </label>
-          <input id="text" type="text" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="time">
-            Time Input
-          </label>
-          <input id="time" type="time" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="url">
-            Url Input
-          </label>
-          <input id="url" type="url" className="input" />
-          <label className="mt-4 border-b border-white" htmlFor="week">
-            Week Input
-          </label>
-          <input id="week" type="week" className="input" />
-        </div>
+      <CodePreview
+        title="checkbox"
+        code={`<input  type="checkbox" className="input" /> `}
+      >
+        <input type="checkbox" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="color"
+        code={`<input  type="color" value="#ff0000" className="input h-10" /> `}
+      >
+        <input type="color" value="#ff0000" className="input h-10" />
+      </CodePreview>
+      <CodePreview
+        title="date"
+        code={`<input  type="date" className="input" /> `}
+      >
+        <input type="date" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="datetime"
+        code={`<input  type="datetime-local" className="input" /> `}
+      >
+        <input type="datetime-local" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="email"
+        code={`<input  type="email" className="input" /> `}
+      >
+        <input type="email" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="file"
+        code={`<input  type="file" className="input" /> `}
+      >
+        <input type="file" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="hidden"
+        code={`<input  type="hidden" className="input" value={9} /> `}
+      >
+        <input type="hidden" className="input" value={9} />
+      </CodePreview>
+      <CodePreview
+        title="image"
+        code={`<input  type="image" src="/imgBttn.png" className="input" /> `}
+      >
+        <input type="image" src="/imgBttn.png" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="month"
+        code={`<input  type="month" className="input" /> `}
+      >
+        <input type="month" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="number"
+        code={`<input  type="number" className="input" /> `}
+      >
+        <input type="number" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="password"
+        code={`<input  type="password" className="input" /> `}
+      >
+        <input type="password" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="radio"
+        code={`<input  type="radio" className="input" /> `}
+      >
+        <input type="radio" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="range"
+        code={`<input  type="range" className="input" /> `}
+      >
+        <input type="range" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="reset"
+        code={`<input  type="reset" className="input" /> `}
+      >
+        <input type="reset" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="search"
+        code={`<input  type="search" className="input" /> `}
+      >
+        <input type="search" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="submit"
+        code={`<input  type="submit" className="input " /> `}
+      >
+        <input type="submit" className="input " />
+      </CodePreview>
+      <CodePreview
+        title="tel"
+        code={`<input  type="tel" className="input" /> `}
+      >
+        <input type="tel" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="text"
+        code={`<input  type="text" className="input" /> `}
+      >
+        <input type="text" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="time"
+        code={`<input  type="time" className="input" /> `}
+      >
+        <input type="time" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="url"
+        code={`<input  type="url" className="input" /> `}
+      >
+        <input type="url" className="input" />
+      </CodePreview>
+      <CodePreview
+        title="week"
+        code={`<input  type="week" className="input" /> `}
+      >
+        <input type="week" className="input" />
       </CodePreview>
 
       <CodePreview title="form" code={form}>
@@ -185,136 +188,6 @@ export default function InputPage() {
   );
 }
 
-const buttons = `  
-<div className="flex justify-around">
-  <button
-    className="bg-green-500 w-fit p-3 rounded hover:bg-green-400 active:bg-green-700"
-    type="button"
-  >
-    Button
-  </button>
-  <button
-    className="bg-red-500 w-fit p-3 rounded hover:bg-red-400 active:bg-red-700"
-    type="reset"
-  >
-    Reset
-  </button>
-  <button
-    className="bg-blue-500 w-fit p-3 rounded hover:bg-blue-400 active:bg-blue-700"
-    type="submit"
-  >
-    Submit
-  </button>
-</div>
-      `;
-const inputs = `  
-<div className="flex flex-col gap-1 justify-center items-center">
-  <label className="mt-4 border-b border-white" htmlFor="button">
-    Button input
-  </label>
-  <div className="bg-yellow-700 w-fit rounded">
-    <input
-      id="button"
-      type="button"
-      value="Add to Cart"
-      className="input"
-    />
-  </div>
-  <label className="mt-4 border-b border-white" htmlFor="chbx">
-    Check box input
-  </label>
-  <input id="chbx" type="checkbox" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="color">
-    Color input
-  </label>
-  <input
-    id="color"
-    type="color"
-    value="#ff0000"
-    className="input h-10"
-  />
-  <label className="mt-4 border-b border-white" htmlFor="date">
-    Date Input
-  </label>
-  <input id="date" type="date" className="input" />
-  <label
-    className="mt-4 border-b border-white"
-    htmlFor="datetime-local"
-  >
-    Datetime-local Input
-  </label>
-  <input id="datetime-local" type="datetime-local" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="email">
-    Email Input
-  </label>
-  <input id="email" type="email" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="file">
-    File Input
-  </label>
-  <input id="file" type="file" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="hid">
-    Hidden Input
-  </label>
-  <input id="hid" type="hidden" className="input" value={9} />
-  <label className="mt-4 border-b border-white" htmlFor="image">
-    Image Input
-  </label>
-  <input id="image" type="image" src="/imgBttn.png" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="month">
-    Month Input
-  </label>
-  <input id="month" type="month" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="number">
-    Number Input
-  </label>
-  <input id="number" type="number" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="password">
-    Password Input
-  </label>
-  <input id="password" type="password" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="radio">
-    Radio Input
-  </label>
-  <input id="radio" type="radio" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="range">
-    Range Input
-  </label>
-  <input id="range" type="range" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="reset">
-    Reset Input
-  </label>
-  <input id="reset" type="reset" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="search">
-    Search Input
-  </label>
-  <input id="search" type="search" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="submit">
-    Submit Input
-  </label>
-  <input id="submit" type="submit" className="input " />
-  <label className="mt-4 border-b border-white" htmlFor="tel">
-    Tel Input
-  </label>
-  <input id="tel" type="tel" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="text">
-    Text Input
-  </label>
-  <input id="text" type="text" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="time">
-    Time Input
-  </label>
-  <input id="time" type="time" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="url">
-    Url Input
-  </label>
-  <input id="url" type="url" className="input" />
-  <label className="mt-4 border-b border-white" htmlFor="week">
-    Week Input
-  </label>
-  <input id="week" type="week" className="input" />
-</div>
-      
-`;
 const form = `  
 <form
   className="p-5 border border-white"

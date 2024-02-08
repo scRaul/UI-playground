@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Shapes } from "lucide-react";
 
 interface LogoProps {
   href: string;
@@ -7,9 +8,10 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
   return (
-    <Link href={props.href}>
+    <Link href={props.href} className="flex gap-1">
+      <Shapes size={24} />
       <Image
-        src="/vercel.svg"
+        src="/next.svg"
         alt="Vercel Logo"
         className="dark:invert"
         width={100}

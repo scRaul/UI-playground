@@ -1,6 +1,6 @@
-import CodePreview from "@/components/CARDS/CodePreview";
-import Collapsible from "@/components/CONTAINERS/Collapsible";
-import { H1, H2, H3, H4, H5, H6 } from "@/components/TEXT/Headings";
+import CodePreview from "@/components/cards/CodePreview";
+import Collapsible from "@/components/containers/Collapsible";
+import { H1, H2, H3, H4, H5, H6 } from "@/components/text/Headings";
 
 export default function textPage() {
   return (

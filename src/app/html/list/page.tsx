@@ -1,4 +1,4 @@
-import CodePreview from "@/components/CARDS/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
 
 export default function TablePage() {
   const tableHeaders = ["Header 1", "Header 2", "Header-3"];

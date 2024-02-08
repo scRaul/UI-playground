@@ -38,7 +38,7 @@ export default function SearchBar(props: SearchBarProps) {
             className="cursor-pointer rounded-xl hover:bg-slate-200 p-1 "
             onClick={() => alert("invoke search query")}
           >
-            <Search / >
+            <Search />
           </div>
         </search>
         <div className="flex items-center justify-between px-1 gap-2 "></div>

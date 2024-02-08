@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import SideBar from "../Nav/SideBar";
+import SideBar from "../layout/SideBar";
 import { AlignJustify } from "lucide-react";
-import Aside from "../Nav/Aside";
-import Logo from "../Nav/Logo";
-import Header from "../Nav/Header";
+import Aside from "../layout/Aside";
+import Logo from "../navigation/Logo";
+import Header from "../layout/Header";
 
 export function SideEx() {
   const [isClosed, setIsClosed] = useState(false);

@@ -1,4 +1,4 @@
-import CodePreview from "@/components/CARDS/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
 import { HideComp, DataComp } from "@/components/Page/attributes";
 export default function AttributesPage() {
   return (

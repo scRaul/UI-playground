@@ -1,5 +1,5 @@
-import CodePreview from "@/components/CARDS/CodePreview";
-import Collapsible from "@/components/CONTAINERS/Collapsible";
+import CodePreview from "@/components/cards/CodePreview";
+import Collapsible from "@/components/containers/Collapsible";
 import { MousePointerClick } from "lucide-react";
 
 export default function CollapsiblePage() {
