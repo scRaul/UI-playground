@@ -1,6 +1,6 @@
-import CodePreview from "@/components/_cards/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
 import Canvas from "@/components/Page/Canvas";
-import { H6 } from "@/components/_text/Headings";
+import { H6 } from "@/components/text/Headings";
 
 export default function MediaPage() {
   return (

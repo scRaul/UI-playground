@@ -1,4 +1,4 @@
-import CodePreview from "@/components/_cards/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
 import { Code } from "lucide-react";
 
 export default function InputPage() {

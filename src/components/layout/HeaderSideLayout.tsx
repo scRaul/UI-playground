@@ -1,6 +1,6 @@
 "use client";
-import NavMenu from "@/components/_navigation/NavMenu";
-import { NavItem } from "@/components/_navigation/NavMenu";
+import NavMenu from "@/components/navigation/NavMenu";
+import { NavItem } from "@/components/navigation/NavMenu";
 import {
   AlignJustify,
   Blocks,
@@ -24,10 +24,10 @@ import {
   Type,
   Workflow,
 } from "lucide-react";
-import Collapsible from "@/components/_containers/Collapsible";
+import Collapsible from "@/components/containers/Collapsible";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import Logo from "../_navigation/Logo";
+import Logo from "../navigation/Logo";
 import SideBar from "./SideBar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";

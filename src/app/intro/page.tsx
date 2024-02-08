@@ -1,4 +1,4 @@
-import { H3, H4 } from "@/components/_text/Headings";
+import { H3, H4 } from "@/components/text/Headings";
 import Image from "next/image";
 
 export default function IntroPage() {

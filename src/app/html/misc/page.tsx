@@ -1,4 +1,4 @@
-import CodePreview from "@/components/_cards/CodePreview";
+import CodePreview from "@/components/cards/CodePreview";
 
 export default function MiscPage() {
   return (

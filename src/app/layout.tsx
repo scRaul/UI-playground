@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import HeaderSideLayout from "@/components/_layout/HeaderSideLayout";
-import Logo from "@/components/_navigation/Logo";
+import HeaderSideLayout from "@/components/layout/HeaderSideLayout";
+import Logo from "@/components/navigation/Logo";
 import { ExternalLink } from "lucide-react";
-import Footer from "@/components/_navigation/Footer";
+import Footer from "@/components/navigation/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -2,8 +2,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
-import Header from "../_layout/Header";
-import Logo from "../_navigation/Logo";
+import Header from "../layout/Header";
+import Logo from "../navigation/Logo";
 
 export function NavLike() {
   const [session, setSession] = useState(true);
