@@ -1,5 +1,5 @@
-import CodePreview from "@/components/cards/CodePreview";
-import Header from "@/components/layout/Header";
+import CodePreview from "@/components/_cards/CodePreview";
+import Header from "@/components/_layout/Header";
 import { DefaultBar, NavLike } from "@/components/Page/TopBarEx";
 
 function TopBarPage() {

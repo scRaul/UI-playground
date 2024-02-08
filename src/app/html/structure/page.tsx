@@ -1,5 +1,5 @@
-import CodePreview from "@/components/cards/CodePreview";
-import { H5 } from "@/components/text/Headings";
+import CodePreview from "@/components/_cards/CodePreview";
+import { H5 } from "@/components/_text/Headings";
 import { Shapes } from "lucide-react";
 
 export default function StructPage() {

@@ -1,5 +1,5 @@
-import CodePreview from "@/components/cards/CodePreview";
-import Aside from "@/components/layout/Aside";
+import CodePreview from "@/components/_cards/CodePreview";
+import Aside from "@/components/_layout/Aside";
 import { SideEx, SideLayoutEx, Test } from "@/components/Page/SideBarEx";
 
 export default function SideBarPage() {

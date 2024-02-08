@@ -1,4 +1,4 @@
-import CodePreview from "@/components/cards/CodePreview";
+import CodePreview from "@/components/_cards/CodePreview";
 
 function CodePreviewPage() {
   const code: string = `

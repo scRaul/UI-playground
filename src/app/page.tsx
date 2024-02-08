@@ -1,4 +1,4 @@
-import { H1, H4, H5 } from "@/components/text/Headings";
+import { H1, H4, H5 } from "@/components/_text/Headings";
 import { Feather, Pencil, TimerReset } from "lucide-react";
 import Link from "next/link";
 
