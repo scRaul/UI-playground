@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <header className="w-full text-center bg-blue-800 pt-20 p-6 flex flex-col gap-4 items-center">
         <H1 className="font-extrabold">A NextJS UI Library</H1>
         <H4 className="">View, Copy and Paste UI Elements</H4>
@@ -39,6 +39,6 @@ export default function Home() {
           </p>
         </section>
       </div>
-    </>
+    </div>
   );
 }
