@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function IntroPage() {
   return (
     <article className="w-full h-full font-mono text-xl">
-      <header className="bg-blue-800 w-full pt-4 p-1 text-center mb-4">
+      <header className="bg-blue-800 w-full pt-20 p-1 text-center mb-4">
         <H3 className="font-bold">Getting Started</H3>
       </header>
       <div className="px-2 py-2 md:px-10">

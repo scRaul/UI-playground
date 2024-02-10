@@ -1,9 +1,10 @@
 "use client";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, MousePointer } from "lucide-react";
 import { useState } from "react";
 
 interface CollapsibleProps {
   className?: string;
+  headerClassName?: string;
   icon?: React.ReactElement;
   label: string;
   children: React.ReactNode;
@@ -11,28 +12,22 @@ interface CollapsibleProps {
 }
 
 function Collapsible(props: CollapsibleProps) {
-  const [isCollapsed, setCollapsed] = useState(
-    props.startClosed ? props.startClosed : false
+  const [collapsed, setCollapsed] = useState<boolean>(
+    props.startClosed ? props.startClosed : true
   );
 
-  const toggleCollapse = () => {
-    setCollapsed(!isCollapsed);
-  };
-
   return (
-    <div className="p-2 h-fit flex flex-col justify-center">
-      <div
-        className={`flex items-center cursor-pointer ${props.className}`}
-        onClick={toggleCollapse}
+    <div className={props.className}>
+      <header
+        className={`flex items-center justify-center ${props.headerClassName}`}
+        onClick={() => setCollapsed(!collapsed)}
       >
-        {props.icon && <div className="mr-2">{props.icon}</div>}
+        {props.icon && <div className="mr-1">{props.icon}</div>}
         <div className="font-semibold">{props.label}</div>
         <div className="flex-grow"></div>
-        {isCollapsed ? <ChevronRight /> : <ChevronDown />}
-      </div>
-      {isCollapsed ? null : (
-        <div className="mt-2 ml-auto mr-auto">{props.children}</div>
-      )}
+        {collapsed ? <ChevronRight /> : <ChevronDown />}
+      </header>
+      {!collapsed && props.children}
     </div>
   );
 }

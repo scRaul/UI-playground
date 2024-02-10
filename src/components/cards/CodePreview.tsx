@@ -57,7 +57,7 @@ function CodePreview(props: CodePreviewProps) {
         </div>
       </header>
       {showPreview ? (
-        <div className="flex flex-col w-fit mx-auto p-4">{props.children}</div>
+        <div className="flex flex-col w-full mx-auto p-4">{props.children}</div>
       ) : (
         <SyntaxHighlighter
           showLineNumbers={enableNumbers}

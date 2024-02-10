@@ -23,7 +23,7 @@ body {
 }
 
 .input {
-  @apply rounded p-2 bg-transparent focus:outline-none border border-white focus:border-blue-500 w-full;
+  @apply rounded p-2 bg-transparent focus:outline-none border border-white focus:border-blue-500;
 }
 
 .text-primary {
@@ -32,10 +32,10 @@ body {
 }
 
 .scrolly::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 .scrolly::-webkit-scrollbar-thumb {
-  background-color: rgba(128, 128, 128, 0.521);
+  background-color: rgb(247, 0, 0);
   border-radius: 6px;
 }
 .scrolly::-webkit-scrollbar-track {

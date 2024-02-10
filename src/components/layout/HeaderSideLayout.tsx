@@ -11,13 +11,16 @@ import {
   GalleryHorizontalEnd,
   Layout,
   LayoutDashboard,
+  Link as ILink,
   MapPin,
   MousePointer,
   MousePointerSquare,
   Navigation,
   PanelBottomClose,
   PanelLeft,
+  PanelRightClose,
   PanelTop,
+  Search,
   SquareStack,
   Table,
   Terminal,
@@ -26,11 +29,10 @@ import {
 } from "lucide-react";
 import Collapsible from "@/components/containers/Collapsible";
 import { useEffect, useState } from "react";
-import Header from "./Header";
+import Header from "../containers/Header";
 import Logo from "../navigation/Logo";
-import SideBar from "./SideBar";
+import { SlideBar } from "../containers/Slide";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 export default function HeaderSideLayout() {
   const [closeSideBar, setCloseSideBar] = useState(true);
@@ -39,8 +41,8 @@ export default function HeaderSideLayout() {
     setCloseSideBar(true);
   }, [pathname]);
   return (
-    <Header className="bg-inherit p-1 fixed">
-      <header className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
+    <Header className="bg-inherit fixed shadow-black shadow-md top-0 left-0">
+      <aside className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
         <div
           className="rounded-full hover:bg-slate-200 p-2"
           onClick={() => setCloseSideBar(false)}
@@ -48,10 +50,11 @@ export default function HeaderSideLayout() {
           <AlignJustify />
         </div>
         <Logo href="/" />
-      </header>
-      <SideBar
-        className="bg-inherit shadow-2xl h-screen min-w-[200px]"
+      </aside>
+      <SlideBar
+        className="bg-inherit shadow-2xl shadow-black h-screen left-0 scrolly"
         isClosed={closeSideBar}
+        direction="left"
       >
         <header className="flex gap-2 items-center justify-around w-fit min-w-[200px] mb-4">
           <div
@@ -64,71 +67,70 @@ export default function HeaderSideLayout() {
         </header>
         <NavMenu
           className="text-blue-600"
-          itemClassName="hover:text-white"
+          itemClassName="hover:text-white p-2"
           navItems={miscNavs}
         />
-
         <Collapsible
-          className="text-gray-600 hover:text-white"
+          className="text-gray-600 hover:text-white p-2"
           label={"HTML Ref"}
           icon={<Code />}
           startClosed={true}
         >
           <NavMenu
-            className="text-slate-600 border-l border-gray-100"
+            className="text-slate-600 border-l border-gray-100 mt-4"
             itemClassName="hover:text-blue-500"
             navItems={htmlNavs}
           />
         </Collapsible>
         <Collapsible
-          className="text-gray-600 hover:text-white"
-          label={"Containers"}
-          icon={<LayoutDashboard />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100"
-            itemClassName="hover:text-blue-500"
-            navItems={contiainerNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white"
-          label={"Cards"}
-          icon={<GalleryHorizontalEnd />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100"
-            itemClassName="hover:text-blue-500"
-            navItems={cardNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white"
+          className="text-gray-600 hover:text-white p-2"
           label={"Navigation"}
           icon={<Navigation />}
           startClosed={true}
         >
           <NavMenu
-            className="text-slate-600 border-l border-gray-100"
+            className="text-slate-600 border-l border-gray-100 mt-4"
             itemClassName="hover:text-blue-500"
             navItems={navNavs}
           />
         </Collapsible>
         <Collapsible
-          className="text-gray-600 hover:text-white"
+          className="text-gray-600 hover:text-white p-2"
+          label={"Containers"}
+          icon={<LayoutDashboard />}
+          startClosed={true}
+        >
+          <NavMenu
+            className="text-slate-600 border-l border-gray-100 mt-4"
+            itemClassName="hover:text-blue-500"
+            navItems={contiainerNavs}
+          />
+        </Collapsible>
+        <Collapsible
+          className="text-gray-600 hover:text-white p-2"
           label={"Layouts"}
           icon={<Layout />}
           startClosed={true}
         >
           <NavMenu
-            className="text-slate-600 border-l border-gray-100"
+            className="text-slate-600 border-l border-gray-100 mt-4"
             itemClassName="hover:text-blue-500"
             navItems={layoutNavs}
           />
         </Collapsible>
-      </SideBar>
+        <Collapsible
+          className="text-gray-600 hover:text-white p-2"
+          label={"Cards"}
+          icon={<GalleryHorizontalEnd />}
+          startClosed={true}
+        >
+          <NavMenu
+            className="text-slate-600 border-l border-gray-100 mt-4"
+            itemClassName="hover:text-blue-500"
+            navItems={cardNavs}
+          />
+        </Collapsible>
+      </SlideBar>
     </Header>
   );
 }
@@ -188,40 +190,43 @@ const htmlNavs: NavItem[] = [
 ];
 const contiainerNavs: NavItem[] = [
   {
+    href: "/container/aside",
+    label: "Aside",
+    icon: <PanelLeft />,
+  },
+  {
     href: "/container/collapsible",
     label: "Collapsible",
     icon: <PanelBottomClose />,
   },
-];
-const layoutNavs: NavItem[] = [
   {
-    href: "/layout/sidebar",
-    label: "SideBar",
-    icon: <PanelLeft />,
-  },
-  {
-    href: "/layout/topbar",
-    label: "TopBar",
+    href: "/container/header",
+    label: "Header",
     icon: <PanelTop />,
   },
-
-  // {
-  //   href: "/layout/top-side-bar",
-  //   label: "Top&SideBar",
-  //   icon: <Layout />,
-  // },
+  {
+    href: "/container/sliders",
+    label: "Sliders",
+    icon: <PanelRightClose />,
+  },
 ];
+const layoutNavs: NavItem[] = [];
 
 const navNavs: NavItem[] = [
-  {
-    href: "/navigation/nav-menu",
-    label: "NavMenu",
-    icon: <ExternalLink />,
-  },
   {
     href: "/navigation/logo",
     label: "Logo",
     icon: <Chrome />,
+  },
+  {
+    href: "/navigation/nav-menu",
+    label: "NavMenu",
+    icon: <ILink />,
+  },
+  {
+    href: "/navigation/search-bar",
+    label: "Search Bar",
+    icon: <Search />,
   },
 ];
 

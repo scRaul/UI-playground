@@ -8,7 +8,7 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
   return (
-    <Link href={props.href} className="flex gap-1">
+    <Link href={props.href} className="flex justify-center items-center gap-1">
       <Shapes size={24} />
       <Image
         src="/next.svg"

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import SideBar from "./SideBar";
-import Header from "./Header";
+import { SlideBar } from "../containers/Slide";
+import Header from "../containers/Header";
 
 export function OuterSideBarControl() {
   const [leftClosed, setLeftClosed] = useState(false);
@@ -31,19 +31,20 @@ export function OuterSideBarControl() {
         </div>
       </Header>
       <div className="relative top-8 h-72 p-1">
-        <SideBar
+        <SlideBar
           isClosed={leftClosed}
+          direction="left"
           className="border-r h-full min-w-[150px]"
         >
           <header>SideBar</header>
-        </SideBar>
-        <SideBar
+        </SlideBar>
+        <SlideBar
           isClosed={rightClosed}
-          onRight={true}
+          direction="right"
           className="border-l h-full min-w-[150px]"
         >
           <header>EXPLORER</header>
-        </SideBar>
+        </SlideBar>
       </div>
     </div>
   );

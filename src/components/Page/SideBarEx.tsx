@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import SideBar from "../layout/SideBar";
+import { SlideBar } from "../containers/Slide";
 import { AlignJustify } from "lucide-react";
-import Aside from "../layout/Aside";
+import Aside from "../containers/Aside";
 import Logo from "../navigation/Logo";
-import Header from "../layout/Header";
 
 export function SideEx() {
   const [isClosed, setIsClosed] = useState(false);
@@ -23,9 +22,13 @@ export function SideEx() {
         </button>
         <div className="flex-grow"></div>
       </div>
-      <SideBar className="border-r h-full px-5 py-3" isClosed={isClosed}>
+      <SlideBar
+        className="border-r h-full px-5 py-3"
+        isClosed={isClosed}
+        direction="left"
+      >
         <span>Side Bar</span>
-      </SideBar>
+      </SlideBar>
     </div>
   );
 }
@@ -42,7 +45,11 @@ export function SideLayoutEx() {
           <AlignJustify />
         </div>
       </div>
-      <SideBar className="border-r h-full px-1 py-3" isClosed={isClosed}>
+      <SlideBar
+        className="border-r h-full px-1 py-3"
+        isClosed={isClosed}
+        direction="left"
+      >
         <header className="flex gap-2 items-center justify-around p-1">
           <div
             className="rounded-full hover:bg-slate-200 p-2"
@@ -69,7 +76,7 @@ export function SideLayoutEx() {
             <span className="font-mono text-lg hover:text-black">Games</span>
           </div>
         </div>
-      </SideBar>
+      </SlideBar>
     </div>
   );
 }

@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} scrolly`}>
         <HeaderSideLayout />
-        <div className="flex flex-col min-h-screen mt-16">
+        <div className="flex flex-col min-h-screen mt-10">
           <main className="flex flex-col items-center px-1">{children}</main>
           <div className="flex-grow"></div>
           <Footer />
