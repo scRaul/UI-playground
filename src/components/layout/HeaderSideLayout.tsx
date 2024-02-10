@@ -26,6 +26,7 @@ import {
   Terminal,
   Type,
   Workflow,
+  Store,
 } from "lucide-react";
 import Collapsible from "@/components/containers/Collapsible";
 import { useEffect, useState } from "react";
@@ -210,7 +211,13 @@ const contiainerNavs: NavItem[] = [
     icon: <PanelRightClose />,
   },
 ];
-const layoutNavs: NavItem[] = [];
+const layoutNavs: NavItem[] = [
+  {
+    href: "/layout/store",
+    label: "Store",
+    icon: <Store />,
+  },
+];
 
 const navNavs: NavItem[] = [
   {
