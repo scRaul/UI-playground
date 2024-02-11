@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clipboard-copy": "^4.0.1",
+    "fs": "^0.0.1-security",
     "lucide-react": "^0.290.0",
     "next": "14.0.0",
     "react": "^18",

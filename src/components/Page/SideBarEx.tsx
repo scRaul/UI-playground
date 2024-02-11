@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SlidingSidePanel } from "../panels/SlidingPanels";
+import { SlidingSidePanel } from "../panels/SlidingPanel";
 import { AlignJustify } from "lucide-react";
 import SidePanel from "../panels/SidePanel";
 import Logo from "../navigation/Logo";

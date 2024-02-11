@@ -25,35 +25,43 @@ import {
   Home,
   Navigation,
   ChevronDownSquare,
+  PanelBottom,
 } from "lucide-react";
 import Collapsible from "@/components/cards/Collapsible";
 import { useEffect, useState } from "react";
 import TopPanel from "../panels/TopPanel";
 import Logo from "../navigation/Logo";
-import { SlidingSidePanel } from "../panels/SlidingPanels";
+import SlidingPanel from "../panels/SlidingPanel";
 import { usePathname } from "next/navigation";
 
-export default function HeaderSideLayout() {
+export default function AppLayout() {
   const [closeSideBar, setCloseSideBar] = useState(true);
   const pathname = usePathname();
   useEffect(() => {
     setCloseSideBar(true);
   }, [pathname]);
   return (
-    <TopPanel className="bg-inherit fixed shadow-black shadow-md top-0 left-0">
-      <aside className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
-        <div
-          className="rounded-full hover:bg-slate-200 p-2"
-          onClick={() => setCloseSideBar(false)}
-        >
-          <AlignJustify />
-        </div>
-        <Logo href="/" />
-      </aside>
-      <SlidingSidePanel
+    <>
+      <TopPanel
+        className="bg-inherit shadow-black shadow-md left-0"
+        position="fixed"
+      >
+        <aside className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
+          <div
+            className="rounded-full hover:bg-slate-200 p-2"
+            onClick={() => setCloseSideBar(false)}
+          >
+            <AlignJustify />
+          </div>
+          <Logo href="/" />
+        </aside>
+      </TopPanel>
+      <SlidingPanel
         className="bg-inherit shadow-2xl shadow-black h-screen left-0 scrolly"
         isClosed={closeSideBar}
+        panelType="Side"
         direction="left"
+        position="fixed"
       >
         <header className="flex gap-2 items-center justify-around w-fit min-w-[200px] mb-4">
           <div
@@ -73,9 +81,10 @@ export default function HeaderSideLayout() {
           <HTMLNavs />
           <NavNavs />
           <PanelNavs />
+          <LayoutNavs />
         </nav>
-      </SlidingSidePanel>
-    </TopPanel>
+      </SlidingPanel>
+    </>
   );
 }
 interface CollapseWrapperProps {
@@ -204,6 +213,12 @@ function PanelNavs() {
     <CollapseWrapper label="Panels" icon={<Code />}>
       <LinkItem
         className="hover:text-blue-500"
+        label="BottomPanel"
+        href="/panel/bottom-panel"
+        icon={<PanelBottom />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
         label="SidePanel"
         href="/panel/side-panel"
         icon={<PanelLeft />}
@@ -229,7 +244,7 @@ function LayoutNavs() {
       <LinkItem
         className="hover:text-blue-500"
         label="Store"
-        href="layout/store"
+        href="/layout/store"
         icon={<Store />}
       />
     </CollapseWrapper>

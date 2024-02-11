@@ -1,7 +1,7 @@
 "use client";
 import { Apple, Link, Search, ShoppingCart } from "lucide-react";
 import TopPanel from "../panels/TopPanel";
-import { SlidingTopPanel } from "../panels/SlidingPanels";
+import SlidingPanel from "../panels/SlidingPanel";
 import { useState } from "react";
 import { SearchInput } from "../navigation/Search";
 import LinkItem from "../navigation/LinkItem";
@@ -15,7 +15,7 @@ interface Category {
   id: string;
   groupLinks: GroupLinks[];
 }
-export default function StoreLayoutMD() {
+export default function StoreLayoutLg() {
   const [closeSlide, setCloseSlide] = useState<boolean>(false);
   const [selectedGroup, setSelectedGroup] = useState<Category | null>(null);
   const [searching, setSearching] = useState<boolean>(false);
@@ -49,7 +49,11 @@ export default function StoreLayoutMD() {
   }
   return (
     <>
-      <TopPanel className={`px-20 py-2 bg-black`}>
+      <TopPanel
+        className={`px-20 py-2 bg-black`}
+        position="absolute"
+        zIndex={100}
+      >
         <div
           id="logo"
           className="cursor-pointer"
@@ -84,10 +88,12 @@ export default function StoreLayoutMD() {
           <ShoppingCart strokeWidth={1} />
         </div>
       </TopPanel>
-      <SlidingTopPanel
+      <SlidingPanel
         direction="up"
         isClosed={closeSlide}
-        className="bg-black p-3 pl-20"
+        panelType="Top"
+        position="absolute"
+        className="bg-black p-3 pl-20 pt-10"
       >
         {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
         {searching && (
@@ -96,7 +102,7 @@ export default function StoreLayoutMD() {
             <SearchInput placeholder="Search Store" />
           </div>
         )}
-      </SlidingTopPanel>
+      </SlidingPanel>
       {!closeSlide && (
         <div
           className="w-full h-full bg-[#ffffff33] blur-md"

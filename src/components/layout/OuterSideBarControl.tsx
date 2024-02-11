@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SlidingSidePanel } from "../panels/SlidingPanels";
+import { SlidingSidePanel } from "../panels/SlidingPanel";
 import TopPanel from "../panels/TopPanel";
 
 export function OuterSideBarControl() {

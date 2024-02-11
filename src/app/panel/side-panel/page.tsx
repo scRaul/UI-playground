@@ -1,13 +1,14 @@
 import CodePreview from "@/components/cards/CodePreview";
 import SidePanel from "@/components/panels/SidePanel";
-import Logo from "@/components/navigation/Logo";
+import { readFileContents } from "@/lib/files";
+import SidePanelEx from "@/components/Page/Panels/SidePanelEx";
 
-export default function AsidePage() {
+export default function SidePanelPage() {
   return (
     <>
-      <CodePreview title="Aside.tsx" code={code}>
+      <CodePreview title="SidePanel.tsx" code={code}>
         <div className="relative w-full h-80 border">
-          <SidePanel className="border">
+          <SidePanel className="border right-0" position="absolute" zIndex={1}>
             <div className="font-bold">
               <div>Home</div>
               <div>Projects</div>
@@ -17,46 +18,10 @@ export default function AsidePage() {
         </div>
       </CodePreview>
       <CodePreview title="example" code={example}>
-        <div className="relative w-full h-80 border">
-          <SidePanel className="border min-w-[100px]">
-            <header className="border-b p-1">
-              <Logo href="" />
-            </header>
-            <div className="font-bold pt-4">
-              <div className="hover:bg-[#ffffff33] pl-4">Home</div>
-              <div className="hover:bg-[#ffffff33] pl-4">Projects</div>
-              <div className="hover:bg-[#ffffff33] pl-4">About</div>
-            </div>
-          </SidePanel>
-        </div>
+        <SidePanelEx />
       </CodePreview>
     </>
   );
 }
-const code = `
-interface AsideProps {
-  className?: string;
-  children: React.ReactNode;
-}
-export default function Aside(props: AsideProps) {
-  return (
-    <aside
-      className={\`absolute h-full w-fit top-0 flex flex-col overflow-y-auto \${props.className}\`}
-    >
-      {props.children}
-    </aside>
-  );
-}
-`;
-const example = `
-<Aside className="border min-w-[100px]">
-    <header className="border-b p-1">
-        <Logo href="" />
-    </header>
-    <div className="font-bold pt-4">
-        <div className="hover:bg-[#ffffff33] pl-4">Home</div>
-        <div className="hover:bg-[#ffffff33] pl-4">Projects</div>
-        <div className="hover:bg-[#ffffff33] pl-4">About</div>
-    </div>
-</Aside>
-`;
+const code = readFileContents("src/components/panels/SidePanel.tsx");
+const example = readFileContents("src/components/Page/Panels/SidePanelEx.tsx");

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import HeaderSideLayout from "@/components/layout/HeaderSideLayout";
+import AppLayout from "@/components/layout/AppLayout";
 import Logo from "@/components/navigation/Logo";
 import { ExternalLink } from "lucide-react";
 import Footer from "@/components/navigation/Footer";
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} scrolly`}>
-        <HeaderSideLayout />
+        <AppLayout />
         <div className="flex flex-col min-h-screen mt-10">
           <main className="flex flex-col items-center px-1">{children}</main>
           <div className="flex-grow"></div>
