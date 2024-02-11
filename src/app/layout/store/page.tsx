@@ -13,7 +13,7 @@ export default function Store() {
           <StoreLayoutLg />
           <BottomPanel
             position="absolute"
-            className="p-2 bg-blue-500"
+            className="p-2 bg-blue-500 visible md:invisible"
             zIndex={10}
           >
             <p>{" Only visible on screen.width > 768 px"}</p>
@@ -25,7 +25,7 @@ export default function Store() {
           <StoreLayoutSm />
           <BottomPanel
             position="absolute"
-            className="p-2 bg-blue-500"
+            className="p-2 bg-blue-500 invisible md:visible"
             zIndex={10}
           >
             <p>{" Only visible on screen.width <= 768 px"}</p>
