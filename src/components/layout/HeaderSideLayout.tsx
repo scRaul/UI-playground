@@ -231,8 +231,8 @@ const navNavs: NavItem[] = [
     icon: <ILink />,
   },
   {
-    href: "/navigation/search-bar",
-    label: "Search Bar",
+    href: "/navigation/search",
+    label: "Search",
     icon: <Search />,
   },
 ];

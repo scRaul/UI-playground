@@ -3,97 +3,79 @@ import { Apple, Search, ShoppingCart } from "lucide-react";
 import Header from "../containers/Header";
 import { SlideHeader } from "../containers/Slide";
 import { useState } from "react";
+import { SearchInput } from "../navigation/Search";
+import { NavItem } from "../navigation/NavMenu";
+import NavMenu from "../navigation/NavMenu";
 
+interface GroupLinks {
+  group: string;
+  links: NavItem[];
+}
 interface Category {
   id: string;
-  explore: string[];
-  shop: string[];
-  more: string[];
+  groupLinks: GroupLinks[];
 }
-export default function StoreLayout() {
+export default function StoreLayoutMD() {
   const [closeSlide, setCloseSlide] = useState<boolean>(false);
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
-  );
+  const [selectedGroup, setSelectedGroup] = useState<Category | null>(null);
+  const [searching, setSearching] = useState<boolean>(false);
 
-  const categoryItems: Category[] = [
-    {
-      id: "Computers",
-      explore: ["All Computers", "LapAir", "LapPro", "DeskStudio", "DeskPro"],
-      shop: ["Shop Computer", "Computer Accessories", "Financing"],
-      more: ["Computer Support", "ComputerOS"],
-    },
-    {
-      id: "Tablets",
-      explore: ["All Tablets", "TabAir", "TabPro", "TabMini"],
-      shop: ["Shop Tablets", "Tablet Accessories", "Financing"],
-      more: ["Tablet Support", "TabletOS"],
-    },
-    {
-      id: "Phones",
-      explore: [
-        "All Phones",
-        "MobileAir",
-        "MobilePro",
-        "MobileMini",
-        "MobileOutdoors",
-      ],
-      shop: ["Shop Phones", "Phone Accessories", "Phone Plans", "Financing"],
-      more: ["Phone Support", "PhoneOS"],
-    },
-    {
-      id: "Accessories",
-      explore: [],
-      shop: ["Shop All Accessories", "Computers", "Tablets", "Phones"],
-      more: [],
-    },
-  ];
-
-  function handleCloseSlide() {
-    setCloseSlide(true);
-    setSelectedCategory(null);
+  function handleHoverCategory(label: string) {
+    const group = categoryGroupedLinks.find(
+      (groupItem) => groupItem.id === label
+    );
+    if (group) {
+      setSelectedGroup(group);
+      setCloseSlide(false);
+      setSearching(false);
+    }
   }
-  function handleOpenSlide(category: string) {
+  function handleCloseSlide() {
+    setSelectedGroup(null);
+    setCloseSlide(true);
+    setSearching(false);
+  }
+  function hoverSearch() {
+    if (searching) {
+      return;
+    }
+    setSelectedGroup(null);
+    setCloseSlide(true);
+  }
+  function clickSearch() {
     setCloseSlide(false);
-    const item = categoryItems.find((item) => item.id === category);
-    setSelectedCategory(item ? item : null);
+    setSelectedGroup(null);
+    setSearching(true);
   }
   return (
     <>
-      <Header
-        className={`justify-center items-center gap-2 ${
-          closeSlide ? "bg-slate-900" : "bg-black"
-        }`}
-      >
+      <Header className={`px-20 py-2 bg-black`}>
         <div
           id="logo"
           className="cursor-pointer"
-          onMouseOver={handleCloseSlide}
+          onMouseEnter={handleCloseSlide}
         >
           <Apple strokeWidth={1} />
         </div>
-        <div
-          id="categories"
-          className="flex gap-2 p-1 font-sans font-extralight"
-        >
-          {categoryItems.map((item) => (
-            <div
-              className="cursor-pointer"
-              key={item.id}
-              onMouseOver={() => handleOpenSlide(item.id)}
-            >
-              {item.id}
-            </div>
-          ))}
-        </div>
+        <NavMenu
+          navItems={categories}
+          className="flex w-full font-sans font-extralight justify-evenly"
+          itemClassName="w-fit"
+          onHoverCallback={handleHoverCategory}
+        />
         <div
           id="search"
           className="cursor-pointer"
-          onMouseOver={handleCloseSlide}
+          onMouseEnter={hoverSearch}
+          onClick={clickSearch}
         >
           <Search strokeWidth={1} />
         </div>
-        <div id="bag" className="cursor-pointer" onMouseOver={handleCloseSlide}>
+        <div
+          id="bag"
+          className="cursor-pointer"
+          onMouseEnter={handleCloseSlide}
+        >
           <ShoppingCart strokeWidth={1} />
         </div>
       </Header>
@@ -102,53 +84,151 @@ export default function StoreLayout() {
         isClosed={closeSlide}
         className="bg-black p-3 pl-20"
       >
-        {selectedCategory && selectedCategory.explore.length > 0 && (
-          <div className="mx-5 flex flex-col items-start justify-start">
-            <div className="font-sans font-extralight text-gray-400 text-sm">
-              {`Explore ${selectedCategory.id}`}
-            </div>
-            <div>
-              {selectedCategory.explore.map((item, number) => (
-                <div key={number} className="font-bold text-lg cursor-pointer">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {selectedCategory && selectedCategory.shop.length > 0 && (
-          <div className="mx-5 flex flex-col items-start justify-start">
-            <span className="font-sans font-extralight text-gray-400 text-sm">{`Shop ${selectedCategory?.id}`}</span>
-            <div>
-              {selectedCategory.shop.map((item, number) => (
-                <div key={number} className=" cursor-pointer">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {selectedCategory && selectedCategory.more.length > 0 && (
-          <div className="mx-5 flex flex-col items-start justify-start">
-            <div className="font-sans font-extralight text-gray-400 text-sm">
-              {`More from ${selectedCategory?.id}`}
-            </div>
-            <div>
-              {selectedCategory.more.map((item, number) => (
-                <div key={number} className=" cursor-pointer">
-                  {item}
-                </div>
-              ))}
-            </div>
+        {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
+        {searching && (
+          <div className="px-20 flex gap-1 justify-center items-center">
+            <Search strokeWidth={1} />
+            <SearchInput placeholder="Search Store" />
           </div>
         )}
       </SlideHeader>
       {!closeSlide && (
         <div
-          className="w-full h-full blur-md bg-[#ffffff33]"
+          className="w-full h-full bg-[#ffffff33] blur-md"
           onMouseEnter={handleCloseSlide}
         ></div>
       )}
     </>
   );
 }
+interface SelectedGroupProps {
+  selectedGroup: Category;
+}
+function SelectedGroup(props: SelectedGroupProps) {
+  const selectedGroup = props.selectedGroup;
+  return (
+    <>
+      {selectedGroup.groupLinks.map((group: GroupLinks, number: number) => (
+        <div
+          className="flex flex-col mr-5 font-sans font-extralight"
+          key={number}
+        >
+          <span className=" text-gray-500 text-sm">{`${group.group} ${selectedGroup.id}`}</span>
+          <NavMenu
+            navItems={group.links}
+            className={`${number > 0 ? "text-sm" : "font-bold text-xl"}`}
+          />
+        </div>
+      ))}
+    </>
+  );
+}
+
+const ComputerGroupLinks: GroupLinks[] = [
+  {
+    group: "Explore",
+    links: [
+      { label: "All Computers" },
+      { label: "LapAir" },
+      { label: "LapPro" },
+      { label: "DeskStudio" },
+      { label: "DeskPro" },
+    ],
+  },
+  {
+    group: "Shop",
+    links: [
+      { label: "Shop Computers" },
+      { label: "Computer Accessories" },
+      { label: "Financing" },
+    ],
+  },
+  {
+    group: "More",
+    links: [{ label: "Computer Support" }, { label: "ComputerOS" }],
+  },
+];
+const TabletGroupLinks: GroupLinks[] = [
+  {
+    group: "Explore",
+    links: [
+      { label: "All Tablets" },
+      { label: "TabAir" },
+      { label: "TabPro" },
+      { label: "TabMimi" },
+    ],
+  },
+  {
+    group: "Shop",
+    links: [
+      { label: "Shop Tablets" },
+      { label: "Tablet Accesories" },
+      { label: "Financing" },
+    ],
+  },
+  {
+    group: "More",
+    links: [{ label: "Tablet Support" }, { label: "TabOS" }],
+  },
+];
+
+const PhoneGroupLinks: GroupLinks[] = [
+  {
+    group: "Explore",
+    links: [
+      { label: "All Phones" },
+      { label: "MAir" },
+      { label: "MPro" },
+      { label: "MMini" },
+      { label: "MOutdoors" },
+    ],
+  },
+  {
+    group: "Shop",
+    links: [
+      { label: "Shop Phones" },
+      { label: "Phone Accessories" },
+      { label: "Phone Plans" },
+      { label: "Financing" },
+    ],
+  },
+  {
+    group: "More",
+    links: [{ label: "Phone Support" }, { label: "MOS" }],
+  },
+];
+const AccessoriesGroupLinks: GroupLinks[] = [
+  {
+    group: "Shop",
+    links: [
+      { label: "Shop All Accessories" },
+      { label: "Computers" },
+      { label: "Tablets" },
+      { label: "Phones" },
+    ],
+  },
+];
+const categoryGroupedLinks: Category[] = [
+  {
+    id: "Computer",
+    groupLinks: ComputerGroupLinks,
+  },
+  {
+    id: "Tablet",
+    groupLinks: TabletGroupLinks,
+  },
+  {
+    id: "Phone",
+    groupLinks: PhoneGroupLinks,
+  },
+  {
+    id: "Accessories",
+    groupLinks: AccessoriesGroupLinks,
+  },
+];
+const categories: NavItem[] = [
+  { label: "Computer" },
+  { label: "Tablet" },
+  { label: "Phone" },
+  { label: "Accessories" },
+];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SearchHeader } from "../navigation/Searchbar";
+import { SearchHeader } from "../navigation/Search";
 
 export function SearchHeaderEx() {
   const [close, setClose] = useState(false);

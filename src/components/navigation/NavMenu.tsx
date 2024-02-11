@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export interface NavItem {
-  href: string;
+  href?: string;
   label: string;
   icon?: React.ReactElement;
 }
@@ -9,20 +9,26 @@ interface NavMenuProps {
   className?: string;
   itemClassName?: string;
   navItems: NavItem[];
+  onHoverCallback?: (label: string) => void;
 }
 export default function NavMenu(props: NavMenuProps) {
+  function handleItemHover(label: string) {
+    if (props.onHoverCallback) {
+      props.onHoverCallback(label);
+    }
+  }
   return (
-    <nav className={`h-fit ml-3 ${props.className}`}>
+    <nav className={` ${props.className}`}>
       {props.navItems.map((link, index) => (
-        <div
+        <Link
+          href={link.href ? link.href : ""}
           key={index}
-          className={` p-1 cursor-pointer ${props.itemClassName}`}
+          className={`flex items-center gap-1 ${props.itemClassName}`}
+          onMouseEnter={() => handleItemHover(link.label)}
         >
-          <Link href={link.href} className="px-2 flex items-center gap-1">
-            {link.icon ? link.icon : null}
-            {link.label}
-          </Link>
-        </div>
+          {link.icon ? link.icon : null}
+          {link.label}
+        </Link>
       ))}
     </nav>
   );

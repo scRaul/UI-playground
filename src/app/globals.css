@@ -26,6 +26,16 @@ body {
   @apply rounded p-2 bg-transparent focus:outline-none border border-white focus:border-blue-500;
 }
 
+.md-only {
+  display: block;
+}
+
+@media screen and (max-width: 768) {
+  .md-only {
+    display: none;
+  }
+}
+
 .text-primary {
   @apply text-[var(--foreground)];
   color: var(--foreground);
