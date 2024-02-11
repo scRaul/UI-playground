@@ -12,7 +12,10 @@ interface NavMenuProps {
   onHoverCallback?: (label: string) => void;
 }
 export default function NavMenu(props: NavMenuProps) {
-  function handleItemHover(label: string) {
+  function handleItemHover(
+    event: React.MouseEvent<HTMLAnchorElement>,
+    label: string
+  ) {
     if (props.onHoverCallback) {
       props.onHoverCallback(label);
     }
@@ -24,7 +27,7 @@ export default function NavMenu(props: NavMenuProps) {
           href={link.href ? link.href : ""}
           key={index}
           className={`flex items-center gap-1 ${props.itemClassName}`}
-          onMouseEnter={() => handleItemHover(link.label)}
+          onMouseEnter={(event) => handleItemHover(event, link.label)}
         >
           {link.icon ? link.icon : null}
           {link.label}
