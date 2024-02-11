@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 export interface NavItem {
@@ -12,10 +13,7 @@ interface NavMenuProps {
   onHoverCallback?: (label: string) => void;
 }
 export default function NavMenu(props: NavMenuProps) {
-  function handleItemHover(
-    event: React.MouseEvent<HTMLAnchorElement>,
-    label: string
-  ) {
+  function handleItemHover(label: string) {
     if (props.onHoverCallback) {
       props.onHoverCallback(label);
     }
@@ -27,7 +25,7 @@ export default function NavMenu(props: NavMenuProps) {
           href={link.href ? link.href : ""}
           key={index}
           className={`flex items-center gap-1 ${props.itemClassName}`}
-          onMouseEnter={(event) => handleItemHover(event, link.label)}
+          onMouseEnter={() => handleItemHover(link.label)}
         >
           {link.icon ? link.icon : null}
           {link.label}
