@@ -1,21 +1,15 @@
 "use client";
-import NavMenu from "@/components/navigation/NavMenu";
-import { NavItem } from "@/components/navigation/NavMenu";
+import LinkItem from "../navigation/LinkItem";
 import {
   AlignJustify,
   Blocks,
   BookImage,
   Chrome,
   Code,
-  ExternalLink,
-  GalleryHorizontalEnd,
   Layout,
-  LayoutDashboard,
   Link as ILink,
   MapPin,
   MousePointer,
-  MousePointerSquare,
-  Navigation,
   PanelBottomClose,
   PanelLeft,
   PanelRightClose,
@@ -27,20 +21,17 @@ import {
   Type,
   Workflow,
   Store,
+  Link,
+  Home,
+  Navigation,
+  ChevronDownSquare,
 } from "lucide-react";
-import Collapsible from "@/components/containers/Collapsible";
+import Collapsible from "@/components/cards/Collapsible";
 import { useEffect, useState } from "react";
-import Header from "../containers/Header";
+import TopPanel from "../panels/TopPanel";
 import Logo from "../navigation/Logo";
-import { SlideBar } from "../containers/Slide";
+import { SlidingSidePanel } from "../panels/SlidingPanels";
 import { usePathname } from "next/navigation";
-import { group } from "console";
-
-interface CollapseNavGroup {
-  icon?: React.ReactElement;
-  name: string;
-  links: NavItem[];
-}
 
 export default function HeaderSideLayout() {
   const [closeSideBar, setCloseSideBar] = useState(true);
@@ -49,7 +40,7 @@ export default function HeaderSideLayout() {
     setCloseSideBar(true);
   }, [pathname]);
   return (
-    <Header className="bg-inherit fixed shadow-black shadow-md top-0 left-0">
+    <TopPanel className="bg-inherit fixed shadow-black shadow-md top-0 left-0">
       <aside className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
         <div
           className="rounded-full hover:bg-slate-200 p-2"
@@ -59,7 +50,7 @@ export default function HeaderSideLayout() {
         </div>
         <Logo href="/" />
       </aside>
-      <SlideBar
+      <SlidingSidePanel
         className="bg-inherit shadow-2xl shadow-black h-screen left-0 scrolly"
         isClosed={closeSideBar}
         direction="left"
@@ -73,173 +64,184 @@ export default function HeaderSideLayout() {
           </div>
           <Logo href="/" />
         </header>
-        <NavMenu
-          className="text-blue-600"
-          itemClassName="hover:text-white p-2 pl-4"
-          navItems={miscLinks}
-        />
-        <ColNavGroups colNavGroups={colNavGroups} />
-      </SlideBar>
-    </Header>
-  );
-}
-interface ColNavProps {
-  colNavGroups: CollapseNavGroup[];
-}
-function ColNavGroups(props: ColNavProps) {
-  const colNavGroups = props.colNavGroups;
-  return (
-    <>
-      {colNavGroups.map((group, index) => (
-        <Collapsible
-          label={group.name}
-          icon={group.icon}
-          className="text-gray-600 hover:text-white p-2 pl-4"
-        >
-          <NavMenu
-            navItems={group.links}
-            className="text-slate-600 border-l border-gray-100 ml-4 my-2"
-            itemClassName="hover:text-blue-500 p-2"
+        <nav className="pl-4">
+          <LinkItem
+            className="text-blue-600 hover:text-white"
+            href="/intro"
+            label="Getting Started"
           />
-        </Collapsible>
-      ))}
-    </>
+          <HTMLNavs />
+          <NavNavs />
+          <PanelNavs />
+        </nav>
+      </SlidingSidePanel>
+    </TopPanel>
   );
 }
-const miscLinks: NavItem[] = [
-  {
-    href: "/intro",
-    label: "Getting Started",
-  },
-];
-const htmlLinks: NavItem[] = [
-  {
-    href: "/html/attributes",
-    label: "Attributes",
-    icon: <Blocks />,
-  },
-  {
-    href: "/html/events",
-    label: "Events",
-    icon: <Workflow />,
-  },
-  {
-    href: "/html/input",
-    label: "Input",
-    icon: <MousePointer />,
-  },
-  {
-    href: "/html/list",
-    label: "List",
-    icon: <Table />,
-  },
-  {
-    href: "/html/navigation",
-    label: "Navigation",
-    icon: <MapPin />,
-  },
-  {
-    href: "/html/media",
-    label: "Media",
-    icon: <BookImage />,
-  },
-  {
-    href: "/html/structure",
-    label: "structure",
-    icon: <Layout />,
-  },
-  {
-    href: "/html/text",
-    label: "Text",
-    icon: <Type />,
-  },
+interface CollapseWrapperProps {
+  label: string;
+  icon?: React.ReactElement;
+  children: React.ReactNode;
+}
 
-  {
-    href: "/html/misc",
-    label: "Misc.",
-    icon: <SquareStack />,
-  },
-];
-const contiainerLinks: NavItem[] = [
-  {
-    href: "/container/aside",
-    label: "Aside",
-    icon: <PanelLeft />,
-  },
-  {
-    href: "/container/collapsible",
-    label: "Collapsible",
-    icon: <PanelBottomClose />,
-  },
-  {
-    href: "/container/header",
-    label: "Header",
-    icon: <PanelTop />,
-  },
-  {
-    href: "/container/sliders",
-    label: "Sliders",
-    icon: <PanelRightClose />,
-  },
-];
-const layoutLinks: NavItem[] = [
-  {
-    href: "/layout/store",
-    label: "Store",
-    icon: <Store />,
-  },
-];
+function CollapseWrapper(props: CollapseWrapperProps) {
+  return (
+    <Collapsible
+      label={props.label}
+      icon={props.icon}
+      className="pt-2 text-gray-600"
+      headerClassName="text-gray-500 hover:text-white cursor-pointer"
+    >
+      <div className="border-l ml-4 [&>*]:p-2">{props.children}</div>
+    </Collapsible>
+  );
+}
 
-const navLinks: NavItem[] = [
-  {
-    href: "/navigation/logo",
-    label: "Logo",
-    icon: <Chrome />,
-  },
-  {
-    href: "/navigation/nav-menu",
-    label: "NavMenu",
-    icon: <ILink />,
-  },
-  {
-    href: "/navigation/search",
-    label: "Search",
-    icon: <Search />,
-  },
-];
+function HTMLNavs() {
+  return (
+    <CollapseWrapper label="HTML REF" icon={<Code />}>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Attributes"
+        href="/html/attributes"
+        icon={<Blocks />}
+      />
+      <CollapseWrapper label="Events" icon={<Workflow />}>
+        <LinkItem
+          className="hover:text-blue-500"
+          label="Form/Input"
+          href="/html/events/form"
+        />
+        <LinkItem
+          className="hover:text-blue-500"
+          label="Drag/Touch"
+          href="/html/events/drag"
+        />
+        <LinkItem
+          className="hover:text-blue-500"
+          label="Mouse"
+          href="/html/events/mouse"
+        />
+        <LinkItem
+          className="hover:text-blue-500"
+          label="Keyboard"
+          href="/html/events/keyboard"
+        />
+      </CollapseWrapper>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Input"
+        href="/html/input"
+        icon={<MousePointer />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="List"
+        href="/html/list"
+        icon={<Table />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Navigation"
+        href="/html/navigation"
+        icon={<MapPin />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Media"
+        href="/html/media"
+        icon={<BookImage />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Structure"
+        href="/html/structure"
+        icon={<Layout />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Text"
+        href="/html/text"
+        icon={<Type />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="misc"
+        href="/html/misc"
+        icon={<SquareStack />}
+      />
+    </CollapseWrapper>
+  );
+}
 
-const cardLinks: NavItem[] = [
-  {
-    href: "/card/code-preview",
-    label: "CodePreview",
-    icon: <Terminal />,
-  },
-];
+function NavNavs() {
+  return (
+    <CollapseWrapper label="Navigation" icon={<Navigation />}>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="LinkItem"
+        href="/navigation/link-item"
+        icon={<ILink />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Logo"
+        href="/navigation/logo"
+        icon={<Home />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Search"
+        href="/navigation/search"
+        icon={<Search />}
+      />
+    </CollapseWrapper>
+  );
+}
 
-const colNavGroups: CollapseNavGroup[] = [
-  {
-    icon: <Code />,
-    name: "HTML REF",
-    links: htmlLinks,
-  },
-  {
-    icon: <Navigation />,
-    name: "Navigation",
-    links: navLinks,
-  },
-  {
-    icon: <LayoutDashboard />,
-    name: "Containers",
-    links: contiainerLinks,
-  },
-  {
-    icon: <Layout />,
-    name: "Layout",
-    links: layoutLinks,
-  },
-  {
-    icon: <GalleryHorizontalEnd />,
-    name: "Cards",
-    links: cardLinks,
-  },
-];
+function PanelNavs() {
+  return (
+    <CollapseWrapper label="Panels" icon={<Code />}>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="SidePanel"
+        href="/panel/side-panel"
+        icon={<PanelLeft />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="TopPanel"
+        href="/panel/top-panel"
+        icon={<PanelTop />}
+      />
+      <LinkItem
+        className="hover:text-blue-500"
+        label="SlidingPanels"
+        href="/panel/sliding-panels"
+        icon={<PanelRightClose />}
+      />
+    </CollapseWrapper>
+  );
+}
+function LayoutNavs() {
+  return (
+    <CollapseWrapper label="Layouts" icon={<Layout />}>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Store"
+        href="layout/store"
+        icon={<Store />}
+      />
+    </CollapseWrapper>
+  );
+}
+function CardNavs() {
+  return (
+    <LinkItem
+      className="hover:text-blue-500"
+      label="Collapsible"
+      href="/card/collapsible"
+      icon={<ChevronDownSquare />}
+    />
+  );
+}

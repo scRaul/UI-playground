@@ -1,15 +1,15 @@
 "use client";
-import { Apple, Search, ShoppingCart } from "lucide-react";
-import Header from "../containers/Header";
-import { SlideHeader } from "../containers/Slide";
+import { Apple, Link, Search, ShoppingCart } from "lucide-react";
+import TopPanel from "../panels/TopPanel";
+import { SlidingTopPanel } from "../panels/SlidingPanels";
 import { useState } from "react";
 import { SearchInput } from "../navigation/Search";
-import { NavItem } from "../navigation/NavMenu";
-import NavMenu from "../navigation/NavMenu";
+import LinkItem from "../navigation/LinkItem";
+import { LinkItemOpt } from "../navigation/LinkItem";
 
 interface GroupLinks {
   group: string;
-  links: NavItem[];
+  links: LinkItemOpt[];
 }
 interface Category {
   id: string;
@@ -49,7 +49,7 @@ export default function StoreLayoutMD() {
   }
   return (
     <>
-      <Header className={`px-20 py-2 bg-black`}>
+      <TopPanel className={`px-20 py-2 bg-black`}>
         <div
           id="logo"
           className="cursor-pointer"
@@ -57,12 +57,17 @@ export default function StoreLayoutMD() {
         >
           <Apple strokeWidth={1} />
         </div>
-        <NavMenu
-          navItems={categories}
-          className="flex w-full font-sans font-extralight justify-evenly"
-          itemClassName="w-fit"
-          onHoverCallback={handleHoverCategory}
-        />
+        <nav className="flex w-full font-sans font-extralight justify-evenly">
+          {categories.map((cat, index) => (
+            <LinkItem
+              key={index}
+              label={cat.label}
+              href={cat.href}
+              icon={cat.icon}
+              onHoverCallBack={handleHoverCategory}
+            />
+          ))}
+        </nav>
         <div
           id="search"
           className="cursor-pointer"
@@ -78,8 +83,8 @@ export default function StoreLayoutMD() {
         >
           <ShoppingCart strokeWidth={1} />
         </div>
-      </Header>
-      <SlideHeader
+      </TopPanel>
+      <SlidingTopPanel
         direction="up"
         isClosed={closeSlide}
         className="bg-black p-3 pl-20"
@@ -91,7 +96,7 @@ export default function StoreLayoutMD() {
             <SearchInput placeholder="Search Store" />
           </div>
         )}
-      </SlideHeader>
+      </SlidingTopPanel>
       {!closeSlide && (
         <div
           className="w-full h-full bg-[#ffffff33] blur-md"
@@ -114,10 +119,17 @@ function SelectedGroup(props: SelectedGroupProps) {
           key={number}
         >
           <span className=" text-gray-500 text-sm">{`${group.group} ${selectedGroup.id}`}</span>
-          <NavMenu
-            navItems={group.links}
-            className={`${number > 0 ? "text-sm" : "font-bold text-xl"}`}
-          />
+          <nav className={`${number > 0 ? "text-sm" : "font-bold text-xl"}`}>
+            {group.links.map((link, index) => (
+              <LinkItem
+                key={index}
+                label={link.label}
+                href={link.href}
+                icon={link.icon}
+                className=""
+              />
+            ))}
+          </nav>
         </div>
       ))}
     </>
@@ -226,7 +238,7 @@ const categoryGroupedLinks: Category[] = [
     groupLinks: AccessoriesGroupLinks,
   },
 ];
-const categories: NavItem[] = [
+const categories: LinkItemOpt[] = [
   { label: "Computer" },
   { label: "Tablet" },
   { label: "Phone" },

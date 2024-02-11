@@ -1,6 +1,6 @@
 "use client";
 import CodePreview from "@/components/cards/CodePreview";
-import { SlideBar } from "@/components/containers/Slide";
+import { SlidingSidePanel } from "@/components/panels/SlidingPanels";
 import Logo from "@/components/navigation/Logo";
 import { AlignJustify, X } from "lucide-react";
 import { useState } from "react";
@@ -30,13 +30,17 @@ function SimpleEx() {
   const [closed, setClosed] = useState(false);
   return (
     <>
-      <SlideBar className="border w-20" isClosed={closed} direction="left">
+      <SlidingSidePanel
+        className="border w-20"
+        isClosed={closed}
+        direction="left"
+      >
         <div className="font-bold">
           <div>Home</div>
           <div>Projects</div>
           <div>About</div>
         </div>
-      </SlideBar>
+      </SlidingSidePanel>
       <div
         className="relative left-24 top-8 p-2 rounded bg-green-800 hover:bg-green-500 cursor-pointer w-fit"
         onClick={() => setClosed(!closed)}
@@ -60,7 +64,7 @@ function PolishedEx() {
         </div>
         <Logo href="" />
       </header>
-      <SlideBar
+      <SlidingSidePanel
         className="border w-60 bg-blue-950"
         isClosed={closed}
         direction="left"
@@ -80,7 +84,7 @@ function PolishedEx() {
           <div className="hover:bg-[#ffffff33] pl-4">Projects</div>
           <div className="hover:bg-[#ffffff33] pl-4">About</div>
         </div>
-      </SlideBar>
+      </SlidingSidePanel>
     </>
   );
 }

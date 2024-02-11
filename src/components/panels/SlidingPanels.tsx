@@ -1,5 +1,5 @@
-import Aside from "./Aside";
-import Header from "./Header";
+import SidePanel from "./SidePanel";
+import TopPanel from "./TopPanel";
 import { getSlideTransform } from "@/lib/css";
 
 interface TranslateProps {
@@ -9,20 +9,20 @@ interface TranslateProps {
   direction: "left" | "right" | "up" | "down";
 }
 
-export function SlideBar(props: TranslateProps) {
+export function SlidingSidePanel(props: TranslateProps) {
   const transform = getSlideTransform(props.direction, props.isClosed);
   return (
-    <Aside className={`${transform} ${props.className}`}>
+    <SidePanel className={`${transform} ${props.className}`}>
       {props.children}
-    </Aside>
+    </SidePanel>
   );
 }
 
-export function SlideHeader(props: TranslateProps) {
+export function SlidingTopPanel(props: TranslateProps) {
   const transform = getSlideTransform(props.direction, props.isClosed);
   return (
-    <Header className={`${transform} ${props.className}`}>
+    <TopPanel className={`${transform} ${props.className}`}>
       {props.children}
-    </Header>
+    </TopPanel>
   );
 }

@@ -10,7 +10,7 @@ SyntaxHighlighter.registerLanguage("jsx", jsx);
 interface CodePreviewProps {
   title: string;
   children: React.ReactNode;
-  code: string;
+  code: string | null;
   className?: string;
   disableNumbers?: boolean;
 }
@@ -18,7 +18,7 @@ interface CodePreviewProps {
 function CodePreview(props: CodePreviewProps) {
   const [showPreview, setShowPreview] = useState(true);
   const [isCopying, setIsCopying] = useState(false);
-
+  const code = props.code ? props.code : "unable to retrive code";
   const enableNumbers = props.disableNumbers ? !props.disableNumbers : true;
   const toggleView = () => {
     setShowPreview(!showPreview);
@@ -29,7 +29,7 @@ function CodePreview(props: CodePreviewProps) {
     setIsCopying(true);
 
     try {
-      await copy(props.code);
+      await copy(code);
       setTimeout(() => {
         setIsCopying(false); // Re-enable the button after a delay
       }, 1000);
@@ -64,7 +64,7 @@ function CodePreview(props: CodePreviewProps) {
           language={"jsx"}
           style={coldarkDark}
         >
-          {props.code}
+          {code}
         </SyntaxHighlighter>
       )}
     </div>

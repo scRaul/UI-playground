@@ -1,5 +1,5 @@
 import CodePreview from "@/components/cards/CodePreview";
-import Collapsible from "@/components/containers/Collapsible";
+import Collapsible from "@/components/cards/Collapsible";
 
 import { Folder, MousePointerClick } from "lucide-react";
 

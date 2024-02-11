@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { SlideBar } from "../containers/Slide";
+import { SlidingSidePanel } from "../panels/SlidingPanels";
 import { AlignJustify } from "lucide-react";
-import Aside from "../containers/Aside";
+import SidePanel from "../panels/SidePanel";
 import Logo from "../navigation/Logo";
 
 export function SideEx() {
@@ -22,13 +22,13 @@ export function SideEx() {
         </button>
         <div className="flex-grow"></div>
       </div>
-      <SlideBar
+      <SlidingSidePanel
         className="border-r h-full px-5 py-3"
         isClosed={isClosed}
         direction="left"
       >
         <span>Side Bar</span>
-      </SlideBar>
+      </SlidingSidePanel>
     </div>
   );
 }
@@ -45,7 +45,7 @@ export function SideLayoutEx() {
           <AlignJustify />
         </div>
       </div>
-      <SlideBar
+      <SlidingSidePanel
         className="border-r h-full px-1 py-3"
         isClosed={isClosed}
         direction="left"
@@ -76,7 +76,7 @@ export function SideLayoutEx() {
             <span className="font-mono text-lg hover:text-black">Games</span>
           </div>
         </div>
-      </SlideBar>
+      </SlidingSidePanel>
     </div>
   );
 }
@@ -131,7 +131,7 @@ export function TestBar(props: TestBarProps) {
 
 function LeftBar(props: TestBarProps) {
   return (
-    <Aside
+    <SidePanel
       className={`h-screen min-w-[200px] transform
        ${
          props.isClosed
@@ -144,12 +144,12 @@ function LeftBar(props: TestBarProps) {
        `}
     >
       {props.children}
-    </Aside>
+    </SidePanel>
   );
 }
 function RightBar(props: TestBarProps) {
   return (
-    <Aside
+    <SidePanel
       className={`h-screen min-w-[200px] transform right-0
        ${
          props.isClosed
@@ -162,6 +162,6 @@ function RightBar(props: TestBarProps) {
        `}
     >
       {props.children}
-    </Aside>
+    </SidePanel>
   );
 }

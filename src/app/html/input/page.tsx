@@ -6,9 +6,19 @@ export default function InputPage() {
     <>
       <CodePreview
         title="button"
-        code={`  <input type="button" value="Add to Cart" className="input" />`}
+        code={`<button
+          type="button"
+          className="bg-green-800 active:bg-green-500 w-fit mx-auto p-3 rounded"
+        >
+          Add to Card
+        </button>`}
       >
-        <input type="button" value="Add to Cart" className="input" />
+        <button
+          type="button"
+          className="bg-green-800 active:bg-green-500 w-fit mx-auto p-3 rounded"
+        >
+          Add to Card
+        </button>
       </CodePreview>
       <CodePreview
         title="checkbox"
@@ -18,9 +28,9 @@ export default function InputPage() {
       </CodePreview>
       <CodePreview
         title="color"
-        code={`<input  type="color" value="#ff0000" className="input h-10" /> `}
+        code={`<input  type="color"  className="input h-10" /> `}
       >
-        <input type="color" value="#ff0000" className="input h-10" />
+        <input type="color" className="input h-10" />
       </CodePreview>
       <CodePreview
         title="date"
@@ -50,7 +60,7 @@ export default function InputPage() {
         title="hidden"
         code={`<input  type="hidden" className="input" value={9} /> `}
       >
-        <input type="hidden" className="input" value={9} />
+        <input type="hidden" className="input" value={9} readOnly />
       </CodePreview>
       <CodePreview
         title="image"

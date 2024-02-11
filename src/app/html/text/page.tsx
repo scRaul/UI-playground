@@ -1,5 +1,5 @@
 import CodePreview from "@/components/cards/CodePreview";
-import Collapsible from "@/components/containers/Collapsible";
+import Collapsible from "@/components/cards/Collapsible";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/text/Headings";
 
 export default function textPage() {

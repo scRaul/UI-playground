@@ -2,7 +2,7 @@ interface HeaderProps {
   className?: string;
   children: React.ReactNode;
 }
-export default function Header(props: HeaderProps) {
+export default function TopPanel(props: HeaderProps) {
   return (
     <header
       className={`flex gap-1 w-full  top-0 left-0 ${props.className}`}

@@ -1,5 +1,5 @@
 import CodePreview from "@/components/cards/CodePreview";
-import Header from "@/components/containers/Header";
+import TopPanel from "@/components/panels/TopPanel";
 import Logo from "@/components/navigation/Logo";
 
 export default function HeaderPage() {
@@ -7,22 +7,22 @@ export default function HeaderPage() {
     <>
       <CodePreview title="Header.tsx" code={code}>
         <div className="h-80 w-full relative border">
-          <Header className="px-4 py-1 border-b">
+          <TopPanel className="px-4 py-1 border-b">
             <div>Home</div>
             <div>Projects</div>
             <div>About</div>
-          </Header>
+          </TopPanel>
         </div>
       </CodePreview>
       <CodePreview title="example" code={example}>
         <div className="h-80 w-full relative border">
-          <Header className="px-4 py-1 border-b">
+          <TopPanel className="px-4 py-1 border-b">
             <Logo href="" />
             <div className="flex-grow"></div>
             <div className="font-bold text-xl hover:underline">Home</div>
             <div className="font-bold text-xl hover:underline">Projects</div>
             <div className="font-bold text-xl hover:underline">About</div>
-          </Header>
+          </TopPanel>
         </div>
       </CodePreview>
     </>

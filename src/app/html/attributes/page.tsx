@@ -11,7 +11,11 @@ export default function AttributesPage() {
         ></div>
       </CodePreview>
       <CodePreview title="contenteditable" code={contenteditable}>
-        <p className="text-center" contentEditable={true}>
+        <p
+          className="text-center"
+          contentEditable={true}
+          suppressContentEditableWarning={true}
+        >
           You can edit this sentence, simply click on it to begin
         </p>
       </CodePreview>
@@ -104,6 +108,7 @@ export default function AttributesPage() {
           className="text-3xl md:text-6xl"
           contentEditable={true}
           spellCheck={true}
+          suppressContentEditableWarning={true}
         >
           Fix the word spellchjk
         </h3>
@@ -140,7 +145,11 @@ const className = `
 ></div>
       `;
 const contenteditable = `  
-<p className="text-center" contentEditable={true}>
+<p
+  className="text-center"
+  contentEditable={true}
+  suppressContentEditableWarning={true}
+>
   You can edit this sentence, simply click on it to begin
 </p>
       `;

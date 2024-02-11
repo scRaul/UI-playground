@@ -1,5 +1,5 @@
 import CodePreview from "@/components/cards/CodePreview";
-import Aside from "@/components/containers/Aside";
+import SidePanel from "@/components/panels/SidePanel";
 import Logo from "@/components/navigation/Logo";
 
 export default function AsidePage() {
@@ -7,18 +7,18 @@ export default function AsidePage() {
     <>
       <CodePreview title="Aside.tsx" code={code}>
         <div className="relative w-full h-80 border">
-          <Aside className="border">
+          <SidePanel className="border">
             <div className="font-bold">
               <div>Home</div>
               <div>Projects</div>
               <div>About</div>
             </div>
-          </Aside>
+          </SidePanel>
         </div>
       </CodePreview>
       <CodePreview title="example" code={example}>
         <div className="relative w-full h-80 border">
-          <Aside className="border min-w-[100px]">
+          <SidePanel className="border min-w-[100px]">
             <header className="border-b p-1">
               <Logo href="" />
             </header>
@@ -27,7 +27,7 @@ export default function AsidePage() {
               <div className="hover:bg-[#ffffff33] pl-4">Projects</div>
               <div className="hover:bg-[#ffffff33] pl-4">About</div>
             </div>
-          </Aside>
+          </SidePanel>
         </div>
       </CodePreview>
     </>

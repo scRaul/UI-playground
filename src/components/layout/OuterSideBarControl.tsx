@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { SlideBar } from "../containers/Slide";
-import Header from "../containers/Header";
+import { SlidingSidePanel } from "../panels/SlidingPanels";
+import TopPanel from "../panels/TopPanel";
 
 export function OuterSideBarControl() {
   const [leftClosed, setLeftClosed] = useState(false);
   const [rightClosed, setRightClosed] = useState(false);
   return (
     <div className="h-80 relative border rounded">
-      <Header className="absolute border-b px-3 py-1">
+      <TopPanel className="absolute border-b px-3 py-1">
         <div className="flex-grow"></div>
         <div
           className="w-6 h-6 border rounded flex"
@@ -29,22 +29,22 @@ export function OuterSideBarControl() {
             className={`w-3 h-full ${rightClosed ? "border-l" : "bg-white"}`}
           ></div>
         </div>
-      </Header>
+      </TopPanel>
       <div className="relative top-8 h-72 p-1">
-        <SlideBar
+        <SlidingSidePanel
           isClosed={leftClosed}
           direction="left"
           className="border-r h-full min-w-[150px]"
         >
           <header>SideBar</header>
-        </SlideBar>
-        <SlideBar
+        </SlidingSidePanel>
+        <SlidingSidePanel
           isClosed={rightClosed}
           direction="right"
           className="border-l h-full min-w-[150px]"
         >
           <header>EXPLORER</header>
-        </SlideBar>
+        </SlidingSidePanel>
       </div>
     </div>
   );
