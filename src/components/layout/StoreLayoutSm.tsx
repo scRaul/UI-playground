@@ -1,11 +1,17 @@
 "use client";
-import { Apple, Link, Search, ShoppingCart } from "lucide-react";
+import {
+  Apple,
+  ChevronLeft,
+  Equal,
+  Search,
+  ShoppingCart,
+  X,
+} from "lucide-react";
 import TopPanel from "../panels/TopPanel";
 import SlidingPanel from "../panels/SlidingPanel";
 import { useState } from "react";
 import { SearchInput } from "../navigation/Search";
-import LinkItem from "../navigation/LinkItem";
-import { LinkItemOpt } from "../navigation/LinkItem";
+import LinkItem, { LinkItemOpt } from "../navigation/LinkItem";
 
 interface GroupLinks {
   group: string;
@@ -15,104 +21,121 @@ interface Category {
   id: string;
   groupLinks: GroupLinks[];
 }
-export default function StoreLayoutLg() {
-  const [closeSlide, setCloseSlide] = useState<boolean>(true);
-  const [selectedGroup, setSelectedGroup] = useState<Category | null>(null);
-  const [searching, setSearching] = useState<boolean>(false);
 
-  function handleHoverCategory(label: string) {
+export default function StoreLayoutSm() {
+  const [closeMainSlide, setcloseMainSlide] = useState<boolean>(true);
+  const [closeSubSlide, setCloseSubSlide] = useState<boolean>(true);
+  const [searching, setSearching] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [selectedGroup, setSelectedGroup] = useState<Category | null>(null);
+  function handleSearch(event: React.MouseEvent<SVGElement>) {
+    setSearching(true);
+    setcloseMainSlide(false);
+  }
+  function handleMenu(event: React.MouseEvent<SVGElement>) {
+    setcloseMainSlide(false);
+    setOpenMenu(true);
+  }
+  function handleClosePanels(event: React.MouseEvent<SVGElement>) {
+    setcloseMainSlide(true);
+    setCloseSubSlide(true);
+    setSelectedGroup(null);
+    setSearching(false);
+    setOpenMenu(false);
+  }
+  function handleClickCategory(label: string) {
     const group = categoryGroupedLinks.find(
       (groupItem) => groupItem.id === label
     );
     if (group) {
+      setCloseSubSlide(false);
       setSelectedGroup(group);
-      setCloseSlide(false);
-      setSearching(false);
     }
   }
-  function handleCloseSlide() {
-    setSelectedGroup(null);
-    setCloseSlide(true);
-    setSearching(false);
-  }
-  function hoverSearch() {
-    if (searching) {
-      return;
-    }
-    setSelectedGroup(null);
-    setCloseSlide(true);
-  }
-  function clickSearch() {
-    setCloseSlide(false);
-    setSelectedGroup(null);
-    setSearching(true);
+  function handleBack() {
+    setCloseSubSlide(true);
   }
   return (
     <>
       <TopPanel
-        className={`px-20 py-2 bg-black`}
-        position="absolute"
-        zIndex={10} //change to highest  @root layout
+        position={"absolute"}
+        className="py-2 px-4 bg-black"
+        zIndex={10} //set higher if using at root
       >
-        <div
-          id="logo"
-          className="cursor-pointer"
-          onMouseEnter={handleCloseSlide}
-        >
+        <div id="logo" className="cursor-pointer">
           <Apple strokeWidth={1} />
         </div>
-        <nav className="flex w-full font-sans font-extralight justify-evenly">
-          {categories.map((cat, index) => (
-            <LinkItem
-              key={index}
-              label={cat.label}
-              href={cat.href}
-              icon={cat.icon}
-              onHoverCallBack={handleHoverCategory}
-            />
-          ))}
-        </nav>
-        <div
-          id="search"
-          className="cursor-pointer"
-          onMouseEnter={hoverSearch}
-          onClick={clickSearch}
-        >
-          <Search strokeWidth={1} />
-        </div>
-        <div
-          id="bag"
-          className="cursor-pointer"
-          onMouseEnter={handleCloseSlide}
-        >
-          <ShoppingCart strokeWidth={1} />
+        <div className="flex-grow"></div>
+        <div className="flex gap-2">
+          <Search
+            strokeWidth={1}
+            onClick={handleSearch}
+            className="cursor-pointer"
+          />
+          <ShoppingCart strokeWidth={1} className="cursor-pointer" />
+          <Equal
+            strokeWidth={1}
+            onClick={handleMenu}
+            className="cursor-pointer"
+          />
         </div>
       </TopPanel>
       <SlidingPanel
+        panelType="Side"
         direction="up"
-        isClosed={closeSlide}
-        panelType="Top"
         position="absolute"
-        className="bg-black p-3 pl-20 pt-10"
-        zIndex={9} //change 1 < TopPanel @root layout
+        className="bg-black w-full px-4 py-4"
+        isClosed={closeMainSlide}
+        zIndex={11} //set higher if using @root
       >
-        {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
+        <header className="w-full flex">
+          <div className="flex-grow"></div>
+          <X strokeWidth={1} onClick={handleClosePanels} />
+        </header>
         {searching && (
-          <div className="px-20 flex gap-1 justify-center items-center">
+          <div className="flex items-center w-full text-lg mt-7 px-4">
             <Search strokeWidth={1} />
-            <SearchInput placeholder="Search Store" />
+            <SearchInput
+              placeholder="Search Store"
+              className="flex-grow"
+              xClassName="bg-gray-400"
+              strokeWidth={3}
+            />
+          </div>
+        )}
+        {openMenu && (
+          <div className=" w-full text-lg font-bold mt-7 px-4">
+            {categories.map((cat, index) => (
+              <div
+                key={index}
+                onClick={() => handleClickCategory(cat.label)}
+                className="cursor-pointer"
+              >
+                {cat.label}
+              </div>
+            ))}
           </div>
         )}
       </SlidingPanel>
-      {!closeSlide && (
-        <div
-          className="w-full h-full bg-[#ffffff33] blur-md"
-          onMouseEnter={handleCloseSlide}
-        ></div>
-      )}
+      <SlidingPanel
+        panelType="Side"
+        direction="right"
+        position="absolute"
+        className="bg-black w-full px-4 py-4 right-0"
+        isClosed={closeSubSlide}
+        zIndex={12} //set higher if using @root
+      >
+        <header className="w-full flex">
+          <ChevronLeft strokeWidth={1} onClick={handleBack} />
+          <div className="flex-grow"></div>
+          <X strokeWidth={1} onClick={handleClosePanels} />
+        </header>
+        {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
+      </SlidingPanel>
     </>
   );
 }
+
 interface SelectedGroupProps {
   selectedGroup: Category;
 }
@@ -121,10 +144,7 @@ function SelectedGroup(props: SelectedGroupProps) {
   return (
     <>
       {selectedGroup.groupLinks.map((group: GroupLinks, number: number) => (
-        <div
-          className="flex flex-col mr-5 font-sans font-extralight"
-          key={number}
-        >
+        <div className="px-4 font-sans font-extralight" key={number}>
           <span className=" text-gray-500 text-sm">{`${group.group} ${selectedGroup.id}`}</span>
           <nav className={`${number > 0 ? "text-sm" : "font-bold text-xl"}`}>
             {group.links.map((link, index) => (
@@ -142,7 +162,12 @@ function SelectedGroup(props: SelectedGroupProps) {
     </>
   );
 }
-
+const categories: LinkItemOpt[] = [
+  { label: "Computer" },
+  { label: "Tablet" },
+  { label: "Phone" },
+  { label: "Accessories" },
+];
 const ComputerGroupLinks: GroupLinks[] = [
   {
     group: "Explore",
@@ -244,10 +269,4 @@ const categoryGroupedLinks: Category[] = [
     id: "Accessories",
     groupLinks: AccessoriesGroupLinks,
   },
-];
-const categories: LinkItemOpt[] = [
-  { label: "Computer" },
-  { label: "Tablet" },
-  { label: "Phone" },
-  { label: "Accessories" },
 ];

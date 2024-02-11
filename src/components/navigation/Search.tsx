@@ -9,7 +9,7 @@ export function SearchBar(props: SearchBarProps) {
   return (
     <search className="flex">
       <SearchInput
-        className="border rounded-l-full focus-within:border-blue-700"
+        className="border rounded-l-full focus-within:border-blue-700 flex-grow"
         placeholder={props.placeholder}
       />
       <div className="flex items-center justify-center border pr-4 p-2 rounded-r-full hover:bg-[#ffffff33]">
@@ -22,6 +22,8 @@ export function SearchBar(props: SearchBarProps) {
 interface SearchInputProps {
   className?: string;
   placeholder?: string;
+  xClassName?: string;
+  strokeWidth?: number;
 }
 export function SearchInput(props: SearchInputProps) {
   const [value, setValue] = useState("");
@@ -31,26 +33,25 @@ export function SearchInput(props: SearchInputProps) {
   }
   return (
     <div
-      className={`flex flex-grow p-2 items-center ${props.className}`}
+      className={`flex items-center justify-center ${props.className}`}
       tabIndex={0}
     >
       <input
         type="text"
-        className="focus:outline-none bg-transparent px-3 flex-grow"
+        className="focus:outline-none bg-transparent w-full"
         placeholder={props.placeholder ? props.placeholder : "Search"}
         value={value}
         onChange={handleChange}
+        autoFocus
       />
-      <div className="w-6 h-full flex items-center justify-center">
-        {value.length > 0 && (
-          <div
-            onClick={() => setValue("")}
-            className="rounded-full hover:bg-[#ffffff33]"
-          >
-            <X strokeWidth={1} />
-          </div>
-        )}
-      </div>
+
+      {value.length > 0 && (
+        <X
+          strokeWidth={props.strokeWidth ? props.strokeWidth : 1}
+          className={`rounded-full p-1 hover:bg-[#ffffff33] ${props.xClassName}`}
+          onClick={() => setValue("")}
+        />
+      )}
     </div>
   );
 }
