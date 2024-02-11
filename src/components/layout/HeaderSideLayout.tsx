@@ -34,6 +34,13 @@ import Header from "../containers/Header";
 import Logo from "../navigation/Logo";
 import { SlideBar } from "../containers/Slide";
 import { usePathname } from "next/navigation";
+import { group } from "console";
+
+interface CollapseNavGroup {
+  icon?: React.ReactElement;
+  name: string;
+  links: NavItem[];
+}
 
 export default function HeaderSideLayout() {
   const [closeSideBar, setCloseSideBar] = useState(true);
@@ -68,80 +75,44 @@ export default function HeaderSideLayout() {
         </header>
         <NavMenu
           className="text-blue-600"
-          itemClassName="hover:text-white p-2"
-          navItems={miscNavs}
+          itemClassName="hover:text-white p-2 pl-4"
+          navItems={miscLinks}
         />
-        <Collapsible
-          className="text-gray-600 hover:text-white p-2"
-          label={"HTML Ref"}
-          icon={<Code />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100 mt-4"
-            itemClassName="hover:text-blue-500"
-            navItems={htmlNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white p-2"
-          label={"Navigation"}
-          icon={<Navigation />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100 mt-4"
-            itemClassName="hover:text-blue-500"
-            navItems={navNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white p-2"
-          label={"Containers"}
-          icon={<LayoutDashboard />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100 mt-4"
-            itemClassName="hover:text-blue-500"
-            navItems={contiainerNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white p-2"
-          label={"Layouts"}
-          icon={<Layout />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100 mt-4"
-            itemClassName="hover:text-blue-500"
-            navItems={layoutNavs}
-          />
-        </Collapsible>
-        <Collapsible
-          className="text-gray-600 hover:text-white p-2"
-          label={"Cards"}
-          icon={<GalleryHorizontalEnd />}
-          startClosed={true}
-        >
-          <NavMenu
-            className="text-slate-600 border-l border-gray-100 mt-4"
-            itemClassName="hover:text-blue-500"
-            navItems={cardNavs}
-          />
-        </Collapsible>
+        <ColNavGroups colNavGroups={colNavGroups} />
       </SlideBar>
     </Header>
   );
 }
-const miscNavs: NavItem[] = [
+interface ColNavProps {
+  colNavGroups: CollapseNavGroup[];
+}
+function ColNavGroups(props: ColNavProps) {
+  const colNavGroups = props.colNavGroups;
+  return (
+    <>
+      {colNavGroups.map((group, index) => (
+        <Collapsible
+          label={group.name}
+          icon={group.icon}
+          className="text-gray-600 hover:text-white p-2 pl-4"
+        >
+          <NavMenu
+            navItems={group.links}
+            className="text-slate-600 border-l border-gray-100 ml-4 my-2"
+            itemClassName="hover:text-blue-500 p-2"
+          />
+        </Collapsible>
+      ))}
+    </>
+  );
+}
+const miscLinks: NavItem[] = [
   {
     href: "/intro",
     label: "Getting Started",
   },
 ];
-const htmlNavs: NavItem[] = [
+const htmlLinks: NavItem[] = [
   {
     href: "/html/attributes",
     label: "Attributes",
@@ -189,7 +160,7 @@ const htmlNavs: NavItem[] = [
     icon: <SquareStack />,
   },
 ];
-const contiainerNavs: NavItem[] = [
+const contiainerLinks: NavItem[] = [
   {
     href: "/container/aside",
     label: "Aside",
@@ -211,7 +182,7 @@ const contiainerNavs: NavItem[] = [
     icon: <PanelRightClose />,
   },
 ];
-const layoutNavs: NavItem[] = [
+const layoutLinks: NavItem[] = [
   {
     href: "/layout/store",
     label: "Store",
@@ -219,7 +190,7 @@ const layoutNavs: NavItem[] = [
   },
 ];
 
-const navNavs: NavItem[] = [
+const navLinks: NavItem[] = [
   {
     href: "/navigation/logo",
     label: "Logo",
@@ -237,10 +208,38 @@ const navNavs: NavItem[] = [
   },
 ];
 
-const cardNavs: NavItem[] = [
+const cardLinks: NavItem[] = [
   {
     href: "/card/code-preview",
     label: "CodePreview",
     icon: <Terminal />,
+  },
+];
+
+const colNavGroups: CollapseNavGroup[] = [
+  {
+    icon: <Code />,
+    name: "HTML REF",
+    links: htmlLinks,
+  },
+  {
+    icon: <Navigation />,
+    name: "Navigation",
+    links: navLinks,
+  },
+  {
+    icon: <LayoutDashboard />,
+    name: "Containers",
+    links: contiainerLinks,
+  },
+  {
+    icon: <Layout />,
+    name: "Layout",
+    links: layoutLinks,
+  },
+  {
+    icon: <GalleryHorizontalEnd />,
+    name: "Cards",
+    links: cardLinks,
   },
 ];
