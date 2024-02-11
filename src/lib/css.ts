@@ -1,18 +1,24 @@
 
-type direction = 'left'|'right'|'up'|'down';
-export function getSlideTransform(dir: direction, isClosed: boolean) {
-  var translate = '';
+type direction = 'left'|'right'|'top'|'bottom';
+
+export function getSlideTransform(
+    dir: direction, isClosed: boolean, interacted: boolean) {
   if (dir === 'left') {
-    translate = isClosed ? '-translate-x-full' : 'translate-x-0';
-  } else if (dir === 'right') {
-    translate = isClosed ? 'translate-x-full' : 'translate-x-0';
-  } else if (dir === 'up') {
-    translate = isClosed ? '-translate-y-full' : 'translate-y-0';
-  } else if (dir === 'down') {
-    translate = isClosed ? 'translate-y-full' : 'translate-y-0';
+    if (!interacted) return isClosed ? 'start-left' : '';
+    return isClosed ? 'animate-ToLeft' : 'animate-FromLeft';
   }
-  const opacity = isClosed ? 'opacity-0 invisible' : 'opacity-100 visible';
-  const css = `transform ${translate} ${
-      opacity} transition-all duration-300 ease-in-out onTransition`;
-  return css;
+  if (dir === 'right') {
+    if (!interacted) return isClosed ? 'start-right' : '';
+    return isClosed ? 'animate-ToRight' : 'animate-FromRight';
+  }
+  if (dir === 'top') {
+    if (!interacted) return isClosed ? 'start-top' : '';
+    return isClosed ? 'animate-ToTop' : 'animate-FromTop';
+  }
+  if (dir === 'bottom') {
+    if (!interacted) return isClosed ? 'start-bottom' : '';
+    return isClosed ? 'animate-ToBottom' : 'animate-FromBottom';
+  }
+
+  return '';
 }

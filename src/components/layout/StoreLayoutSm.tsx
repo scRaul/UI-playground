@@ -23,21 +23,21 @@ interface Category {
 }
 
 export default function StoreLayoutSm() {
-  const [closeMainSlide, setcloseMainSlide] = useState<boolean>(true);
+  const [closeMainSlide, setCloseMainSlide] = useState<boolean>(true);
   const [closeSubSlide, setCloseSubSlide] = useState<boolean>(true);
   const [searching, setSearching] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [selectedGroup, setSelectedGroup] = useState<Category | null>(null);
   function handleSearch(event: React.MouseEvent<SVGElement>) {
     setSearching(true);
-    setcloseMainSlide(false);
+    setCloseMainSlide(false);
   }
   function handleMenu(event: React.MouseEvent<SVGElement>) {
-    setcloseMainSlide(false);
+    setCloseMainSlide(false);
     setOpenMenu(true);
   }
   function handleClosePanels(event: React.MouseEvent<SVGElement>) {
-    setcloseMainSlide(true);
+    setCloseMainSlide(true);
     setCloseSubSlide(true);
     setSelectedGroup(null);
     setSearching(false);
@@ -82,7 +82,7 @@ export default function StoreLayoutSm() {
       </TopPanel>
       <SlidingPanel
         panelType="Side"
-        direction="up"
+        closeTowards="top"
         position="absolute"
         className="bg-black w-full px-4 py-4"
         isClosed={closeMainSlide}
@@ -119,7 +119,7 @@ export default function StoreLayoutSm() {
       </SlidingPanel>
       <SlidingPanel
         panelType="Side"
-        direction="right"
+        closeTowards="right"
         position="absolute"
         className="bg-black w-full px-4 py-4 right-0"
         isClosed={closeSubSlide}

@@ -7,7 +7,7 @@ interface PanelProps {
 export default function SidePanel(props: PanelProps) {
   return (
     <aside
-      className={`${props.position} h-full w-fit top-0 flex flex-col overflow-y-auto ${props.className}`}
+      className={`h-full flex flex-col w-fit overflow-y-auto ${props.className} ${props.position}`}
       style={{ zIndex: props.zIndex ? props.zIndex : 100 }}
     >
       {props.children}

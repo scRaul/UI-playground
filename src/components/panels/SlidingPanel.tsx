@@ -1,50 +1,69 @@
-import BottomPanel from "./BottomPanel";
+"use client";
+
+import { getSlideTransform } from "@/lib/css";
+import { useEffect, useState } from "react";
 import SidePanel from "./SidePanel";
 import TopPanel from "./TopPanel";
-import { getSlideTransform } from "@/lib/css";
-
+import BottomPanel from "./BottomPanel";
+import { render } from "react-dom";
 interface SlidingProps {
-  children: React.ReactNode;
-  className?: string;
-  isClosed: boolean;
   panelType: "Side" | "Top" | "Bottom";
-  direction: "left" | "right" | "up" | "down";
   position: "absolute" | "fixed";
+  isClosed: boolean;
+  closeTowards: "left" | "right" | "top" | "bottom";
   zIndex?: number;
+  className?: string;
+  children: React.ReactNode;
 }
 
 export default function SlidingPanel(props: SlidingProps) {
-  const transform = getSlideTransform(props.direction, props.isClosed);
-  const className = `${transform} ${props.className}`;
-  if (props.panelType === "Side") {
+  const [initState, setInitState] = useState<boolean | null>(null);
+  const [interaction, setInteraction] = useState(false);
+  useEffect(() => {
+    if (initState == null) {
+      setInitState(props.isClosed);
+    }
+  }, []);
+  useEffect(() => {
+    if (!interaction && initState != null) {
+      setInteraction(true);
+    }
+  }, [props.isClosed]);
+
+  const animation = getSlideTransform(
+    props.closeTowards,
+    props.isClosed,
+    interaction
+  );
+
+  if (props.panelType == "Side")
     return (
       <SidePanel
-        className={className}
+        className={`${animation} ${props.className}`}
         position={props.position}
         zIndex={props.zIndex}
       >
         {props.children}
       </SidePanel>
     );
-  } else if (props.panelType === "Top") {
+  else if (props.panelType == "Top")
     return (
       <TopPanel
-        className={className}
+        className={`${animation} ${props.className}`}
         position={props.position}
         zIndex={props.zIndex}
       >
         {props.children}
       </TopPanel>
     );
-  } else {
+  else
     return (
       <BottomPanel
-        className={className}
+        className={`${animation} ${props.className}`}
         position={props.position}
         zIndex={props.zIndex}
       >
         {props.children}
       </BottomPanel>
     );
-  }
 }

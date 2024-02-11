@@ -45,6 +45,7 @@ export default function AppLayout() {
       <TopPanel
         className="bg-inherit shadow-black shadow-md left-0"
         position="fixed"
+        zIndex={95}
       >
         <aside className="flex gap-2 items-center justify-around w-fit min-w-[200px]">
           <div
@@ -57,11 +58,12 @@ export default function AppLayout() {
         </aside>
       </TopPanel>
       <SlidingPanel
-        className="bg-inherit shadow-2xl shadow-black h-screen left-0 scrolly"
+        className="bg-inherit shadow-2xl shadow-black h-screen left-0 top-0 scrolly"
         isClosed={closeSideBar}
         panelType="Side"
-        direction="left"
+        closeTowards="left"
         position="fixed"
+        zIndex={100}
       >
         <header className="flex gap-2 items-center justify-around w-fit min-w-[200px] mb-4">
           <div
@@ -72,7 +74,7 @@ export default function AppLayout() {
           </div>
           <Logo href="/" />
         </header>
-        <nav className="pl-4">
+        <nav className="pl-4 pt-5">
           <LinkItem
             className="text-blue-600 hover:text-white"
             href="/intro"

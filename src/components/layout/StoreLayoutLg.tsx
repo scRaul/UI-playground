@@ -89,7 +89,7 @@ export default function StoreLayoutLg() {
         </div>
       </TopPanel>
       <SlidingPanel
-        direction="up"
+        closeTowards="top"
         isClosed={closeSlide}
         panelType="Top"
         position="absolute"
@@ -98,7 +98,7 @@ export default function StoreLayoutLg() {
       >
         {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
         {searching && (
-          <div className="px-20 flex gap-1 justify-center items-center">
+          <div className="px-20 py-10 flex gap-1 justify-center items-center">
             <Search strokeWidth={1} />
             <SearchInput placeholder="Search Store" />
           </div>
