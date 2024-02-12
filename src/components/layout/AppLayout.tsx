@@ -26,6 +26,7 @@ import {
   Navigation,
   ChevronDownSquare,
   PanelBottom,
+  FastForward,
 } from "lucide-react";
 import Collapsible from "@/components/cards/Collapsible";
 import { useEffect, useState } from "react";
@@ -243,6 +244,12 @@ function PanelNavs() {
 function LayoutNavs() {
   return (
     <CollapseWrapper label="Layouts" icon={<Layout />}>
+      <LinkItem
+        className="hover:text-blue-500"
+        label="Media"
+        href="/layout/media"
+        icon={<FastForward />}
+      />
       <LinkItem
         className="hover:text-blue-500"
         label="Store"

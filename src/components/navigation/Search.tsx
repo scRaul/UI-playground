@@ -4,15 +4,19 @@ import { ChangeEvent, useState } from "react";
 
 interface SearchBarProps {
   placeholder?: string;
+  className?: string;
+  buttonColor?: string;
 }
 export function SearchBar(props: SearchBarProps) {
   return (
-    <search className="flex">
+    <search className={`flex ${props.className}`}>
       <SearchInput
-        className="border rounded-l-full focus-within:border-blue-700 flex-grow"
+        className="border rounded-l-full focus-within:border-blue-700 flex-grow pl-4"
         placeholder={props.placeholder}
       />
-      <div className="flex items-center justify-center border pr-4 p-2 rounded-r-full hover:bg-[#ffffff33]">
+      <div
+        className={`flex items-center justify-center border pr-4 p-2 rounded-r-full hover:bg-[#ffffff33] bg-[${props.buttonColor}]`}
+      >
         <Search strokeWidth={1} />
       </div>
     </search>

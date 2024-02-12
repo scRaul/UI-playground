@@ -59,7 +59,7 @@ export default function StoreLayoutSm() {
     <>
       <TopPanel
         position={"absolute"}
-        className="py-2 px-4 bg-black visible md:invisible"
+        className="py-2 px-4 bg-black block md:hidden"
         zIndex={10} //set higher if using at root
       >
         <div id="logo" className="cursor-pointer">
@@ -84,7 +84,7 @@ export default function StoreLayoutSm() {
         panelType="Side"
         closeTowards="top"
         position="absolute"
-        className="bg-black w-full px-4 py-4 visible md:invisible"
+        className="bg-black w-full px-4 py-4 block md:hidden"
         isClosed={closeMainSlide}
         zIndex={11} //set higher if using @root
       >
