@@ -5,6 +5,7 @@ import AppLayout from "@/components/layout/AppLayout";
 import Logo from "@/components/navigation/Logo";
 import { ExternalLink } from "lucide-react";
 import Footer from "@/components/navigation/Footer";
+import SeqNav from "@/components/navigation/SeqNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen mt-10">
           <main className="flex flex-col items-center px-1">{children}</main>
           <div className="flex-grow"></div>
+          <SeqNav />
           <Footer />
         </div>
       </body>
