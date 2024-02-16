@@ -9,6 +9,21 @@ export default function DragableEx() {
     y: 0,
   });
   const containerRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    function preventScroll(event: TouchEvent) {
+      event.preventDefault();
+    }
+
+    if (mouseDiv) {
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+    } else {
+      window.removeEventListener("touchmove", preventScroll);
+    }
+
+    return () => {
+      window.removeEventListener("touchmove", preventScroll);
+    };
+  }, [mouseDiv]);
 
   function handleMouseDown(
     event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
