@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 import { LinkItemOpt } from "./LinkItem";
 import Link from "next/link";
 
-export default function SeqNav() {
+interface SeqNavProps {
+  links: LinkItemOpt[];
+}
+
+export default function SeqNav(props: SeqNavProps) {
+  const navs = props.links;
   const pathname = usePathname();
   const [leftPath, setLeftPath] = useState<LinkItemOpt | null>(null);
   const [rightPath, setRightPath] = useState<LinkItemOpt | null>(null);
@@ -46,28 +51,3 @@ export default function SeqNav() {
     </nav>
   );
 }
-
-const navs: LinkItemOpt[] = [
-  { href: "/intro", label: "Getting Started" },
-  { href: "/html/attributes", label: "Attributes" },
-  { href: "/html/events/form", label: "Form Events" },
-  { href: "/html/events/drag", label: "Drag Events" },
-  { href: "/html/events/mouse", label: "Mouse Events" },
-  { href: "/html/events/keyboard", label: "Keyboard Events" },
-  { href: "/html/input", label: "Inputs" },
-  { href: "/html/list", label: "Lists" },
-  { href: "/html/navigation", label: "Navigation" },
-  { href: "/html/media", label: "Media" },
-  { href: "/html/structure", label: "Structure" },
-  { href: "/html/text", label: "Text" },
-  { href: "/html/misc", label: "Misc" },
-  { href: "/navigation/link-item", label: "Link Item" },
-  { href: "/navigation/logo", label: "Logo" },
-  { href: "/navigation/search", label: "Search" },
-  { href: "/panel/bottom-panel", label: "Bottom Pannel" },
-  { href: "/panel/side-panel", label: "Side Panel" },
-  { href: "/panel/top-panel", label: "Top Panl" },
-  { href: "/panel/sliding-panels", label: "Sliding Panel" },
-  { href: "/layout/media", label: "Media Layout" },
-  { href: "/layout/store", label: "Store Layout" },
-];

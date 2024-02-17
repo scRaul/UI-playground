@@ -175,3 +175,9 @@ body {
     display: none;
   }
 }
+.sortable_x {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

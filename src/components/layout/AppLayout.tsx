@@ -1,46 +1,39 @@
 "use client";
-import LinkItem from "../navigation/LinkItem";
-import {
-  AlignJustify,
-  Blocks,
-  BookImage,
-  Chrome,
-  Code,
-  Layout,
-  Link as ILink,
-  MapPin,
-  MousePointer,
-  PanelBottomClose,
-  PanelLeft,
-  PanelRightClose,
-  PanelTop,
-  Search,
-  SquareStack,
-  Table,
-  Terminal,
-  Type,
-  Workflow,
-  Store,
-  Link,
-  Home,
-  Navigation,
-  ChevronDownSquare,
-  PanelBottom,
-  FastForward,
-} from "lucide-react";
+import LinkItem, { LinkItemOpt } from "../navigation/LinkItem";
 import Collapsible from "@/components/cards/Collapsible";
 import { useEffect, useState } from "react";
 import TopPanel from "../panels/TopPanel";
 import Logo from "../navigation/Logo";
 import SlidingPanel from "../panels/SlidingPanel";
 import { usePathname } from "next/navigation";
+import { LinkGroup } from "@/lib/navigation";
+import { AlignJustify } from "lucide-react";
 
-export default function AppLayout() {
+interface AppLayoutProps {
+  navGroups: (LinkGroup | LinkItemOpt[])[];
+}
+
+export default function AppLayout(props: AppLayoutProps) {
   const [closeSideBar, setCloseSideBar] = useState(true);
   const pathname = usePathname();
   useEffect(() => {
     setCloseSideBar(true);
   }, [pathname]);
+  const group = props.navGroups;
+  const renderNavItems = (navGroups: (LinkGroup | LinkItemOpt[])[]) => {
+    return navGroups.map((group, index) => {
+      if (Array.isArray(group)) {
+        return (
+          <GetLinkItems key={`t-${index}`} links={group as LinkItemOpt[]} />
+        );
+      } else {
+        return (
+          <GetGroupedItems key={`t-${index}`} group={group as LinkGroup} />
+        );
+      }
+    });
+  };
+
   return (
     <>
       <TopPanel
@@ -75,17 +68,7 @@ export default function AppLayout() {
           </div>
           <Logo href="/" />
         </header>
-        <nav className="pl-4 pt-5">
-          <LinkItem
-            className="text-blue-600 hover:text-white"
-            href="/intro"
-            label="Getting Started"
-          />
-          <HTMLNavs />
-          <NavNavs />
-          <PanelNavs />
-          <LayoutNavs />
-        </nav>
+        <nav className="pl-4 pt-5">{renderNavItems(props.navGroups)}</nav>
       </SlidingPanel>
     </>
   );
@@ -109,163 +92,41 @@ function CollapseWrapper(props: CollapseWrapperProps) {
   );
 }
 
-function HTMLNavs() {
+interface GetLinkProps {
+  links: LinkItemOpt[];
+}
+function GetLinkItems(props: GetLinkProps) {
   return (
-    <CollapseWrapper label="HTML REF" icon={<Code />}>
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Attributes"
-        href="/html/attributes"
-        icon={<Blocks />}
-      />
-      <CollapseWrapper label="Events" icon={<Workflow />}>
+    <>
+      {props.links.map((link, index) => (
         <LinkItem
+          key={link.href}
+          label={link.label}
+          href={link.href}
+          icon={link.icon}
           className="hover:text-blue-500"
-          label="Form/Input"
-          href="/html/events/form"
         />
-        <LinkItem
-          className="hover:text-blue-500"
-          label="Drag/Touch"
-          href="/html/events/drag"
-        />
-        <LinkItem
-          className="hover:text-blue-500"
-          label="Mouse"
-          href="/html/events/mouse"
-        />
-        <LinkItem
-          className="hover:text-blue-500"
-          label="Keyboard"
-          href="/html/events/keyboard"
-        />
-      </CollapseWrapper>
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Input"
-        href="/html/input"
-        icon={<MousePointer />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="List"
-        href="/html/list"
-        icon={<Table />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Navigation"
-        href="/html/navigation"
-        icon={<MapPin />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Media"
-        href="/html/media"
-        icon={<BookImage />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Structure"
-        href="/html/structure"
-        icon={<Layout />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Text"
-        href="/html/text"
-        icon={<Type />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="misc"
-        href="/html/misc"
-        icon={<SquareStack />}
-      />
-    </CollapseWrapper>
+      ))}
+    </>
   );
 }
+interface GroupProps {
+  group: LinkGroup;
+}
+function GetGroupedItems(props: GroupProps) {
+  const { group } = props;
 
-function NavNavs() {
   return (
-    <CollapseWrapper label="Navigation" icon={<Navigation />}>
-      <LinkItem
-        className="hover:text-blue-500"
-        label="LinkItem"
-        href="/navigation/link-item"
-        icon={<ILink />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Logo"
-        href="/navigation/logo"
-        icon={<Home />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Search"
-        href="/navigation/search"
-        icon={<Search />}
-      />
+    <CollapseWrapper label={group.group.label} icon={group.group.icon}>
+      {group.links.map((item, index) => {
+        if ("group" in item) {
+          return (
+            <GetGroupedItems key={`c-${index}`} group={item as LinkGroup} />
+          );
+        } else {
+          return <GetLinkItems key={`c-${index}`} links={item} />;
+        }
+      })}
     </CollapseWrapper>
-  );
-}
-
-function PanelNavs() {
-  return (
-    <CollapseWrapper label="Panels" icon={<Code />}>
-      <LinkItem
-        className="hover:text-blue-500"
-        label="BottomPanel"
-        href="/panel/bottom-panel"
-        icon={<PanelBottom />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="SidePanel"
-        href="/panel/side-panel"
-        icon={<PanelLeft />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="TopPanel"
-        href="/panel/top-panel"
-        icon={<PanelTop />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="SlidingPanels"
-        href="/panel/sliding-panels"
-        icon={<PanelRightClose />}
-      />
-    </CollapseWrapper>
-  );
-}
-function LayoutNavs() {
-  return (
-    <CollapseWrapper label="Layouts" icon={<Layout />}>
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Media"
-        href="/layout/media"
-        icon={<FastForward />}
-      />
-      <LinkItem
-        className="hover:text-blue-500"
-        label="Store"
-        href="/layout/store"
-        icon={<Store />}
-      />
-    </CollapseWrapper>
-  );
-}
-function CardNavs() {
-  return (
-    <LinkItem
-      className="hover:text-blue-500"
-      label="Collapsible"
-      href="/card/collapsible"
-      icon={<ChevronDownSquare />}
-    />
   );
 }

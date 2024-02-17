@@ -50,7 +50,7 @@ export default function StoreLayoutLg() {
   return (
     <>
       <TopPanel
-        className={`px-20 py-2 bg-black hidden md:block`}
+        className={`px-20 py-2 bg-black hidden md:flex`}
         position="absolute"
         zIndex={10} //change to highest  @root layout
       >
@@ -93,7 +93,7 @@ export default function StoreLayoutLg() {
         isClosed={closeSlide}
         panelType="Top"
         position="absolute"
-        className="bg-black p-3 pl-20 pt-10 hidden md:block"
+        className="bg-black p-3 pl-20 pt-10 hidden md:flex"
         zIndex={9} //change 1 < TopPanel @root layout
       >
         {selectedGroup && <SelectedGroup selectedGroup={selectedGroup} />}
