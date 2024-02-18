@@ -2,9 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-const top = 1;
-const bottom = -1;
-
 interface SortableProps {
   children: React.ReactElement[]; //make sure to set key for each child
   onReOrder?: (order: number[]) => void; //callback to get new order;
@@ -17,7 +14,6 @@ export default function SortableList(props: SortableProps) {
   const ItemDivs = useRef<HTMLDivElement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [prevSwap, setPrevSwap] = useState(Date.now());
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     function preventScroll(event: TouchEvent) {

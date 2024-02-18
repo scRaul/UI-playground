@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 
-//external use
 export interface LinkItemOpt {
   label: string;
   href?: string;
@@ -14,7 +13,14 @@ interface LinkItemProps {
   className?: string;
   onHoverCallBack?: (label: string) => void;
 }
-
+export interface NestedGroup {
+  group: LinkItemOpt;
+  links: (NestedGroup | LinkItemOpt[])[];
+}
+export interface BasicGroup {
+  label: string;
+  links: LinkItemOpt[];
+}
 export default function LinkItem(props: LinkItemProps) {
   function handleItemHover(label: string) {
     if (props.onHoverCallBack) {

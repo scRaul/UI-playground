@@ -8,14 +8,13 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
   return (
-    <Link href={props.href} className="flex justify-center items-center gap-1">
-      <Shapes size={24} />
+    <Link href={props.href} className="">
       <Image
-        src="/next.svg"
-        alt="Vercel Logo"
+        src="/logo.svg"
+        alt="app Logo"
         className="dark:invert"
         width={100}
-        height={24}
+        height={20}
         priority
       />
     </Link>

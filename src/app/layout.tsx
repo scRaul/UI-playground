@@ -4,7 +4,7 @@ import "./globals.css";
 import AppLayout from "@/components/layout/AppLayout";
 import Footer from "@/components/navigation/Footer";
 import SeqNav from "@/components/navigation/SeqNav";
-import { LinkItemOpt, UIAppNavs, UIAppSeq } from "@/lib/navigation";
+import { UIAppNavs, UIAppSeq, footerGroups } from "@/lib/appLinks";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
           <main className="flex flex-col items-center px-1">{children}</main>
           <div className="flex-grow"></div>
           <SeqNav links={UIAppSeq} />
-          <Footer />
+          <Footer groups={footerGroups} />
         </div>
       </body>
     </html>

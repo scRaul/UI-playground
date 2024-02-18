@@ -1,5 +1,9 @@
-import LinkItem from "@/components/navigation/LinkItem";
-import { group } from "console";
+import {
+  BasicGroup,
+  LinkItemOpt,
+  NestedGroup,
+} from "@/components/navigation/LinkItem";
+
 import {
   AlignJustify,
   Blocks,
@@ -30,17 +34,10 @@ import {
   GalleryHorizontalEnd,
   LayoutPanelLeft,
   List,
+  ExternalLink,
 } from "lucide-react";
 
-export interface LinkItemOpt {
-  label: string;
-  href?: string;
-  icon?: React.ReactElement;
-}
-export interface LinkGroup {
-  group: LinkItemOpt;
-  links: (LinkGroup | LinkItemOpt[])[];
-}
+// [ LINK_ITEM_OPT[] ]
 const StartLinks: LinkItemOpt[] = [
   { href: "/intro", label: "Getting Started" },
 ];
@@ -103,32 +100,34 @@ const CardLinks: LinkItemOpt[] = [
     icon: <List />,
   },
 ];
+//END [ LINK_ITEM_OPT[] ]
 
-const EventGroup: LinkGroup = {
+// [ EVENTGROUP ]
+const EventGroup: NestedGroup = {
   group: { label: "Events", icon: <Workflow /> },
   links: [EventLinks],
 };
-const HTMLGroup: LinkGroup = {
+const HTMLGroup: NestedGroup = {
   group: { label: "HTML Refs", icon: <Code /> },
   links: [AttributeLinks, EventGroup, HtmlLinks],
 };
-const NavigationGroup: LinkGroup = {
+const NavigationGroup: NestedGroup = {
   group: { label: "Navigation", icon: <Navigation /> },
   links: [NavigationLinks],
 };
-const PanelGroup: LinkGroup = {
+const PanelGroup: NestedGroup = {
   group: { label: "Panels", icon: <LayoutPanelLeft /> },
   links: [PanelLinks],
 };
-const LayoutGroup: LinkGroup = {
+const LayoutGroup: NestedGroup = {
   group: { label: "Layouts", icon: <Layout /> },
   links: [LayoutLinks],
 };
-const CardGroup: LinkGroup = {
+const CardGroup: NestedGroup = {
   group: { label: "Cards", icon: <GalleryHorizontalEnd /> },
   links: [CardLinks],
 };
-
+//END [ EVENTGROUP]
 export const UIAppNavs = [
   StartLinks,
   HTMLGroup,
@@ -145,3 +144,18 @@ export const UIAppSeq = [
   ...LayoutLinks,
   ...CardLinks,
 ];
+// [ FOOTER GROUPS]
+export const footerGroups: BasicGroup[] = [
+  {
+    label: "Contact",
+    links: [
+      {
+        href: "https://www.linkedin.com/in/raul-rl/",
+        label: "LinkedIn",
+        icon: <ExternalLink size={14} />,
+      },
+    ],
+  },
+];
+
+// END FOOTER LINKS

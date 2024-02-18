@@ -6,11 +6,11 @@ import TopPanel from "../panels/TopPanel";
 import Logo from "../navigation/Logo";
 import SlidingPanel from "../panels/SlidingPanel";
 import { usePathname } from "next/navigation";
-import { LinkGroup } from "@/lib/navigation";
+import { NestedGroup } from "@/lib/appLinks";
 import { AlignJustify } from "lucide-react";
 
 interface AppLayoutProps {
-  navGroups: (LinkGroup | LinkItemOpt[])[];
+  navGroups: (NestedGroup | LinkItemOpt[])[];
 }
 
 export default function AppLayout(props: AppLayoutProps) {
@@ -20,7 +20,7 @@ export default function AppLayout(props: AppLayoutProps) {
     setCloseSideBar(true);
   }, [pathname]);
   const group = props.navGroups;
-  const renderNavItems = (navGroups: (LinkGroup | LinkItemOpt[])[]) => {
+  const renderNavItems = (navGroups: (NestedGroup | LinkItemOpt[])[]) => {
     return navGroups.map((group, index) => {
       if (Array.isArray(group)) {
         return (
@@ -28,7 +28,7 @@ export default function AppLayout(props: AppLayoutProps) {
         );
       } else {
         return (
-          <GetGroupedItems key={`t-${index}`} group={group as LinkGroup} />
+          <GetGroupedItems key={`t-${index}`} group={group as NestedGroup} />
         );
       }
     });
@@ -111,7 +111,7 @@ function GetLinkItems(props: GetLinkProps) {
   );
 }
 interface GroupProps {
-  group: LinkGroup;
+  group: NestedGroup;
 }
 function GetGroupedItems(props: GroupProps) {
   const { group } = props;
@@ -121,7 +121,7 @@ function GetGroupedItems(props: GroupProps) {
       {group.links.map((item, index) => {
         if ("group" in item) {
           return (
-            <GetGroupedItems key={`c-${index}`} group={item as LinkGroup} />
+            <GetGroupedItems key={`c-${index}`} group={item as NestedGroup} />
           );
         } else {
           return <GetLinkItems key={`c-${index}`} links={item} />;
