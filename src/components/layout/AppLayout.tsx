@@ -1,12 +1,11 @@
 "use client";
-import LinkItem, { LinkItemOpt } from "../navigation/LinkItem";
+import LinkItem, { LinkItemOpt, NestedGroup } from "../navigation/LinkItem";
 import Collapsible from "@/components/cards/Collapsible";
 import { useEffect, useState } from "react";
 import TopPanel from "../panels/TopPanel";
 import Logo from "../navigation/Logo";
 import SlidingPanel from "../panels/SlidingPanel";
 import { usePathname } from "next/navigation";
-import { NestedGroup } from "@/lib/appLinks";
 import { AlignJustify } from "lucide-react";
 
 interface AppLayoutProps {
