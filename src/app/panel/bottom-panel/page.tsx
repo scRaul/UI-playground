@@ -1,29 +1,43 @@
 import CodePreview from "@/components/cards/CodePreview";
 import BottomPanel from "@/components/panels/BottomPanel";
 import { readFileContents } from "@/lib/files";
-import BottomPanelEx from "@/components/Page/Panels/BottomPanelEx";
+
+import { GridBg, GridBgWrapped } from "@/components/Page/Util";
 
 export default function BottomPanelPage() {
   return (
-    <>
-      <CodePreview title="BottomPanel.tsx" code={code}>
-        <div className="relative w-full h-80 border">
-          <BottomPanel className="border" position="absolute" zIndex={1}>
-            <div className="font-bold">
-              <div>Home</div>
-              <div>Projects</div>
-              <div>About</div>
-            </div>
-          </BottomPanel>
-        </div>
-      </CodePreview>
-      <CodePreview title="example" code={example}>
-        <BottomPanelEx />
-      </CodePreview>
-    </>
+    <CodePreview
+      title="BottomPannel.tsx"
+      className="border-yellow-500 [&>header]:bg-yellow-600"
+      code={code}
+    >
+      <p>example w/positon = "fixed" </p>
+      <div className="relative w-full border">
+        <GridBgWrapped />
+        <BottomPanel
+          className="border-y border-black w-full h-20  bg-[#0000ff99]"
+          position="absolute"
+          zIndex={1}
+        >
+          <div className="w-full h-full flex items-end justify-center">
+            Bottom panel
+          </div>
+        </BottomPanel>
+      </div>
+      <p className="mt-4">example w/ position="absolute"</p>
+      <div className="relative w-full border h-80 overflow-auto scrolly">
+        <GridBg />
+        <BottomPanel
+          className="w-full h-20  bg-[#0000ff99] border-t border-black"
+          position="absolute"
+          zIndex={1}
+        >
+          <div className="w-full h-full flex items-end justify-center">
+            Bottom panel
+          </div>
+        </BottomPanel>
+      </div>
+    </CodePreview>
   );
 }
 const code = readFileContents("src/components/panels/BottomPanel.tsx");
-const example = readFileContents(
-  "src/components/Page/Panels/BottomPanelEx.tsx"
-);

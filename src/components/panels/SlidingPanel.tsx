@@ -1,6 +1,6 @@
 "use client";
 
-import { getSlideTransform } from "@/lib/css";
+import { getSlideTransform } from "@/lib/slide";
 import { useEffect, useState } from "react";
 import SidePanel from "./SidePanel";
 import TopPanel from "./TopPanel";

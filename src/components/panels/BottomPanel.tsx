@@ -5,10 +5,17 @@ interface PanelProps {
   zIndex?: number;
 }
 export default function BottomPanel(props: PanelProps) {
+  const z = props.zIndex || 99;
   return (
     <footer
-      className={`flex gap-1 w-full bottom-0 left-0 ${props.className} ${props.position}`}
-      style={{ zIndex: props.zIndex ? props.zIndex : 99 }}
+      className={props.className}
+      style={{
+        zIndex: z,
+        position: props.position,
+        display: "flex",
+        bottom: 0,
+        width: "100%",
+      }}
     >
       {props.children}
     </footer>

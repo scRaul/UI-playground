@@ -36,7 +36,7 @@ export default function AppLayout(props: AppLayoutProps) {
   return (
     <>
       <TopPanel
-        className="bg-inherit shadow-black shadow-md left-0"
+        className="bg-inherit shadow-black shadow-md left-0 max-h-20"
         position="fixed"
         zIndex={95}
       >

@@ -35,6 +35,9 @@ import {
   LayoutPanelLeft,
   List,
   ExternalLink,
+  BookCopy,
+  Paintbrush,
+  Move3D,
 } from "lucide-react";
 
 // [ LINK_ITEM_OPT[] ]
@@ -102,7 +105,13 @@ const CardLinks: LinkItemOpt[] = [
 ];
 //END [ LINK_ITEM_OPT[] ]
 
+const ModalLinks: LinkItemOpt[] = [{ label: "modal", href: "/modals" }];
+
 // [ EVENTGROUP ]
+const ModalGroup: NestedGroup = {
+  group: { label: "Modals", icon: <BookCopy /> },
+  links: [ModalLinks],
+};
 const EventGroup: NestedGroup = {
   group: { label: "Events", icon: <Workflow /> },
   links: [EventLinks],
@@ -131,6 +140,8 @@ const CardGroup: NestedGroup = {
 export const UIAppNavs = [
   StartLinks,
   HTMLGroup,
+  PanelGroup,
+  ModalGroup,
   NavigationGroup,
   LayoutGroup,
   CardGroup,
@@ -141,6 +152,8 @@ export const UIAppSeq = [
   ...AttributeLinks,
   ...EventLinks,
   ...HtmlLinks,
+  ...PanelLinks,
+  ...ModalLinks,
   ...LayoutLinks,
   ...CardLinks,
 ];

@@ -4,15 +4,15 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <article className="w-full">
       <header className="w-full text-center bg-blue-800 p-6 flex flex-col gap-4 items-center">
-        <H1 className="font-extrabold">A NextJS UI Library</H1>
-        <H4 className="">View, Copy and Paste UI Elements</H4>
+        <H1 className="font-extrabold">Copy and Paste UI</H1>
+        <H4 className="">Web UI tempalates</H4>
         <Link href="/intro" className="px-3 py-1 rounded bg-slate-50 w-fit">
           <H4 className="text-blue-800">Get Started</H4>
         </Link>
       </header>
-      <div className="flex flex-col lg:flex-row max-w-4xl mx-auto my-3">
+      <div className="flex flex-col lg:flex-row max-w-4xl mx-auto my-3 [&>section]:w-full">
         <section className="flex flex-col items-center gap-4 p-2">
           <TimerReset size={70} />
           <H4 className="font-bold">Build Faster</H4>
@@ -39,6 +39,6 @@ export default function Home() {
           </p>
         </section>
       </div>
-    </>
+    </article>
   );
 }

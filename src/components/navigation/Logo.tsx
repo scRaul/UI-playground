@@ -8,13 +8,12 @@ interface LogoProps {
 
 export default function Logo(props: LogoProps) {
   return (
-    <Link href={props.href} className="">
+    <Link href={props.href} className="relative w-[100px] h-[32px]">
       <Image
         src="/logo.svg"
         alt="app Logo"
         className="dark:invert"
-        width={100}
-        height={20}
+        fill={true}
         priority
       />
     </Link>

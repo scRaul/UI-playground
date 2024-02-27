@@ -1,4 +1,6 @@
+import Code from "@/components/cards/Code";
 import { H3, H4 } from "@/components/text/Headings";
+import { readFileContents } from "@/lib/files";
 import Image from "next/image";
 
 export default function IntroPage() {
@@ -9,27 +11,40 @@ export default function IntroPage() {
       </header>
       <div className="px-2 py-2 md:px-10">
         <section className="my-4">
-          <H4 className="font-semibold underline">Starting Project</H4>
+          <H4 className="font-semibold underline">Disclaimer</H4>
           <p className="p-4">
-            {" "}
-            If you haven't done so already, read through{" "}
-            <a href="https://nextjs.org/docs" target="_blank">
+            This is not a UI library and this is not a tutorial on web
+            development. Rather this website serves as my personal UI
+            playground. What I hope is that website serves as a refrecne /
+            starting point for your UI needs.
+          </p>
+        </section>
+        <section className="my-4">
+          <H4 className="font-semibold underline">Tailwind</H4>
+          <p className="p-4">
+            The UI elements relay on tailwinds for their styling. If your
+            pojects currently doesnt have tailwinds, I highly recommend
+            installing it. For a guide visit their website,
+            <a
+              href="https://tailwindui.com/documentation#getting-set-up"
+              target="_blank"
+            >
               <span className="text-blue-500 italic hover:underline">
-                {" "}
-                Next.js
+                TailWind
               </span>
-            </a>{" "}
-            docs to gain a better idea of what Next js has to offer. If you are
-            starting a new project, I recommend following their{" "}
+            </a>
+            {". "}
+            If you currently dont have a project I recommend starting a new one
+            with,{" "}
             <a
               href="https://nextjs.org/docs/getting-started/installation"
               target="_blank"
             >
               <span className="text-blue-500 italic hover:underline">
-                Automatic Installation.
+                Next.js
               </span>
             </a>{" "}
-            I recommend saying yes to tailwinds and the src folder.
+            and here are my recommended project options:
           </p>
           <Image
             src={"/setUp.png"}
@@ -40,81 +55,16 @@ export default function IntroPage() {
           />
         </section>
         <section className="my-4">
-          <H4 className="font-semibold underline">Project Structure</H4>
-          <p className="p-4">
-            After next js finishes setting up your project,I recommend that you
-            add each of the following folders inside of the src/ directory:
+          <H4 className="font-semibold underline">CSS</H4>
+          <p>
+            Even though Tailwinds releaves us from writting tons of css, its
+            isn't a replacement for CSS. Here are is my global css file:
           </p>
-          <ol className=" p-3 mx-auto">
-            <li className="m-1">
-              <details className="border rounded">
-                <summary className="border-b px-3 py-2">actions/</summary>
-                <p className="p-3">
-                  This is where you store your server side functions, these
-                  functions are invoked when submitting a form.{" "}
-                  <a
-                    href="https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations"
-                    target="_blank"
-                  >
-                    <span className="text-blue-500 italic hover:underline">
-                      {" "}
-                      More info.
-                    </span>
-                  </a>
-                </p>
-              </details>
-            </li>
-            <li className="m-1">
-              <details className="border rounded">
-                <summary className="border-b px-3 py-2">components/</summary>
-                <p className="p-3">
-                  A folder were you will be storing all your UI elements.
-                  Further organized by grouping UI into subfolders.
-                </p>
-              </details>
-            </li>
-            <li className="m-1">
-              <details className="border rounded">
-                <summary className="border-b px-3 py-2">lib/</summary>
 
-                <p className="p-3">
-                  Here you store your personal libraries, such as if you need to
-                  store data types or frequently used functions.
-                </p>
-              </details>
-            </li>
-          </ol>
-          <Image
-            src={"/fileStruct.png"}
-            alt="set up png"
-            width={548 / 2}
-            height={1060 / 2}
-            className="mx-auto"
-          />
-        </section>
-        <section className="my-4">
-          <H4 className="font-semibold underline">Tips/Tweaks</H4>
-          <p className="p-4">
-            Even though majority of the UI elements will relay soley on the
-            tailwinds library, its good to know that you can define a class
-            using tailwinds classes. My tip is to define an input class
-            <code> @/src/app/gloabls.css </code> for example:
-          </p>
-          <div className="p-2 bg-[#0A0832]">
-            <var>{`
-            .input {
-  @apply rounded p-2 bg-transparent focus:outline-none border border-white focus:border-blue-500 w-full;
-} `}</var>
-          </div>
-          <p className="p-4">
-            {" "}
-            Another tip is that rather than using rgb for the root css variables
-            , change them to hex. This will (in vsCode at least) place a color
-            picker next to the value; allowing you to tweak the colors faster
-            and easier
-          </p>
+          <Code title="globals.css" disableNumbers={true} code={gcss} />
         </section>
       </div>
     </article>
   );
 }
+const gcss = readFileContents("src/app/globals.css");
